@@ -90,6 +90,39 @@
 .citizen-footer { border-top: 1px solid #d6e2db; padding: 26px 0; margin-top: 45px; color: #58715f; gap: 16px; align-items: center; }
 .citizen-footer strong { font-size: 16px; color: #28533d; }
 .citizen-footer span { flex: 1; }
+.area-chooser { padding: 14px 20px 0; border-top: 1px solid #e0e8e2; }
+.area-actions { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 10px; }
+.area-actions label { font-size: 11px; margin: 0; gap: 5px; flex: 1; min-width: 150px; }
+.area-actions select { min-height: 37px; font-size: 12px; padding: 7px; }
+.area-actions > button { background: white; color: #275d43; border: 1px solid #b9d0c0; border-radius: 6px; padding: 10px; font-size: 11px; min-height: 37px; }
+.area-actions > button.area-active { background: #206e4d; color: white; }
+.chosen-cities { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11px; color: #526f59; line-height: 1.7; margin-top: 10px; }
+.chosen-cities button { background: #edf5ee; color: #305c40; border: 1px solid #c1d5c6; border-radius: 5px; padding: 6px 9px; font-size: 11px; }
+.chosen-cities button span { margin-left: 7px; }
+.area-chooser > p { color: #77571e; background: #fff3d6; padding: 9px; font-size: 12px; line-height: 1.7; border-radius: 5px; }
+.area-preview { font-size: 11px; color: #566d5d; margin: 10px 20px 15px; line-height: 1.7; }
+.drawing-area { cursor: crosshair; }
+.area-corner { border: 2px solid #746334; border-radius: 3px; background: #ffe090; }
+.area-move { border: 2px solid #746334; border-radius: 6px; background: #ffe090; color: #4a3d17; font-size: 22px; font-weight: 700; text-align: center; line-height: 25px; }
+.point-inspector { background: white; border: 1px solid #c6d9cd; border-radius: 12px; padding: 21px; margin-top: 18px; }
+.point-heading { display: flex; justify-content: space-between; gap: 15px; }
+.point-heading h2 { font-size: 20px; margin: 9px 0 15px; }
+.point-heading > button { font-size: 24px; background: white; color: #466950; border: 0; align-self: start; padding: 0 5px; }
+.point-inspector > p { font-size: 13px; color: #536f5b; line-height: 1.8; margin: 5px 0; }
+.point-inspector label { font-size: 12px; margin: 0 0 13px; }
+.point-inspector .route-scope { font-size: 11px; color: #56705e; margin: 10px 0; }
+.nearest-result { display: grid; grid-template-columns: 125px 1fr; gap: 20px; align-items: center; padding: 18px 0; border-top: 1px solid #e1e9e3; border-bottom: 1px solid #e1e9e3; }
+.nearest-result > div:first-child strong { color: #176843; display: block; font-size: 29px; letter-spacing: -.8px; }
+.nearest-result span, .nearest-result p { display: block; font-size: 11px; color: #56715d; line-height: 1.7; margin: 5px 0; }
+.nearest-result h3 { margin: 4px 0; font-size: 16px; color: #284e39; }
+.nearest-result a { font-size: 11px; }
+.route-backup { display: flex; flex-direction: column; gap: 7px; font-size: 12px; line-height: 1.7; background: #f1f6f2; padding: 13px; border-radius: 6px; margin-top: 13px; color: #365b43; }
+.point-inspector > .point-source-note { font-size: 11px; margin-top: 16px; }
+.point-inspector > .condition-impact { background: #edf4fd; color: #365979; font-size: 12px; padding: 12px; border-radius: 6px; margin-top: 13px; }
+.point-inspector > .no-route { color: #873f28; background: #fff2e9; padding: 13px; border-radius: 6px; }
+.point-inspector details p { font-size: 12px; line-height: 1.8; }
+.coverage-gap { background: #f0f6f1; color: #2a6240; border: 1px solid #c0d6c7; border-radius: 7px; font-size: 12px; line-height: 1.7; padding: 13px 16px; text-align: left; width: 100%; margin-top: 16px; }
+.citizen-leaflet .point-map-summary { width: 220px; max-width: calc(100vw - 80px); white-space: normal; color: #244d76; border-color: #87ade1; font-size: 12px; font-weight: 600; }
 @media(max-width: 1050px) {
  .citizen-layout { grid-template-columns: 320px minmax(0, 1fr); gap: 20px; }
  .simple-form, .plan-answer { padding: 22px; }
@@ -117,4 +150,10 @@
  .citizen-details { padding: 18px 14px; }
  .citizen-leaflet .map-tools { gap: 4px; right: 8px; }
  .citizen-leaflet .map-tools button { font-size: 11px; }
+ .area-chooser { padding: 13px 15px 0; }
+ .area-actions label { width: 100%; flex: auto; }
+ .area-actions > button { flex: 1; }
+ .area-preview { margin-left: 15px; margin-right: 15px; }
+ .point-inspector { padding: 18px; }
+ .nearest-result { grid-template-columns: 1fr; gap: 10px; }
 }

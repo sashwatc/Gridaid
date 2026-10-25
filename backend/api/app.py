@@ -6,19 +6,22 @@ from typing import Literal
 from fastapi import FastAPI,HTTPException,Query,Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse,FileResponse
 from fastapi.staticfiles import StaticFiles
 from backend.schemas import (PlanRequest,Run,CompareRequest,SimulationRequest,Comparison,Simulation,
-                             Study,Health,DemandLayers,MLCard,Explanation,RiskLayer,DemoPreset)
+                             Study,Health,DemandLayers,MLCard,Explanation,RiskLayer,DemoPreset,PointRouteRequest)
 from backend.security import Guard,ComputeGate
 from backend.services.data import load_dataset,ROOT
 from backend.services.scenarios import scenario_catalog
+from backend.services.area import focus_dataset
 
 
 def create_app(rate_limit=30,compute_limit=2):
     app=FastAPI(title='GridAid',version='0.1.0',debug=False,docs_url=None,redoc_url=None)
     app.state.runs=OrderedDict();app.state.gate=ComputeGate(compute_limit)
     app.add_middleware(CORSMiddleware,allow_origins=os.environ.get('GRIDAID_CORS','http://127.0.0.1:5173,http://localhost:5173').split(','),allow_methods=['GET','POST'],allow_headers=['Content-Type'])
+    app.add_middleware(GZipMiddleware,minimum_size=1024,compresslevel=5)
     app.add_middleware(Guard,rate_limit=rate_limit)
 
     @app.exception_handler(RequestValidationError)
@@ -31,7 +34,9 @@ def create_app(rate_limit=30,compute_limit=2):
         except ValueError as exc:raise HTTPException(422,str(exc)) from None
 
     def validate(config):
-        data=dataset(config.dataset)
+        original=dataset(config.dataset)
+        try:data=focus_dataset(original,config)
+        except ValueError as exc:raise HTTPException(422,str(exc)) from None
         if config.resource_count>len(data.candidates):raise HTTPException(422,'Resource count exceeds available candidates')
         if config.demand_model!='population' and not data.ml_validated:raise HTTPException(422,'ML unavailable: no validated Iowa incident-risk layer')
 
@@ -66,19 +71,25 @@ def create_app(rate_limit=30,compute_limit=2):
     @app.get('/api/health',response_model=Health)
     def health():return {'status':'ok','version':'0.1.0'}
 
+    @app.get('/api/community-preset')
+    def community_preset():
+        data=dataset('quad_cities')
+        config=PlanRequest(dataset='quad_cities',resource_count=4,scenario_ids=['normal','winter','closure','winter_closure'])
+        return {'dataset_version':data.version,'configuration':config.model_dump(mode='json')}
+
     @app.get('/api/study-area',response_model=Study)
-    def study_area(dataset_id:str=Query('fixture',pattern='^(fixture|iowa)$'),winter_multiplier:float=Query(1.6,ge=1,le=3),closure_profile:Literal['central','east']='central'):
+    def study_area(dataset_id:str=Query('fixture',pattern='^(fixture|iowa|quad_cities)$'),winter_multiplier:float=Query(1.6,ge=1,le=3),closure_profile:Literal['central','east']='central'):
         data=dataset(dataset_id)
         return {'dataset':data,'scenarios':list(scenario_catalog(data,winter_multiplier,closure_profile).values()),'quality':data.quality(),
-                'available_datasets':['fixture']+(['iowa'] if ((ROOT/'data/processed/iowa.json').exists() or (ROOT/'data/public/iowa.json.gz').exists()) else [])}
+                'available_datasets':['fixture']+[name for name in ('iowa','quad_cities') if ((ROOT/f'data/processed/{name}.json').exists() or (ROOT/f'data/public/{name}.json.gz').exists())]}
 
     @app.get('/api/demand-layers',response_model=DemandLayers)
-    def demand_layers(dataset_id:str=Query('fixture',pattern='^(fixture|iowa)$')):
+    def demand_layers(dataset_id:str=Query('fixture',pattern='^(fixture|iowa|quad_cities)$')):
         data=dataset(dataset_id)
         return {'layers':[{'id':'population','available':True},{'id':'ml_risk','available':data.ml_validated,'reason':'Retrospective January 2024 forecast only.' if data.ml_validated else 'No validated risk for the synthetic corridor fixture.'},{'id':'blended','available':data.ml_validated,'reason':'Separately normalized population and predicted count.'}]}
 
     @app.get('/api/baseline',response_model=Run)
-    async def get_baseline(dataset_id:str=Query('fixture',pattern='^(fixture|iowa)$'),resource_count:int=Query(3,ge=1,le=25),threshold_minutes:float=Query(5,ge=1,le=60)):
+    async def get_baseline(dataset_id:str=Query('fixture',pattern='^(fixture|iowa|quad_cities)$'),resource_count:int=Query(3,ge=1,le=25),threshold_minutes:float=Query(5,ge=1,le=60)):
         return await optimize(PlanRequest(dataset=dataset_id,resource_count=resource_count,threshold_minutes=threshold_minutes),'baseline')
 
     @app.post('/api/baseline',response_model=Run)
@@ -97,6 +108,15 @@ def create_app(rate_limit=30,compute_limit=2):
     async def simulation(config:SimulationRequest):
         runs=get_runs(config.run_ids)
         return await compute('simulate',{'runs':runs,'trials':config.trials,'seed':config.seed})
+
+    @app.post('/api/route/point')
+    async def point_route(config:PointRouteRequest):
+        run=None
+        if config.run_id:
+            if config.run_id not in app.state.runs:raise HTTPException(404,'This plan expired. Select Find a plan again before checking a point.')
+            run=get_runs([config.run_id])[0]
+            if run['configuration']['dataset']!=config.dataset:raise HTTPException(422,'Point and plan use different datasets')
+        return await compute('point_route',{'request':config.model_dump(mode='json'),'run':run})
 
     @app.get('/api/runs/{run_id}/explanation',response_model=Explanation)
     def explanation(run_id:str):
@@ -120,11 +140,11 @@ def create_app(rate_limit=30,compute_limit=2):
                 'fixture_report':json.loads(fixture.read_text()) if fixture.exists() else None}
 
     @app.get('/api/ml/risk-layer',response_model=RiskLayer)
-    def risk_layer(dataset_id:str=Query('fixture',pattern='^(fixture|iowa)$')):
+    def risk_layer(dataset_id:str=Query('fixture',pattern='^(fixture|iowa|quad_cities)$')):
         data=dataset(dataset_id)
         total=sum(d.risk or 0 for d in data.demands)
         return {'available':data.ml_validated,'model_version':data.model_version,'forecast_period':'2024-01' if data.ml_validated else None,
-                'reason':'Historical transportation incident forecast, not current emergency risk.' if data.ml_validated else 'No risk predictions for the synthetic graph.',
+                'reason':'Historical transportation incident forecast, not current emergency risk.' if data.ml_validated else 'No risk predictions for the synthetic graph.' if data.id=='fixture' else 'No evaluated incident-risk model for the Quad Cities region; use population planning.',
                 'values':[{'demand_id':d.id,'predicted_count':d.risk,'normalized_risk':d.risk/total if total else 0.} for d in data.demands] if data.ml_validated else []}
 
     dist=ROOT/'frontend/dist'

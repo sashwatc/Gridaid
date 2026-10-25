@@ -10,10 +10,11 @@ class Strict(BaseModel):
 class DatasetID(StrEnum):
     fixture='fixture'
     iowa='iowa'
+    quad_cities='quad_cities'
 
 ScenarioID=Literal['normal','winter','closure','resource_failure','event','combined','winter_closure']
 class PlanRequest(Strict):
-    dataset: Literal['fixture','iowa']='fixture'
+    dataset: Literal['fixture','iowa','quad_cities']='fixture'
     resource_count: int=Field(default=3,ge=1,le=25)
     threshold_minutes: float=Field(default=5,ge=1,le=60)
     objective: Literal['coverage','p_median']='coverage'
@@ -30,9 +31,15 @@ class PlanRequest(Strict):
     closure_profile: Literal['central','east']='central'
     access_mode: Literal['connector','node_only']='connector'
     access_speed_kph: float=Field(default=20.0,ge=1,le=60)
+    focus_bounds: list[float]|None=Field(default=None,min_length=4,max_length=4)
+    focus_city_ids: list[str]=Field(default_factory=list,max_length=5)
 
     @model_validator(mode='after')
     def valid(self):
+        if self.focus_bounds:
+            s,w,n,e=self.focus_bounds
+            if not(-90<=s<n<=90 and -180<=w<e<=180):raise ValueError('Invalid area bounds')
+        if len(set(self.focus_city_ids))!=len(self.focus_city_ids):raise ValueError('Duplicate city selection')
         if len(set(self.scenario_ids))!=len(self.scenario_ids):raise ValueError('duplicate scenario IDs')
         if abs(self.average_weight+self.worst_case_weight-1)>1e-8:raise ValueError('resilience weights must sum to one')
         if self.objective=='p_median' and self.method=='greedy':raise ValueError('greedy supports coverage only')
@@ -192,3 +199,13 @@ class DemoPreset(Strict):
     dataset_version:str
     description:str
     configuration:PlanRequest
+
+class PointRouteRequest(Strict):
+    dataset:Literal['fixture','iowa','quad_cities']='quad_cities'
+    run_id:Annotated[str,Field(pattern=r'^[0-9a-f]{32}$')]|None=None
+    lat:float=Field(ge=-90,le=90)
+    lon:float=Field(ge=-180,le=180)
+    scenario_id:ScenarioID='normal'
+    direction:Literal['to_resource','from_resource']='to_resource'
+    focus_bounds:list[float]|None=Field(default=None,min_length=4,max_length=4)
+    focus_city_ids:list[str]=Field(default_factory=list,max_length=5)

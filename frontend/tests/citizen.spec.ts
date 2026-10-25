@@ -23,8 +23,13 @@ test('one click produces an API-backed recommendation, numbered locations and re
  const best=[...runs].reverse().sort((a,b)=>b.summary.resilience_score-a.summary.resilience_score)[0];
  await expect(page.getByTestId('recommended-normal')).toHaveText(percent(best.metrics.normal.coverage));
  await expect(page.getByTestId('recommended-worst')).toHaveText(percent(best.summary.minimum_coverage));
- await expect(page.getByTestId('plain-tradeoff')).toContainText('+15.2 pp');
- await expect(page.getByTestId('plain-tradeoff')).toContainText('−11.0 pp'.replace('−','-'));
+ const staticRun=runs.find(r=>r.kind==='static')!;
+ const delta=(a:number,b:number)=>{const d=(a-b)*100;return `${Math.abs(d)<.05?'0.0':`${d>0?'+':''}${d.toFixed(1)}`} pp`;};
+ if(best.selected_site_ids.every(id=>staticRun.selected_site_ids.includes(id)))await expect(page.getByTestId('plain-tradeoff')).toContainText('same locations');
+ else{
+  await expect(page.getByTestId('plain-tradeoff')).toContainText(delta(best.summary.minimum_coverage,staticRun.summary.minimum_coverage));
+  await expect(page.getByTestId('plain-tradeoff')).toContainText(delta(best.metrics.normal.coverage,staticRun.metrics.normal.coverage));
+ }
  await expect(page.locator('.suggested-locations li')).toHaveCount(4);
  await expect(page.locator('.site-number')).toHaveCount(4);
  await page.locator('.suggested-locations button').first().click();
@@ -58,7 +63,7 @@ test('a failed calculation gives a useful message and retry completes a real pla
 
 test('initial data failure has a working retry and unavailable imagery falls back to offline roads',async({page})=>{
  let attempts=0;
- await page.route('**/api/demo-preset',async route=>{if(attempts++===0)await route.fulfill({status:502,contentType:'text/html',body:'Bad gateway'});else await route.continue();});
+ await page.route('**/api/community-preset',async route=>{if(attempts++===0)await route.fulfill({status:502,contentType:'text/html',body:'Bad gateway'});else await route.continue();});
  await page.route('https://services.arcgisonline.com/**',route=>route.abort());
  await page.goto('/');await expect(page.getByRole('alert')).toContainText('unexpected response');
  await page.getByRole('button',{name:'Retry loading'}).click();
@@ -106,11 +111,12 @@ test('rate limits and disconnected services leave a recoverable screen',async({p
 test('a stalled request times out and an incomplete solver result is never presented as a plan',async({page})=>{
  await page.route('https://services.arcgisonline.com/**',route=>route.abort());
  await page.goto('/');await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled();
- await page.evaluate(()=>{const original=AbortSignal.timeout.bind(AbortSignal);AbortSignal.timeout=()=>original(150);});
+ await page.evaluate(()=>{const original=AbortSignal.timeout.bind(AbortSignal);(window as unknown as {normalTimeout:typeof AbortSignal.timeout}).normalTimeout=original;AbortSignal.timeout=()=>original(150);});
  let release!:()=>void;const held=new Promise<void>(r=>{release=r;});
  await page.route('**/api/baseline',async route=>{await held;try{await route.fulfill({status:504,contentType:'application/json',body:'{}'});}catch{/* Request already timed out. */}});
  await page.getByRole('button',{name:'Find a plan',exact:true}).click();
  await expect(page.getByRole('alert')).toContainText('took too long to respond');release();
+ await page.evaluate(()=>{AbortSignal.timeout=(window as unknown as {normalTimeout:typeof AbortSignal.timeout}).normalTimeout;});
  await page.unroute('**/api/baseline');
  await page.route('**/api/baseline',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({solver:{status:'not_solved'},selected_site_ids:[]})}));
  await page.getByRole('button',{name:'Try again',exact:true}).click();

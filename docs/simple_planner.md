@@ -1,5 +1,7 @@
 # Simple community planner
 
+The latest default is the [Quad Cities area and point-travel planner](quad_cities.md). It adds city selection, editable areas, mapped facilities and directional point routing. The record below describes the earlier Iowa-only simple screen.
+
 The default React/FastAPI app at **http://127.0.0.1:8000/** now starts with the real Iowa study area. Its primary flow is two inputs and one action: resource count, travel-time target, **Find a plan**. The previous research workspace remains available through **Detailed tools** (`/?view=advanced`). The separate Base44 prototype remains separate.
 
 ## Answer and map

@@ -117,13 +117,13 @@ class Dataset(Record):
 
 
 def load_dataset(dataset_id: str) -> Dataset:
-    if dataset_id not in ('fixture', 'iowa'):
+    if dataset_id not in ('fixture', 'iowa','quad_cities'):
         raise ValueError('unknown dataset')
-    path = ROOT / ('data/demo/fixture.json' if dataset_id == 'fixture' else 'data/processed/iowa.json')
+    path = ROOT / ('data/demo/fixture.json' if dataset_id == 'fixture' else f'data/processed/{dataset_id}.json')
     if not path.exists():
         import gzip
-        snapshot=ROOT/'data/public/iowa.json.gz'
-        if dataset_id=='iowa' and snapshot.exists():
+        snapshot=ROOT/f'data/public/{dataset_id}.json.gz'
+        if dataset_id in ('iowa','quad_cities') and snapshot.exists():
             return Dataset.model_validate_json(gzip.decompress(snapshot.read_bytes()))
         raise ValueError('Public Iowa dataset unavailable; run scripts/ingest.py')
     return Dataset.model_validate_json(path.read_text())

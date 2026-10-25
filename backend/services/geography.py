@@ -12,7 +12,7 @@ from shapely import STRtree
 from backend.services.data import EdgeAccess,digest
 
 
-def attach_points(data,census,places):
+def attach_points(data,census,places,unincorporated='Unincorporated Scott County'):
     nodes={n.id:n for n in data.nodes};groups={};members=defaultdict(list)
     for e in data.edges:
         coords=tuple(map(tuple,e.geometry or [[nodes[e.u].lon,nodes[e.u].lat],[nodes[e.v].lon,nodes[e.v].lat]]))
@@ -25,7 +25,7 @@ def attach_points(data,census,places):
     place_features=[(f['properties']['NAME'],shape(f['geometry'])) for f in places['features']]
     def community(lon,lat):
         matches=[name for name,geom in place_features if geom.covers(Point(lon,lat))]
-        return ', '.join(sorted(matches)) if matches else 'Unincorporated Scott County'
+        return ', '.join(sorted(matches)) if matches else unincorporated
     def fractional_length(key,line,position):
         projected=np.asarray(line.coords);lengths=np.linalg.norm(np.diff(projected,axis=0),axis=1)
         coords=np.asarray(key);geo=geod.inv(coords[:-1,0],coords[:-1,1],coords[1:,0],coords[1:,1])[2]

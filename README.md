@@ -2,7 +2,7 @@
 
 For Arjun: [handoff and artifact inventory](docs/handoff.md). The tested full-stack app is in `backend/` + `frontend/`. The shared repository's existing root `src/` Base44 design prototype is preserved separately and is not connected to this engine; its original instructions are in [the archived Base44 setup](docs/base44_setup_original.md). Use the commands below for the validated application.
 
-A working local emergency-resource **planning simulator** for Davenport / Scott County, Iowa. The default screen compares three placements with one action and gives a clear recommendation on a satellite map. Optional detailed tools retain scenario controls, placement switching, explanations and paired seeded Monte Carlo incidents. [Simple planner and verification](docs/simple_planner.md).
+A working local emergency-resource **planning simulator** for the Quad Cities in Iowa and Illinois. Add Davenport, Bettendorf, Rock Island, Moline or East Moline to your area, or draw, move and resize a box. Click any point for the fastest reachable location, backup, road distance and estimated driving time. The default screen compares three placements with one action and gives a recommendation on a satellite map. [Quad Cities data, features and verification](docs/quad_cities.md).
 
 The backend implements Dijkstra, greedy coverage, OR-Tools/SCIP maximum coverage and p-median, normalized multi-scenario optimization, explanations, and bounded FastAPI operations. React/TypeScript/Leaflet displays the actual backend results. This is not dispatch software or a claim about emergency outcomes.
 
@@ -21,9 +21,9 @@ npm --prefix frontend run build
 ./scripts/serve.sh
 ```
 
-Open **http://127.0.0.1:8000**. Enter a resource count and travel-time target, then click **Find a plan**. The app compares three real backend placements automatically and shows one recommendation, coverage in normal and difficult conditions, and numbered locations on a satellite map. The default is the documented four-resource Iowa road/weather case. Failed requests have retry actions; satellite failures fall back to the saved road network. [Simple planner behavior and verification](docs/simple_planner.md).
+Open **http://127.0.0.1:8000**. Optionally choose cities or **Draw an area**, enter a resource count and travel-time target, then click **Find a plan**. Click the map even before making a plan to check mapped facilities; after calculation, point checks use the resources selected in your plan. Choose travel **to** a location or **from** a resource, since one-way roads can make the times different. The coverage-gap shortcut checks the largest represented population outside the target in the toughest test. Failed requests have retry actions; satellite failures fall back to saved roads. [Planner details and limitations](docs/quad_cities.md).
 
-No credentials or paid APIs are needed for the local planner. Satellite imagery requires internet access. The committed synthetic fixture and compressed public-data snapshot need no data downloads after setup. **Detailed tools** at **http://127.0.0.1:8000/?view=advanced** retain the manual workflow, scenario controls, paired simulation, explanations and model information; see the [five-minute research walkthrough](docs/real_data_demo.md). ML Risk and Blended are available there for the Iowa snapshot, labeled as a **retrospective January 2024 transportation forecast**. They are unavailable for the synthetic corridor fixture.
+No credentials or paid APIs are needed for the local planner. Satellite imagery requires internet access. The committed synthetic fixture and compressed Iowa/Quad Cities snapshots need no data downloads after setup. **Detailed tools** at **http://127.0.0.1:8000/?view=advanced** retain the manual workflow, scenario controls, paired simulation, explanations and model information; see the [original Iowa research walkthrough](docs/real_data_demo.md). ML Risk and Blended apply only to the original Iowa snapshot's **retrospective January 2024 transportation forecast**. The Quad Cities dataset uses population and does not reuse that Iowa-only model for Illinois.
 
 Optional variables are in `.env.example`. `GRIDAID_HOST` defaults to `127.0.0.1`, `GRIDAID_PORT` to `8000`, and `GRIDAID_CORS` to the two local Vite origins. The launcher reads exported variables; it does not automatically load `.env`. Keep one Uvicorn worker so the local rate/run limits apply consistently. Run identifiers are ephemeral and at most 100 runs are retained.
 
@@ -62,6 +62,7 @@ These operations are offline scripts, not upload/fetch API endpoints. The defaul
 ```bash
 .venv/bin/python -m scripts.make_fixture
 .venv/bin/python -m scripts.ingest
+.venv/bin/python -m scripts.quad_cities
 .venv/bin/python -m scripts.dot_snapshot
 .venv/bin/python -m ml.train
 .venv/bin/python -m ml.real_train

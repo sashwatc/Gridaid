@@ -1,3 +1,9 @@
+# Quad Cities follow-up
+
+The default simple planner now uses an additional, separate **Quad Cities** snapshot covering Iowa and Illinois: dated OSM roads and mapped facilities, official Census 2020 tract points/population and city geometry. See [sources, assumptions and routing semantics](quad_cities.md) and [exact source manifests](quad_cities_manifest.json). This does not change the original Iowa/ML evidence below or extend its incident model to Illinois.
+
+---
+
 # Data provenance and reproducibility
 
 Original planning sources were read in full: masterplan (1,308 lines) and dossier (23 pages; extracted text is retained next to the PDF). Their schedule is historical context. Data retrieval metadata lives in `docs/iowa_manifest.json`, `docs/ml_real_metrics.json`, `docs/dot_traffic_manifest.json`, and raw `*.meta.json` cache files.

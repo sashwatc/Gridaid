@@ -1,4 +1,4 @@
-export type Config={dataset:'fixture'|'iowa';resource_count:number;threshold_minutes:number;objective:'coverage'|'p_median';method:'exact'|'greedy';demand_model:'population'|'ml_risk'|'blended';blend:number;scenario_ids:string[];average_weight:number;worst_case_weight:number;seed:number;solver_limit_ms:number;baseline_method:'deterministic'|'random'|'greedy';access_mode:'connector'|'node_only';access_speed_kph:number;winter_multiplier:number;closure_profile:'central'|'east'};
+export type Config={dataset:'fixture'|'iowa'|'quad_cities';resource_count:number;threshold_minutes:number;objective:'coverage'|'p_median';method:'exact'|'greedy';demand_model:'population'|'ml_risk'|'blended';blend:number;scenario_ids:string[];average_weight:number;worst_case_weight:number;seed:number;solver_limit_ms:number;baseline_method:'deterministic'|'random'|'greedy';access_mode:'connector'|'node_only';access_speed_kph:number;winter_multiplier:number;closure_profile:'central'|'east';focus_bounds?:Bounds|null;focus_city_ids?:string[]};
 export type Node={id:string;lat:number;lon:number};
 export type Demand={id:string;node:string;population:number;risk:number|null;snap_m:number;origin_lat:number|null;origin_lon:number|null;snap_lat:number|null;snap_lon:number|null;community:string|null};
 export type Scenario={id:string;name:string;closed_edge_ids:string[];disabled_site_ids:string[];temporary_demand:Demand[];description:string;provenance:string};
@@ -9,3 +9,11 @@ export type SiteExplanation={site_id:string;unique_weight:number;unique_fraction
 export type Run={run_id:string;kind:'baseline'|'static'|'resilient';configuration:Config;dataset_version:string;model_version:string|null;selected_site_ids:string[];solver:{status:string;objective:number|null;objective_unit:string;runtime_s:number;bound:number|null;gap:number|null;method:string;unreachable_penalty_s:number|null};metrics:Record<string,Metric>;summary:Summary;demand_access:Record<string,{demand_id:string;time_s:number|null;covered:boolean;weight:number}[]>;explanation:{sites:SiteExplanation[];definitions:Record<string,string>;stability_reference_status:Record<string,string>}};
 export type SampleMetric=Omit<Metric,'total_weight'|'no_demand'>&{incidents:number;histogram:{upper_seconds:(number|null)[];counts:number[]}};
 export type Simulation={simulation_id:string;seed:number;trials_requested:number;sample_hashes:Record<string,string>;configurations:Record<string,{scenarios:Record<string,SampleMetric>;summary:Summary}>};
+
+export type Bounds=[number,number,number,number];
+export type RegionCity={id:string;name:string;community:string;state:string;center:[number,number];bounds:Bounds;geometry:import('geojson').Geometry};
+export type MappedFacility={id:string;node:string;label:string;lat:number;lon:number;snap_m:number;kind:string;community:string;source_url:string};
+export type MapPoint={lat:number;lon:number};
+export type PointRoute=MappedFacility&{time_s:number;road_time_s:number;access_time_s:number;distance_m:number;road_path:number[][];access_paths:number[][][]};
+export type PointCondition={scenario_id:string;scenario_name:string;routes:PointRoute[];unreachable_locations:number};
+export type PointRouteResult={dataset_version:string;point:MapPoint;road_snap:MapPoint&{distance_m:number};direction:'to_resource'|'from_resource';scope:'selected_plan'|'mapped_facilities';conditions:PointCondition[];source_note:string;access_speed_kph:number};

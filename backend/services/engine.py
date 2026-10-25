@@ -10,12 +10,13 @@ from backend.services.resilience import solve_resilient
 from backend.services.metrics import deterministic_metrics,portfolio,nearest_times,safe
 from backend.services.simulation import simulate
 from backend.services.explanations import explain
+from backend.services.area import focus_dataset,focus_scenarios
 
 
 def context(config):
-    data=load_dataset(config.dataset)
+    original=load_dataset(config.dataset);data=focus_dataset(original,config)
     if config.resource_count>len(data.candidates):raise ValueError('resource count exceeds available distinct candidates')
-    catalog=scenario_catalog(data,config.winter_multiplier,config.closure_profile);ids=list(dict.fromkeys(['normal',*config.scenario_ids]));cache=MatrixCache(disk=True)
+    catalog=focus_scenarios(original,data,scenario_catalog(original,config.winter_multiplier,config.closure_profile),config);ids=list(dict.fromkeys(['normal',*config.scenario_ids]));cache=MatrixCache(disk=True)
     matrices={};keys={};weights={}
     for sid in ids:
         matrices[sid],keys[sid]=cache.get(data,catalog[sid],config.demand_model,config.blend,config.access_mode,config.access_speed_kph)
@@ -62,4 +63,7 @@ def build_simulation(payload):
 
 
 def worker(operation,payload):
+    if operation=='point_route':
+        from backend.services.point_routes import point_routes
+        return point_routes(payload)
     return build_simulation(payload) if operation=='simulate' else build_run(payload,operation)

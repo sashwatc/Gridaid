@@ -1,0 +1,147 @@
+{
+  "version": "7807326eca30923b1200",
+  "quality": {
+    "nodes": 42732,
+    "directed_edges": 112347,
+    "weak_components": 241,
+    "strong_components": 292,
+    "max_demand_snap_m": 871.0455951571253,
+    "max_candidate_snap_m": 50.16783766307212,
+    "population_total": 287608.0,
+    "speed_assumptions": 77177
+  },
+  "cities": [
+    {
+      "id": "1765078",
+      "name": "Rock Island",
+      "community": "Rock Island city",
+      "state": "IL",
+      "center": [
+        41.48669750016583,
+        -90.57322073225492
+      ],
+      "bounds": [
+        41.42,
+        -90.65337500007477,
+        41.513160999829886,
+        -90.53253599960738
+      ]
+    },
+    {
+      "id": "1749867",
+      "name": "Moline",
+      "community": "Moline city",
+      "state": "IL",
+      "center": [
+        41.46966899999435,
+        -90.47710622802674
+      ],
+      "bounds": [
+        41.42095800033349,
+        -90.53956299995048,
+        41.51842799982452,
+        -90.43209199990596
+      ]
+    },
+    {
+      "id": "1722073",
+      "name": "East Moline",
+      "community": "East Moline city",
+      "state": "IL",
+      "center": [
+        41.51445949984765,
+        -90.44309993926976
+      ],
+      "bounds": [
+        41.47864000022661,
+        -90.46295000038297,
+        41.550278999854925,
+        -90.34
+      ]
+    },
+    {
+      "id": "1906355",
+      "name": "Bettendorf",
+      "community": "Bettendorf city",
+      "state": "IA",
+      "center": [
+        41.56530149990465,
+        -90.47629455396063
+      ],
+      "bounds": [
+        41.51803300013439,
+        -90.53303500027296,
+        41.612089999737066,
+        -90.42452300013785
+      ]
+    },
+    {
+      "id": "1919000",
+      "name": "Davenport",
+      "community": "Davenport city",
+      "state": "IA",
+      "center": [
+        41.54067450026659,
+        -90.60522575275866
+      ],
+      "bounds": [
+        41.46063199975924,
+        -90.68793300040863,
+        41.62093900033025,
+        -90.4907619996828
+      ]
+    }
+  ],
+  "mapped_facilities": 30,
+  "sources": [
+    {
+      "url": "https://download.geofabrik.de/north-america/us/iowa-261023.osm.pbf",
+      "source_date": "2026-10-23",
+      "retrieved_at": "2026-10-25T03:09:20.085704+00:00",
+      "sha256": "f203764a9aee59ea0d62d42582cb8a58f224e905061c70a5b4cec3c886c2fa25",
+      "bytes": 134153625,
+      "license": "OpenStreetMap contributors, ODbL 1.0; extract by Geofabrik"
+    },
+    {
+      "url": "https://download.geofabrik.de/north-america/us/illinois-261023.osm.pbf",
+      "source_date": "2026-10-23",
+      "retrieved_at": "2026-10-25T03:11:04.312461+00:00",
+      "sha256": "1240c714df9036fc52d4e61327a0653406b613e42542b70cf4938bf29641d3b1",
+      "bytes": 362298426,
+      "license": "OpenStreetMap contributors, ODbL 1.0; extract by Geofabrik"
+    },
+    {
+      "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/6/query",
+      "params": {
+        "where": "(STATE='19' AND COUNTY='163') OR (STATE='17' AND COUNTY='161')",
+        "outFields": "GEOID,POP100,INTPTLAT,INTPTLON",
+        "outSR": "4326",
+        "f": "geojson",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-25T03:16:15.797765+00:00",
+      "sha256": "b5f0cab85ac6943d37733b4b12bfed2d0e2412dc1c12d5c511a58924fb962b8c",
+      "bytes": 1002982
+    },
+    {
+      "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/26/query",
+      "params": {
+        "where": "STATE IN ('19','17')",
+        "geometry": "-90.73,41.42,-90.34,41.65",
+        "geometryType": "esriGeometryEnvelope",
+        "inSR": "4326",
+        "outSR": "4326",
+        "spatialRel": "esriSpatialRelIntersects",
+        "outFields": "*",
+        "f": "geojson",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-25T03:16:16.839863+00:00",
+      "sha256": "57c0b17b11872e920a2e5b497e79821b6c60b372a48ec7b835677c3e750c781d",
+      "bytes": 606530
+    }
+  ],
+  "assumptions": "OSM speed tags or class defaults; no live traffic, turn restrictions, dispatch or facility-availability verification; access connectors are assumed straight paths"
+}

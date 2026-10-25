@@ -1,0 +1,138 @@
+{
+  "dataset_version": "7807326eca30923b1200",
+  "snapshot_sha256": "38f18754db5ada4e2430c902b5f02c7d51f8ee999dd1564a176804a851d3e87e",
+  "backend": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "58",
+    "time": "30.682",
+    "timestamp": "2026-10-24T22:31:27.465601-05:00",
+    "hostname": "MacBook-Pro.local"
+  },
+  "frontend_build": "passed; strict TypeScript and Vite",
+  "playwright": {
+    "full_run_stats": {
+      "startTime": "2026-10-25T03:31:26.466Z",
+      "duration": 146127.739,
+      "expected": 16,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "corrected_timeout_target_stats": {
+      "startTime": "2026-10-25T03:34:32.537Z",
+      "duration": 4916.544999999999,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "latest_results_per_check": [
+      {
+        "file": "citizen.spec.ts",
+        "title": "one click produces an API-backed recommendation, numbered locations and real satellite imagery",
+        "status": "passed"
+      },
+      {
+        "file": "citizen.spec.ts",
+        "title": "a failed calculation gives a useful message and retry completes a real plan",
+        "status": "passed"
+      },
+      {
+        "file": "citizen.spec.ts",
+        "title": "initial data failure has a working retry and unavailable imagery falls back to offline roads",
+        "status": "passed"
+      },
+      {
+        "file": "citizen.spec.ts",
+        "title": "invalid inputs do not calculate, and changed inputs cannot revive an older response",
+        "status": "passed"
+      },
+      {
+        "file": "citizen.spec.ts",
+        "title": "rate limits and disconnected services leave a recoverable screen",
+        "status": "passed"
+      },
+      {
+        "file": "citizen.spec.ts",
+        "title": "a stalled request times out and an incomplete solver result is never presented as a plan",
+        "status": "passed"
+      },
+      {
+        "file": "polish.spec.ts",
+        "title": "preset tradeoffs, charts and placement switching agree with actual API results, with offline context",
+        "status": "passed"
+      },
+      {
+        "file": "polish.spec.ts",
+        "title": "populated mobile, tablet and desktop layouts keep actions visible, charts legible and content inside the viewport",
+        "status": "passed"
+      },
+      {
+        "file": "polish.spec.ts",
+        "title": "equal site sets are reported honestly for actual greedy baseline and static runs",
+        "status": "passed"
+      },
+      {
+        "file": "polish.spec.ts",
+        "title": "travel labels distinguish absent demand, unreachable statistics and finite conditional statistics",
+        "status": "passed"
+      },
+      {
+        "file": "region.spec.ts",
+        "title": "city selection and a dragged, movable area change the actual planning inputs and population",
+        "status": "passed"
+      },
+      {
+        "file": "region.spec.ts",
+        "title": "clicking the Illinois map shows API-matched nearest location, backup, distance and reverse travel",
+        "status": "passed"
+      },
+      {
+        "file": "workflow.spec.ts",
+        "title": "baseline \u2192 static \u2192 disruption \u2192 resilience \u2192 paired simulation; numbers, stale state and errors",
+        "status": "passed"
+      },
+      {
+        "file": "workflow.spec.ts",
+        "title": "mobile layout stays within viewport",
+        "status": "passed"
+      },
+      {
+        "file": "workflow.spec.ts",
+        "title": "map layers survive repeated planner and methodology navigation",
+        "status": "passed"
+      },
+      {
+        "file": "workflow.spec.ts",
+        "title": "observed Iowa data, retrospective ML, blended full workflow and browser timing",
+        "status": "passed"
+      },
+      {
+        "file": "workflow.spec.ts",
+        "title": "real demo preset, all comparison metrics, access layers, explanations and in-flight trial change",
+        "status": "passed"
+      }
+    ],
+    "latest_passing_check_count": 17,
+    "note": "The full run had one timeout-test setup failure. Restoring the real timeout between negative cases fixed it; the targeted check then passed. This is not a claim of a separate all-green full run."
+  },
+  "preserved_inputs_and_algorithms_sha256": {
+    "data/demo/fixture.json": "a82235f68e6d4fd7b5edc296a75affcdbcea90f8ea4a1e4598837153fa10c24f",
+    "data/public/iowa.json.gz": "b44d743578ef07660f8a3e7909179cb6f153cb3ea0143b92d42217684521cad0",
+    "docs/demo_preset.json": "9e0b4fa46cbbac33d02a17620c4b8c6be1d801b578acdd8963cf47b21d6922fb",
+    "docs/ml_real_metrics.json": "be17aa4f0a38fa567f180dd6e6086e125ebc3c04664a2cf2d1fabd82a8d4ff68",
+    "docs/ml_fixture_metrics.json": "b7200f255f3c45d05cf04c891ccb3ebc7fc0d4d55e6b1e107427c3a74c0df424",
+    "docs/real_demo_results.json": "b34f1a8a7bbcbe11370a7b455055df008f4e634a92eef37dcbf424f7ad49f8c3",
+    "backend/services/routing.py": "ac06a4ef6d59f415bfe2639c2c56db6fbe09fbc56ee4bd92922ba410d1f99d2e",
+    "backend/services/optimization.py": "e757386f7b8764bdfbd54d625c5386e8814f2a1b76efbc2c3098d9e890b20c7c",
+    "backend/services/resilience.py": "ea52b317502e4d62f2e77715a7fafa769d73a09787c77b531b6f6e1744a096c5",
+    "backend/services/metrics.py": "ed2989f8e06ca30a9a674923827577a7b8e6ad8bf3164ad00c288849af16aa45",
+    "backend/services/simulation.py": "5f5ffe9766055ba7872113cf9f757577a828c91ef7db99f492592e3bc7c9dee0",
+    "frontend/package-lock.json": "89980ea193d7e15307158d500be7e28598cb0094f8440dbd0f3809bab75c9229"
+  },
+  "base44_and_ml_tracked_paths_unchanged": true,
+  "public_deployment": false
+}

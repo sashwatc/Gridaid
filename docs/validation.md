@@ -1,3 +1,9 @@
+# Quad Cities area/route verification
+
+**58 backend tests passed (30.69 s)** and strict TypeScript/production build passed. The full 17-check Playwright run passed 16; a negative-case test retained its artificial short timeout for the next assertion. After restoring the normal timeout between cases, that check passed its targeted rerun (4.9 s). All 17 checks have passing latest results; [exact evidence and limits](quad_cities.md), [machine-readable summary](quad_cities_validation.json). New checks include actual Quad Cities data, area drawing/resizing/moving, city scope, point travel in both directions, backups, road paths, gap inspection and desktop/mobile screenshots. No public deployment occurred. Earlier records below remain historical.
+
+---
+
 # Simple-planner verification
 
 Final check: **52 backend tests passed (16.48 s)**, strict TypeScript/production build passed, and **15 Playwright checks passed** with no skips, failures or flaky tests. These include six new simple-planner browser workflows and the prior nine detailed-workspace checks. Real satellite tiles loaded without CSP violations; API result values, numbered sites and populated desktop/mobile screenshots were checked. Initial map-background styling and 320 px detailed-header overflow failures were corrected before the final full suite. The four existing Python dependency deprecations and Node color-environment notices remain. [Behavior, exact commands and artifacts](simple_planner.md).

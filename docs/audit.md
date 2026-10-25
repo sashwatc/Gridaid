@@ -1,3 +1,9 @@
+# Quad Cities area/route follow-up
+
+The default planner now uses separate real roads, Census population/city geometry and mapped facilities on both sides of the river. Selected areas filter actual demand and eligible locations while retaining the road-routing buffer. Point queries include legal partial-edge/one-way travel, closures, explicit access assumptions, a backup and route geometry; the gap shortcut identifies a high-population weakness for inspection. **58 backend tests and strict TypeScript/build passed; all 17 browser/formatting checks have passing latest results across the full run and corrected timeout-test rerun.** Original Iowa/ML results remain unchanged; no current-traffic, verified service availability or household-coverage claim is supported. See [quad_cities.md](quad_cities.md). Prior audit entries below are historical.
+
+---
+
 # Simple-planner follow-up
 
 The default connected app now uses two inputs and one action, shows one API-derived recommendation with numbered locations, and loads real satellite imagery with an offline-road fallback. Retry, timeout, invalid input, cancellation, late response, service failure and incomplete-solver states were checked. **52 backend tests, strict TypeScript/build and 15 Playwright checks passed.** The only backend modification permits the imagery host in `img-src`; algorithms, API routes, compute/rate bounds, ML, datasets, results and the separate Base44 prototype remain unchanged. See [simple_planner.md](simple_planner.md). These checks do not establish universal availability or human/operational validation.
