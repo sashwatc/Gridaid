@@ -1,3 +1,7 @@
+# Handoff follow-up
+
+Fresh-project setup and full verification were executed in a separate local clone using only tracked runtime data. An intermittent Leaflet teardown error found by that check was reproduced with a new four-cycle layer/zoom/navigation regression. Public `zoomAnimation=false` and `fitBounds(..., animate=false)` prevent callbacks after removal; Canvas and all mathematical behavior are retained. Final clone check: **52 backend tests, strict TypeScript/build, 5 Chromium tests passed**. See [handoff.md](handoff.md) and [handoff_validation.json](handoff_validation.json). The separate root Base44 prototype and its history were preserved unchanged; it remains disconnected from FastAPI and outside these app validation claims. Pending integration/polish is explicitly assigned in the handoff. Complete source release gates remain unmet for the reasons below.
+
 # Continuation audit: reports checked against code and counterexamples
 
 The previous audit is retained below as history, not accepted as proof of the current code. Both original sources, README, validation and requirement matrix were read; the original 42 tests were rerun successfully before changes. Existing directed-routing/NetworkX, 56-configuration static and tiny multiscenario brute-force evidence remains valid. Final continuation run: **52 backend tests, 4 Chromium tests, strict frontend type/build passed**.

@@ -2,7 +2,9 @@
 
 The existing application was continued, not rebuilt. Original sources/reports read and claims independently checked. **http://127.0.0.1:8000/** is running from `./scripts/serve.sh`; no public deployment, contacts, video or submission.
 
-Current verification: **52 backend tests, strict TypeScript/build and 4 actual Chromium tests passed through ./scripts/verify.sh**. Follow-up pip/npm audits and Bandit found zero vulnerabilities/findings; secret scanner's 392 public edge/content hash flags were reviewed, zero credentials. Raw evidence is in artifacts; current committed summaries have `_followup` suffix. Prior reports are retained as historical evidence.
+Current verification: **52 backend tests, strict TypeScript/build and 5 actual Chromium tests passed through ./scripts/verify.sh in a clean local clone**. Follow-up pip/npm audits and Bandit found zero vulnerabilities/findings; secret scanner's 392 public edge/content hash flags were reviewed, zero credentials. Raw evidence is in artifacts; current committed summaries have `_followup` suffix. Prior reports are retained as historical evidence.
+
+Handoff for Arjun: docs/handoff.md contains exact setup, tracked/ignored artifact inventory, evidence and pending frontend integration/polish. Existing shared main history and separate root Base44 prototype were preserved; the tested app remains backend/ + frontend/. Clean-clone verification found/fixed Leaflet zoom callbacks after map teardown, with a failing-before/passing-after navigation regression. See docs/handoff_validation.json. No ignored data/model file is needed to run or test.
 
 Confirmed defects fixed: zero-access relocation/original point loss and junction-only targets; cancelled-request computation-cap bypass; partial-IPC timeout gap; cache-eviction read race; pending simulation reviving obsolete trial-count results. New failures were reproduced and meaningful regressions pass. Directed routing, both static objectives, shared normalized resilience, unreachable metrics and paired simulation retain prior independent evidence.
 

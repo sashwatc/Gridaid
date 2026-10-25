@@ -1,0 +1,189 @@
+{
+  "scope": "Clean local Git clone of committed application, macOS arm64; no project dependency/data directories copied",
+  "tested_code_commit": "f7d18d8d90432fe86eec4f9ecc48f69568fd4444",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "initially_absent": {
+    "data/raw": true,
+    "data/processed": true,
+    ".venv": true,
+    ".bootstrap": true,
+    "frontend/node_modules": true,
+    "frontend/dist": true,
+    "artifacts": true
+  },
+  "setup": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "venv",
+        ".bootstrap"
+      ],
+      "exit_code": 0,
+      "seconds": 1.1052348330013047
+    },
+    {
+      "command": [
+        ".bootstrap/bin/pip",
+        "install",
+        "uv==0.13.5"
+      ],
+      "exit_code": 0,
+      "seconds": 0.6086220839970338
+    },
+    {
+      "command": [
+        ".bootstrap/bin/uv",
+        "sync",
+        "--frozen"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4656948750016454
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "ci"
+      ],
+      "exit_code": 0,
+      "seconds": 0.890887458997895
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "seconds": 1.5917544160001853
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "exec",
+        "--",
+        "playwright",
+        "install",
+        "chromium"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3707277499997872
+    }
+  ],
+  "before_final_verify": {
+    "data_raw_absent": true,
+    "data_processed_absent": true,
+    "model_binaries_absent": true,
+    "git_tracked_tree_clean": true
+  },
+  "verify": {
+    "command": "./scripts/verify.sh",
+    "exit_code": 0,
+    "seconds": 44.497169624999515,
+    "cold_data": true,
+    "backend": {
+      "passed": 52,
+      "failed": 0,
+      "warnings": 4,
+      "seconds": 15.88
+    },
+    "typecheck_build": "passed",
+    "browser": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 26.7,
+      "tests": [
+        {
+          "title": "baseline \u2192 static \u2192 disruption \u2192 resilience \u2192 paired simulation; numbers, stale state and errors",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration_ms": 1518
+            }
+          ]
+        },
+        {
+          "title": "mobile layout stays within viewport",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration_ms": 137
+            }
+          ]
+        },
+        {
+          "title": "map layers survive repeated planner and methodology navigation",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration_ms": 3128
+            }
+          ]
+        },
+        {
+          "title": "observed Iowa data, retrospective ML, blended full workflow and browser timing",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration_ms": 8680
+            }
+          ]
+        },
+        {
+          "title": "real demo preset, all comparison metrics, access layers, explanations and in-flight trial change",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration_ms": 12924
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "found_and_fixed": {
+    "failure": "Leaflet clearRect and _leaflet_pos callbacks after map teardown during zoom",
+    "fix": "Use public zoomAnimation=false map option and animate=false study fit; retain Canvas renderer and all metric logic",
+    "regression": "Four layer/zoom/methodology/planner cycles; failed before fix, passed three consecutive runs after fix and final full suite"
+  },
+  "inputs": {
+    "data/demo/fixture.json": {
+      "sha256": "a82235f68e6d4fd7b5edc296a75affcdbcea90f8ea4a1e4598837153fa10c24f",
+      "bytes": 34559
+    },
+    "data/public/iowa.json.gz": {
+      "sha256": "b44d743578ef07660f8a3e7909179cb6f153cb3ea0143b92d42217684521cad0",
+      "bytes": 2767398
+    },
+    "docs/demo_preset.json": {
+      "sha256": "9e0b4fa46cbbac33d02a17620c4b8c6be1d801b578acdd8963cf47b21d6922fb",
+      "bytes": 969
+    },
+    "docs/ml_real_metrics.json": {
+      "sha256": "be17aa4f0a38fa567f180dd6e6086e125ebc3c04664a2cf2d1fabd82a8d4ff68",
+      "bytes": 11269
+    },
+    "docs/ml_fixture_metrics.json": {
+      "sha256": "b7200f255f3c45d05cf04c891ccb3ebc7fc0d4d55e6b1e107427c3a74c0df424",
+      "bytes": 3281
+    }
+  },
+  "not_verified": [
+    "Preserved root Base44 application/dependencies/auth",
+    "Linux/Windows runtime",
+    "Deployment HTTPS/HSTS or distributed limits",
+    "Human usability/expert review or source competition release gates"
+  ]
+}

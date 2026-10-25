@@ -62,16 +62,16 @@ npm --prefix frontend run test:browser
 curl --fail http://127.0.0.1:8000/api/health
 ```
 
-`verify.sh` regenerates the synthetic fixture, tests the backend, builds/type-checks the UI, and runs actual Chromium workflows. It fails if no server is available. Browser tests include real/fixture API-number comparisons, loading/errors, stale controls, map layers, explanations, and the in-flight trial-count race. Raw output/screenshots are regenerated under ignored `artifacts/`.
+`verify.sh` regenerates the synthetic fixture, tests the backend, builds/type-checks the UI, and runs actual Chromium workflows. It fails if no server is available. Browser tests include real/fixture API-number comparisons, loading/errors, stale controls, map layers, explanations, and the in-flight trial-count race and zoom/navigation teardown. Raw output/screenshots are regenerated under ignored `artifacts/`.
 
 ## Architecture and current implementation
 
 | Location | Responsibility / status |
 |---|---|
-| `backend/api/app.py`, `schemas.py` | FastAPI, strict Pydantic requests/results, baseline/static/resilient/evaluation/simulation/ML/preset/export routes, bounded run store |
+| `backend/api/app.py`, `backend/schemas.py` | FastAPI, strict Pydantic requests/results, baseline/static/resilient/evaluation/simulation/ML/preset/export routes, bounded run store |
 | `backend/services/routing.py`, `data.py`, `geography.py` | Validated directed multigraph, custom Dijkstra, versioned read-only matrices, legal partial-edge arrivals, original Census points and explicit assumed access |
-| `optimization.py`, `resilience.py` | Deterministic/random/greedy baselines; SCIP coverage and p-median; **one shared placement** across scenarios with default 0.6 average + 0.4 minimum normalized coverage |
-| `scenarios.py`, `metrics.py`, `simulation.py`, `explanations.py` | Six original scenarios plus winter/closure portfolio, unreachable-aware metrics, paired seeded trials, computed contributions/redundancy/stability |
+| `backend/services/optimization.py`, `backend/services/resilience.py` | Deterministic/random/greedy baselines; SCIP coverage and p-median; **one shared placement** across scenarios with default 0.6 average + 0.4 minimum normalized coverage |
+| `backend/services/{scenarios,metrics,simulation,explanations}.py` | Six original scenarios plus winter/closure portfolio, unreachable-aware metrics, paired seeded trials, computed contributions/redundancy/stability |
 | `backend/security.py` | Body/rate/solver bounds, two active jobs, killable whole-job deadline, cancellation-safe capacity, CORS/headers/safe errors |
 | `ml/` | Offline real retrospective tract-month model and separate labeled synthetic experiment; no runtime model deserialization |
 | `frontend/src/` | Connected React 19/TypeScript/Vite/Leaflet app; working map, controls, comparisons, distributions, explanations and methodology/security/model UI |
@@ -128,7 +128,7 @@ Raw source hashes/dates/queries are recorded in `docs/*manifest.json` and `ml_re
 
 ## Latest verified results and known limits
 
-Latest application checkpoint: **52 backend tests passed; 4 Chromium tests passed; strict TypeScript/production build passed through `./scripts/verify.sh`**. Pip/npm scans for the **Python + `frontend/`** lockfiles reported zero known vulnerabilities; Bandit zero findings; secret flags were reviewed public identifiers. These results do not cover the preserved root Base44 package or a deployment. Current details and historical evidence are separated in [validation.md](validation.md), [audit.md](audit.md) and [requirements.md](requirements.md).
+Latest application checkpoint: **52 backend tests passed; 5 Chromium tests passed; strict TypeScript/production build passed through `./scripts/verify.sh` in a clean clone**. Pip/npm scans for the **Python + `frontend/`** lockfiles reported zero known vulnerabilities; Bandit zero findings; secret flags were reviewed public identifiers. These results do not cover the preserved root Base44 package or a deployment. Current details and historical evidence are separated in [validation.md](validation.md), [audit.md](audit.md) and [requirements.md](requirements.md).
 
 The real preset is four resources, Population, five minutes, 1.6 winter, central closure, 20 km/h access, normal/winter/closure/winter+closure. Static normal/average/worst: **78.220 / 50.736 / 23.616%**; resilient: **67.245 / 53.475 / 38.799%**. All 12 evaluated real cases are published, including four identical placements. See [walkthrough](real_data_demo.md) and [all-case table](real_data_results.md).
 
@@ -145,11 +145,17 @@ This section is a backlog, **not completed integration**. Preserve mathematical 
 
 1. **Use the preserved Base44 UI as a design reference.** `src/components/gridaid/` contains ControlPanel, MapView, ComparePlans, ResultsPanel and WhyThisLocation patterns; `src/pages/Workspace.jsx` wires them to synthetic local functions. Port the useful layout/components into `frontend/` or agree on a single UI target before changing entrypoints. Do not silently switch the tested runtime to root `src/`.
 2. **Keep FastAPI authoritative.** If adopting root Workspace, replace `src/lib/gridaid/data.js`, `optimization.js` and `scenarios.js` calls with typed API adapters. Root JavaScript uses synthetic data, straight-line approximations/detour penalties, heuristic placement and a different simulation method. Its results are not validated backend evidence. Map its control names to `PlanRequest` and display backend run/version/status/metrics unchanged.
-3. **Refactor the connected large component carefully.** Split `frontend/src/main.tsx` into API/state, controls, map, comparison, simulation and methodology components without changing request identity, cancellation, stale-result behavior or units. Retain the trial-count race regression.
+3. **Refactor the connected large component carefully.** Split `frontend/src/main.tsx` into API/state, controls, map, comparison, simulation and methodology components without changing request identity, cancellation, stale-result behavior or units. Retain the trial-count race and zoom/navigation regressions; animated zoom needs a verified lifecycle solution before restoring it.
 4. **Visual/interaction polish:** clearer selected/baseline/static/resilient map choices, less crowded legends, mobile preset/advanced-control layouts, keyboard/focus and contrast checks, accessible chart/table descriptions, and clearer infinity/no-demand/conditional-statistic labels. The current mobile test checks default width, not a complete accessibility audit.
 5. **Claims and onboarding:** retain original point/connector labels, representative-point caveat, exact boundary, assumed disruption provenance, January 2024 date/reporting-latency warning, solver proof labels and ML-unavailable state for the synthetic fixture. Do not copy authentication/account flows into the no-account planning demo by accident.
 6. **Acceptance for every UI integration:** run backend/type/build/browser checks; compare displayed numbers to actual responses; exercise loading/errors, changed controls, access/risk/improvement/closure layers, explanations and simulation pairing. Add targeted regressions for substantive interaction changes. No retuning ML or changing optimizer expectations to match the new design.
 
 ## Clean-checkout handoff verification
 
-The earlier evidence above predates this Git handoff. A separate local clone of the committed tree, with **no copied `data/raw`, `data/processed`, model binaries, built UI, virtual environment or node_modules**, is being verified before push. Final commands/outcomes and the distinction between the two UI trees will be recorded here before delivery.
+A separate local Git clone of the committed tree was verified on the macOS platform above. **No `data/raw`, `data/processed`, model binaries, built UI, virtual environment or node_modules were copied into it.** All six setup/browser-install commands above succeeded from the frozen locks. OS package/download/browser caches were allowed; this is a fresh project checkout, not a newly provisioned operating system.
+
+The first full run found a real Leaflet error when a zoom callback fired after navigating away from the map (`clearRect` / `_leaflet_pos`). Synchronous study fitting and interactive zoom now prevent that timer lifecycle. A regression changes layers, zooms and switches between planner and methodology four times; it failed before repair, passed three consecutive runs afterward, then passed in the complete suite. Canvas rendering and backend metrics remain in use.
+
+After committing the fix, the clone was fast-forwarded to code commit `f7d18d8d90432fe86eec4f9ecc48f69568fd4444`, its generated processed-data directory was removed, and its server was restarted using `./scripts/serve.sh`. Final `./scripts/verify.sh` exited **0**: **52 backend tests passed (15.88 s), strict TypeScript/build passed, 5 Chromium tests passed (26.7 s)**, no failures/skips. Four existing Python dependency deprecations and Node's color-environment notices remain. Total verification wall time was 44.50 s; this is one measured local run, not a performance guarantee.
+
+The runtime used the tracked compressed Iowa snapshot and precomputed forecasts, without raw downloads or joblib files. Only regenerable matrix caches appeared under `data/processed/`. The prior root Base44 files remain unchanged from remote history and are outside these verification claims. Machine-readable setup/test/input-hash evidence is in [handoff_validation.json](handoff_validation.json); raw logs/screenshots remain ignored under `artifacts/`. The code commit above identifies the tested implementation; subsequent handoff commits update documentation/evidence only.

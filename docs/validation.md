@@ -1,6 +1,14 @@
 # Executed validation — continuation
 
-The current implementation passed **52 backend tests, strict TypeScript/build, and 4 actual Chromium tests**. The previous checkpoint is retained below as history; its zero-access semantics, timings and test totals are not current claims. Original sources and reports were read, then checked against actual code and counterexamples. No public deployment or submission occurred.
+The current implementation passed **52 backend tests, strict TypeScript/build, and 5 actual Chromium tests in the handoff clone**. The previous checkpoint is retained below as history; its zero-access semantics, timings and test totals are not current claims. Original sources and reports were read, then checked against actual code and counterexamples. No public deployment or submission occurred.
+
+## Handoff clean-clone verification
+
+The setup in [handoff.md](handoff.md) was executed in a separate local Git clone with no copied project environments, npm dependencies, raw/processed data, model binaries or build. All bootstrap, frozen uv/npm install, build and Chromium install commands succeeded. With processed data removed again and that clone's server restarted, final `./scripts/verify.sh` at code commit `f7d18d8` exited **0**: **52 backend tests passed (15.88 s)**, strict TypeScript/build passed (Vite 460 ms), **5 Chromium tests passed (26.7 s)**, no skipped/flaky tests. Total wall time 44.50 s on the same macOS hardware; OS dependency/download caches were reused. Tracked gzip/forecast reports suffice, and tests create only regenerable matrices. [handoff_validation.json](handoff_validation.json) records commands, test outcomes and input hashes.
+
+The initial clone run passed backend/build but failed 1 of 4 browser tests with Leaflet `clearRect` after navigating away from an animated map. An added repeated layer/zoom/tab test also reproduced `_leaflet_pos` after teardown. Disabling zoom animation via public Leaflet options and using synchronous bounds fitting fixes both without suppressing browser errors. The new test failed before repair, passed 3 consecutive targeted runs afterward, and passed in the final 5-test suite. Four existing Python dependency deprecations and Node's color-environment notices remain. Root Base44 prototype/dependencies were preserved unchanged and were not tested; these claims apply to `backend/` + `frontend/`. npm audit of `frontend/` was rerun: zero vulnerabilities. Original secret review still applies; no env/credentials, virtual environments, node_modules or raw downloads are tracked.
+
+Earlier continuation results below remain historical evidence; their **4-test browser total is superseded by the 5-test handoff run**. No model retraining, scenario-result changes, human validation, public deployment or video/submission was performed during handoff.
 
 ## Current commands actually executed
 
