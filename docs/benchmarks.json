@@ -1,0 +1,77 @@
+{
+  "hardware": "macOS-27.0.1-arm64-arm-64bit",
+  "processor": "arm",
+  "python": "3.12.15",
+  "datasets": {
+    "fixture": {
+      "version": "fa511010d50d4250",
+      "nodes": 30,
+      "edges": 94,
+      "candidates": 8,
+      "demand": 30,
+      "graph_load_s": 0.03731941600199207,
+      "normal_matrix_build_s": 0.000600125000346452,
+      "memory_cache_load_with_fingerprint_s": 0.00015124999845284037,
+      "portfolio_matrix_build_s": 0.0021852079989912454,
+      "static_total_s": 0.021180208001169376,
+      "static_solver_s": 0.019748041999264387,
+      "p_median_total_s": 0.00629612500051735,
+      "resilient_total_s": 0.00532408299841336,
+      "resilient_solver_s": 0.004192874999716878,
+      "simulation_10000_s": 0.004956250002578599,
+      "statuses": {
+        "static": "optimal",
+        "p_median": "optimal",
+        "resilient": "optimal"
+      },
+      "static_summary": {
+        "average_coverage": 0.7270166666666666,
+        "minimum_coverage": 0.3578,
+        "worst_scenario": "combined",
+        "resilience_score": 0.57933
+      },
+      "resilient_summary": {
+        "average_coverage": 0.7433333333333333,
+        "minimum_coverage": 0.4173,
+        "worst_scenario": "winter",
+        "resilience_score": 0.6129199999999999
+      }
+    },
+    "iowa": {
+      "version": "621a1efc9bc072f9bb44",
+      "nodes": 19205,
+      "edges": 51911,
+      "candidates": 32,
+      "demand": 39,
+      "graph_load_s": 0.2537223750005069,
+      "normal_matrix_build_s": 1.1826621250002063,
+      "memory_cache_load_with_fingerprint_s": 0.15998495900203125,
+      "portfolio_matrix_build_s": 5.709269541999674,
+      "static_total_s": 0.0031989580020308495,
+      "static_solver_s": 0.0021895420031796675,
+      "p_median_total_s": 0.03538095800104202,
+      "resilient_total_s": 0.005955457996606128,
+      "resilient_solver_s": 0.004757874998176703,
+      "simulation_10000_s": 0.006376749999617459,
+      "statuses": {
+        "static": "optimal",
+        "p_median": "optimal",
+        "resilient": "optimal"
+      },
+      "static_summary": {
+        "average_coverage": 0.5171333333333333,
+        "minimum_coverage": 0.1993,
+        "worst_scenario": "combined",
+        "resilience_score": 0.39
+      },
+      "resilient_summary": {
+        "average_coverage": 0.5171333333333333,
+        "minimum_coverage": 0.1993,
+        "worst_scenario": "combined",
+        "resilience_score": 0.39
+      }
+    }
+  },
+  "ml_fixture_inference_s": 0.003597582999645965,
+  "ml_fixture_rows": 96
+}

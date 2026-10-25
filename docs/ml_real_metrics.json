@@ -1,0 +1,343 @@
+{
+  "inference_seconds": 0.0020386659998621326,
+  "inference_rows": 39,
+  "version": "iowa-tract-month-v1",
+  "data_kind": "observed_iowa_crash_counts",
+  "available_for_iowa": true,
+  "prediction_unit": "2020 Census tract spatial cell \u00d7 month",
+  "forecast_period": "2024-01",
+  "target": "reported transportation crash count during forecast month",
+  "features": [
+    "month",
+    "lag_count",
+    "lag12_count",
+    "rolling3_count"
+  ],
+  "selected_by_validation_mae": "random_forest",
+  "validation": {
+    "global_mean": {
+      "mae": 4.064776274713839,
+      "rmse": 5.200412464630982,
+      "rank_correlation": null
+    },
+    "poisson": {
+      "mae": 2.467339265870588,
+      "rmse": 3.6226397763072753,
+      "rank_correlation": 0.7505346886861006
+    },
+    "random_forest": {
+      "mae": 2.162729749049722,
+      "rmse": 3.116678780152403,
+      "rank_correlation": 0.7479419697658201
+    },
+    "previous_month": {
+      "mae": 2.661290322580645,
+      "rmse": 4.027459510352262,
+      "rank_correlation": 0.6458435402534018
+    },
+    "previous_year": {
+      "mae": 3.3655913978494625,
+      "rmse": 4.766031238193982,
+      "rank_correlation": 0.671937729442638
+    }
+  },
+  "test": {
+    "global_mean": {
+      "mae": 2.619119623655914,
+      "rmse": 3.044199953334093,
+      "rank_correlation": null
+    },
+    "poisson": {
+      "mae": 1.7499580644074142,
+      "rmse": 2.2389326492861215,
+      "rank_correlation": 0.43623723075892623
+    },
+    "random_forest": {
+      "mae": 1.7749089419555109,
+      "rmse": 2.273330023026812,
+      "rank_correlation": 0.46766604935463546
+    },
+    "previous_month": {
+      "mae": 2.1458333333333335,
+      "rmse": 2.7233557730613653,
+      "rank_correlation": 0.31484976476589693
+    },
+    "previous_year": {
+      "mae": 2.4479166666666665,
+      "rmse": 3.1108010758216817,
+      "rank_correlation": 0.16960688234740587
+    }
+  },
+  "validation_permutation_importance": {
+    "month": 0.013019304832167311,
+    "lag_count": 0.0959653706234687,
+    "lag12_count": 0.10170464778616228,
+    "rolling3_count": 1.7263199187013822
+  },
+  "splits": {
+    "train": {
+      "rows": 744,
+      "start": "2020-01-01",
+      "end": "2021-12-01",
+      "cells": [
+        "19163010600",
+        "19163010700",
+        "19163010800",
+        "19163010900",
+        "19163011100",
+        "19163011200",
+        "19163011300",
+        "19163011400",
+        "19163011600",
+        "19163011700",
+        "19163011800",
+        "19163011900",
+        "19163012100",
+        "19163012200",
+        "19163012300",
+        "19163012400",
+        "19163012502",
+        "19163012601",
+        "19163012602",
+        "19163012701",
+        "19163012801",
+        "19163012802",
+        "19163012901",
+        "19163012902",
+        "19163013100",
+        "19163013200",
+        "19163013300",
+        "19163013400",
+        "19163013600",
+        "19163013703",
+        "19163013705"
+      ]
+    },
+    "validation": {
+      "rows": 372,
+      "start": "2022-01-01",
+      "end": "2022-12-01",
+      "cells": [
+        "19163010600",
+        "19163010700",
+        "19163010800",
+        "19163010900",
+        "19163011100",
+        "19163011200",
+        "19163011300",
+        "19163011400",
+        "19163011600",
+        "19163011700",
+        "19163011800",
+        "19163011900",
+        "19163012100",
+        "19163012200",
+        "19163012300",
+        "19163012400",
+        "19163012502",
+        "19163012601",
+        "19163012602",
+        "19163012701",
+        "19163012801",
+        "19163012802",
+        "19163012901",
+        "19163012902",
+        "19163013100",
+        "19163013200",
+        "19163013300",
+        "19163013400",
+        "19163013600",
+        "19163013703",
+        "19163013705"
+      ]
+    },
+    "test": {
+      "rows": 96,
+      "start": "2023-01-01",
+      "end": "2023-12-01",
+      "cells": [
+        "19163010402",
+        "19163011000",
+        "19163011500",
+        "19163012000",
+        "19163012501",
+        "19163012702",
+        "19163013000",
+        "19163013500"
+      ]
+    }
+  },
+  "zero_target_rows": 90,
+  "table_hash": "6d595a8f6902fc0a720986549fe342f62c6aa73a29de9ea21998a2ada88cece1",
+  "artifact_hash": "04182850f9b352d1c948c0bfcd7b257c439962ddd8def29e7b9f710156d9dbf8",
+  "model_version": "iowa-tract-month-v1-04182850f9b352d1",
+  "limitations": [
+    "Small regional sample and only 96 held-out cell-months; not operational validation.",
+    "Retrospective finalized crash counts can differ from counts known at the historical forecast origin; no as-of reporting-latency snapshots are available.",
+    "Tracts vary in size; forecasts are counts, not per-person probabilities or exposure-adjusted rates.",
+    "January 2024 forecast is historical, not a current alert or 2026 risk estimate.",
+    "No AADT/weather/current roadway fields used, avoiding mismatched historical vintages; ML adds only calendar and lag-count signal.",
+    "Forecasts and contributions are not causal and cannot predict every emergency."
+  ],
+  "sources": [
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 0,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:44.738412+00:00",
+      "sha256": "b4d2e38d047b5b75c232111fac3dfc54292d0541dd7b31f386ef01ddfcd4315c",
+      "bytes": 355708
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 2000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:45.214059+00:00",
+      "sha256": "9409ca842556539d1a0605282d047802f28ef689672a46b4115d227751df4403",
+      "bytes": 355672
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 4000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:45.724103+00:00",
+      "sha256": "036525324a45742fc3ae1236c58b2bfa0998f9ffa1b44130ce237abe401d1e07",
+      "bytes": 355685
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 6000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:46.165431+00:00",
+      "sha256": "04e8edd3899438513c66647e5cfc7ffe1e8408945c4e7cf311afa5a5d4551b94",
+      "bytes": 355687
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 8000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:46.729764+00:00",
+      "sha256": "ad25202f1a65f6f943ac2dbcd197a7e70abe3eca49f21344e9a54101abda19eb",
+      "bytes": 355641
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 10000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:47.166643+00:00",
+      "sha256": "1f17ffa33c4da74cd05b839d97083800e9ba2590a43c18b4836b974cc587b7ce",
+      "bytes": 355674
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 12000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:47.586593+00:00",
+      "sha256": "4b06c55fb88ad1b67addabdc9f1dcbcf11aafc85fe1cc2b64d9995e9e715f41f",
+      "bytes": 355657
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 14000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:48.078941+00:00",
+      "sha256": "41003d14888f4f6967db99c3c5383bfdcb3ff0f84c32ae437eaed018ab4b3889",
+      "bytes": 355640
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+        "outFields": "OBJECTID,CRASH_DATE",
+        "outSR": "4326",
+        "resultOffset": 16000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:35:48.576946+00:00",
+      "sha256": "58f51e1b83d8660fc131cf298611fad42ef44736341b19ef9b85ad8339bb07ea",
+      "bytes": 325737
+    }
+  ],
+  "spatial_join_audit": {
+    "downloaded_crashes": 17832,
+    "unmatched_to_county_tracts": 0,
+    "inside_selected_tracts": 14693,
+    "outside_selected_tracts": 3139
+  }
+}

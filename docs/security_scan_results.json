@@ -1,0 +1,22 @@
+{
+  "pip_audit": {
+    "dependencies": 76,
+    "known_vulnerabilities": 0
+  },
+  "npm_audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "bandit": {
+    "lines_scanned": 1461,
+    "findings": 0
+  },
+  "detect_secrets": {
+    "reviewed_public_hashes": 29,
+    "actual_credentials": 0
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "invalid_year_values_treated_as_missing": {
+    "AADT_YEAR": 5,
+    "TRUCK_AADT_YEAR": 3740
+  },
+  "invalid_speed_values_treated_as_missing": 0,
+  "lane_direction_values_observed_not_used_for_routing": [
+    "C",
+    "N"
+  ],
+  "kind": "observed_current_iowa_dot_traffic",
+  "sources": [
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/RAMS/Road_Network/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82",
+        "geometry": "-90.7,41.5,-90.48,41.63",
+        "geometryType": "esriGeometryEnvelope",
+        "inSR": "4326",
+        "spatialRel": "esriSpatialRelIntersects",
+        "outFields": "OBJECTID,ROUTEID,AADT,AADT_YEAR,TRUCK_AADT,TRUCK_AADT_YEAR,SPEED_LIMIT,LANE_DIRECTION_1,LANE_DIRECTION_2,ROAD_STATUS",
+        "outSR": "4326",
+        "returnGeometry": "true",
+        "resultOffset": 0,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:53:57.769755+00:00",
+      "sha256": "211aa3bffec467c89f11f197022bf7bfe6617fb6368851ba47f0420a91070de6",
+      "bytes": 1043450
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/RAMS/Road_Network/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82",
+        "geometry": "-90.7,41.5,-90.48,41.63",
+        "geometryType": "esriGeometryEnvelope",
+        "inSR": "4326",
+        "spatialRel": "esriSpatialRelIntersects",
+        "outFields": "OBJECTID,ROUTEID,AADT,AADT_YEAR,TRUCK_AADT,TRUCK_AADT_YEAR,SPEED_LIMIT,LANE_DIRECTION_1,LANE_DIRECTION_2,ROAD_STATUS",
+        "outSR": "4326",
+        "returnGeometry": "true",
+        "resultOffset": 2000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:53:58.248687+00:00",
+      "sha256": "3bf2d111c919d7cc533f52e0f5f260af1caae54a4f32790bc914a8f55d6c33db",
+      "bytes": 1042105
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/RAMS/Road_Network/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82",
+        "geometry": "-90.7,41.5,-90.48,41.63",
+        "geometryType": "esriGeometryEnvelope",
+        "inSR": "4326",
+        "spatialRel": "esriSpatialRelIntersects",
+        "outFields": "OBJECTID,ROUTEID,AADT,AADT_YEAR,TRUCK_AADT,TRUCK_AADT_YEAR,SPEED_LIMIT,LANE_DIRECTION_1,LANE_DIRECTION_2,ROAD_STATUS",
+        "outSR": "4326",
+        "returnGeometry": "true",
+        "resultOffset": 4000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:53:58.749911+00:00",
+      "sha256": "bba3516c34da2a88faeddabb22dc332c2a0e66c4d2d89864a54f03d8f30cba40",
+      "bytes": 968034
+    },
+    {
+      "url": "https://gis.iowadot.gov/agshost/rest/services/RAMS/Road_Network/FeatureServer/0/query",
+      "params": {
+        "f": "geojson",
+        "where": "COUNTY_NUMBER=82",
+        "geometry": "-90.7,41.5,-90.48,41.63",
+        "geometryType": "esriGeometryEnvelope",
+        "inSR": "4326",
+        "spatialRel": "esriSpatialRelIntersects",
+        "outFields": "OBJECTID,ROUTEID,AADT,AADT_YEAR,TRUCK_AADT,TRUCK_AADT_YEAR,SPEED_LIMIT,LANE_DIRECTION_1,LANE_DIRECTION_2,ROAD_STATUS",
+        "outSR": "4326",
+        "returnGeometry": "true",
+        "resultOffset": 6000,
+        "resultRecordCount": 2000,
+        "orderByFields": "OBJECTID"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:53:58.944159+00:00",
+      "sha256": "2e7f19d3689cfbbf504d5fe243743266c9b065cc802d4fdd6f0399063fbc99f9",
+      "bytes": 361768
+    }
+  ],
+  "rows": 6676,
+  "crs": "EPSG:4326",
+  "attribution": "Iowa Department of Transportation - Research & Analytics",
+  "missing": {
+    "AADT": 110,
+    "AADT_YEAR": 114,
+    "TRUCK_AADT": 5305,
+    "SPEED_LIMIT": 99,
+    "LANE_DIRECTION_1": 639
+  },
+  "aadt_years": [
+    1975.0,
+    1982.0,
+    1985.0,
+    1986.0,
+    1990.0,
+    1994.0,
+    1998.0,
+    2000.0,
+    2001.0,
+    2002.0,
+    2004.0,
+    2005.0,
+    2006.0,
+    2007.0,
+    2008.0,
+    2009.0,
+    2010.0,
+    2011.0,
+    2014.0,
+    2016.0,
+    2017.0,
+    2018.0,
+    2019.0,
+    2020.0,
+    2021.0,
+    2022.0,
+    2023.0,
+    2024.0,
+    2025.0,
+    2026.0
+  ],
+  "training_use": "Excluded: current network and mixed AADT vintage cannot stand in for attributes known before 2020\u20132023 forecasts."
+}

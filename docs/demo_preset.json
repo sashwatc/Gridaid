@@ -1,0 +1,30 @@
+{
+  "id": "p4-winter1.6-central",
+  "label": "Real Iowa road/weather comparison",
+  "dataset_version": "d74ed4e885f39c01475f",
+  "description": "Assumed road/weather conditions on observed roads. Selected from the fully published 12-case grid; no resource outage or added event in this portfolio. Coverage refers to weighted tract internal points with assumed access, not exact households.",
+  "configuration": {
+    "dataset": "iowa",
+    "resource_count": 4,
+    "threshold_minutes": 5.0,
+    "objective": "coverage",
+    "method": "exact",
+    "demand_model": "population",
+    "blend": 0.5,
+    "scenario_ids": [
+      "normal",
+      "winter",
+      "closure",
+      "winter_closure"
+    ],
+    "average_weight": 0.6,
+    "worst_case_weight": 0.4,
+    "seed": 42,
+    "solver_limit_ms": 2000,
+    "baseline_method": "deterministic",
+    "winter_multiplier": 1.6,
+    "closure_profile": "central",
+    "access_mode": "connector",
+    "access_speed_kph": 20.0
+  }
+}

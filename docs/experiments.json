@@ -1,0 +1,468 @@
+{
+  "data_kind": "synthetic_fixture",
+  "dataset_version": "fa511010d50d4250",
+  "sensitivity": [
+    {
+      "case": "default",
+      "p": 3,
+      "threshold_s": 300,
+      "winter": 1.6,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        4,
+        7
+      ],
+      "solver": {
+        "selected": [
+          2,
+          4,
+          7
+        ],
+        "status": "optimal",
+        "objective": 0.615303550973654,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.02327362500000163,
+        "bound": 0.615303550973654,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.7432607865597555,
+        "minimum_coverage": 0.4233676975945017,
+        "worst_scenario": "winter",
+        "resilience_score": 0.615303550973654
+      }
+    },
+    {
+      "case": "resources-1",
+      "p": 1,
+      "threshold_s": 300,
+      "winter": 1.6,
+      "average_weight": 0.6,
+      "selected": [
+        5
+      ],
+      "solver": {
+        "selected": [
+          5
+        ],
+        "status": "optimal",
+        "objective": 0.26520045819014904,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.0038319999985105824,
+        "bound": 0.26520045819014904,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.34272623138602526,
+        "minimum_coverage": 0.14891179839633448,
+        "worst_scenario": "combined",
+        "resilience_score": 0.2652004581901489
+      }
+    },
+    {
+      "case": "resources-2",
+      "p": 2,
+      "threshold_s": 300,
+      "winter": 1.6,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        5
+      ],
+      "solver": {
+        "selected": [
+          2,
+          5
+        ],
+        "status": "optimal",
+        "objective": 0.4765635738831614,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.0037901249997958075,
+        "bound": 0.4765635738831614,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.609774723176785,
+        "minimum_coverage": 0.27674684994272625,
+        "worst_scenario": "combined",
+        "resilience_score": 0.4765635738831615
+      }
+    },
+    {
+      "case": "resources-4",
+      "p": 4,
+      "threshold_s": 300,
+      "winter": 1.6,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        4,
+        5,
+        7
+      ],
+      "solver": {
+        "selected": [
+          2,
+          4,
+          5,
+          7
+        ],
+        "status": "optimal",
+        "objective": 0.7013745704467353,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.004109334000531817,
+        "bound": 0.7013745704467353,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.7854524627720504,
+        "minimum_coverage": 0.5752577319587628,
+        "worst_scenario": "winter",
+        "resilience_score": 0.7013745704467353
+      }
+    },
+    {
+      "case": "threshold-180",
+      "p": 3,
+      "threshold_s": 180,
+      "winter": 1.6,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        5,
+        7
+      ],
+      "solver": {
+        "selected": [
+          2,
+          5,
+          7
+        ],
+        "status": "optimal",
+        "objective": 0.29282932416953034,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.002359209000132978,
+        "bound": 0.29282932416953034,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.4078655975563192,
+        "minimum_coverage": 0.12027491408934708,
+        "worst_scenario": "winter",
+        "resilience_score": 0.29282932416953034
+      }
+    },
+    {
+      "case": "threshold-420",
+      "p": 3,
+      "threshold_s": 420,
+      "winter": 1.6,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        4,
+        5
+      ],
+      "solver": {
+        "selected": [
+          2,
+          4,
+          5
+        ],
+        "status": "optimal",
+        "objective": 0.9108132875143184,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.003425207996770041,
+        "bound": 0.9108132875143184,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.9471172203130968,
+        "minimum_coverage": 0.8563573883161512,
+        "worst_scenario": "winter",
+        "resilience_score": 0.9108132875143186
+      }
+    },
+    {
+      "case": "winter-1.2",
+      "p": 3,
+      "threshold_s": 300,
+      "winter": 1.2,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        4,
+        5
+      ],
+      "solver": {
+        "selected": [
+          2,
+          4,
+          5
+        ],
+        "status": "optimal",
+        "objective": 0.8456815578465062,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.0033632500017120037,
+        "bound": 0.8456815578465062,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.8623902252768231,
+        "minimum_coverage": 0.8206185567010309,
+        "worst_scenario": "closure",
+        "resilience_score": 0.8456815578465062
+      }
+    },
+    {
+      "case": "winter-2.0",
+      "p": 3,
+      "threshold_s": 300,
+      "winter": 2.0,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        4,
+        7
+      ],
+      "solver": {
+        "selected": [
+          2,
+          4,
+          7
+        ],
+        "status": "optimal",
+        "objective": 0.615303550973654,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.011993916999927023,
+        "bound": 0.615303550973654,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.7432607865597555,
+        "minimum_coverage": 0.4233676975945017,
+        "worst_scenario": "winter",
+        "resilience_score": 0.615303550973654
+      }
+    },
+    {
+      "case": "average-0.0",
+      "p": 3,
+      "threshold_s": 300,
+      "winter": 1.6,
+      "average_weight": 0.0,
+      "selected": [
+        2,
+        5,
+        7
+      ],
+      "solver": {
+        "selected": [
+          2,
+          5,
+          7
+        ],
+        "status": "optimal",
+        "objective": 0.4309278350515464,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.004440374999830965,
+        "bound": 0.4309278350515464,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.669721267659412,
+        "minimum_coverage": 0.4309278350515464,
+        "worst_scenario": "winter",
+        "resilience_score": 0.4309278350515464
+      }
+    },
+    {
+      "case": "average-1.0",
+      "p": 3,
+      "threshold_s": 300,
+      "winter": 1.6,
+      "average_weight": 1.0,
+      "selected": [
+        2,
+        4,
+        7
+      ],
+      "solver": {
+        "selected": [
+          2,
+          4,
+          7
+        ],
+        "status": "optimal",
+        "objective": 0.7432607865597556,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.002830082998116268,
+        "bound": 0.7432607865597556,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.7432607865597555,
+        "minimum_coverage": 0.4233676975945017,
+        "worst_scenario": "winter",
+        "resilience_score": 0.7432607865597555
+      }
+    },
+    {
+      "case": "alternate-corridor",
+      "p": 3,
+      "threshold_s": 300,
+      "winter": 1.6,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        4,
+        7
+      ],
+      "solver": {
+        "selected": [
+          2,
+          4,
+          7
+        ],
+        "status": "optimal",
+        "objective": 0.6205727376861396,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.003923457999917446,
+        "bound": 0.6205727376861396,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.7520427644138984,
+        "minimum_coverage": 0.4233676975945017,
+        "worst_scenario": "winter",
+        "resilience_score": 0.6205727376861397
+      }
+    },
+    {
+      "case": "alternate-outage",
+      "p": 3,
+      "threshold_s": 300,
+      "winter": 1.6,
+      "average_weight": 0.6,
+      "selected": [
+        2,
+        4,
+        7
+      ],
+      "solver": {
+        "selected": [
+          2,
+          4,
+          7
+        ],
+        "status": "optimal",
+        "objective": 0.615303550973654,
+        "objective_unit": "normalized_coverage_score",
+        "runtime_s": 0.0035113329977320973,
+        "bound": 0.615303550973654,
+        "gap": 0.0,
+        "method": "shared_resilient",
+        "unreachable_penalty_s": null
+      },
+      "summary": {
+        "average_coverage": 0.7432607865597555,
+        "minimum_coverage": 0.4233676975945017,
+        "worst_scenario": "winter",
+        "resilience_score": 0.615303550973654
+      }
+    }
+  ],
+  "algorithm_comparison": [
+    {
+      "selected": [
+        0,
+        1,
+        2
+      ],
+      "status": "heuristic",
+      "objective": 712.0,
+      "objective_unit": "weighted_covered_demand",
+      "runtime_s": 6.792000931454822e-06,
+      "bound": null,
+      "gap": null,
+      "method": "deterministic"
+    },
+    {
+      "selected": [
+        0,
+        5,
+        7
+      ],
+      "status": "heuristic",
+      "objective": 794.0,
+      "objective_unit": "weighted_covered_demand",
+      "runtime_s": 0.013230584001576062,
+      "bound": null,
+      "gap": null,
+      "method": "random"
+    },
+    {
+      "selected": [
+        4,
+        2,
+        5
+      ],
+      "status": "heuristic",
+      "objective": 1246.0,
+      "objective_unit": "weighted_covered_demand",
+      "runtime_s": 0.00016970900105661713,
+      "bound": null,
+      "gap": null,
+      "method": "greedy"
+    },
+    {
+      "selected": [
+        2,
+        4,
+        5
+      ],
+      "status": "optimal",
+      "objective": 1246.0,
+      "objective_unit": "weighted_covered_demand",
+      "runtime_s": 0.001558790998387849,
+      "bound": 1246.0,
+      "gap": 0.0,
+      "method": "static_coverage",
+      "unreachable_penalty_s": null
+    }
+  ],
+  "stability_across_sensitivity": {
+    "C1": 0.0,
+    "C2": 0.0,
+    "C3": 0.9166666666666666,
+    "C4": 0.0,
+    "C5": 0.6666666666666666,
+    "C6": 0.5833333333333334,
+    "C7": 0.0,
+    "C8": 0.6666666666666666
+  },
+  "demand_blend_experiment": "Blocked for Iowa: no validated risk. Demand normalization and all blend endpoints independently unit-tested with labeled artificial risk."
+}

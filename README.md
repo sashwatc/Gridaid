@@ -1,124 +1,89 @@
-# Base44 Project
+# GridAid
 
-Use this repository to run and edit the app locally, then publish changes back through Base44.
+For Arjun: [handoff, artifact inventory and frontend backlog](docs/handoff.md). The tested full-stack app is in `backend/` + `frontend/`. The shared repository's existing root `src/` Base44 design prototype is preserved separately and is not connected to this engine; its original instructions are in [the archived Base44 setup](docs/base44_setup_original.md). Use the commands below for the validated application.
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+A working local emergency-resource **planning simulator** for Davenport / Scott County, Iowa. Compare a baseline, normal-condition static optimization, and one shared resilience placement across normal, winter, road closure, fixed-site outage, event, and combined stress scenarios. Then compare them with paired seeded Monte Carlo incidents.
 
-## Prerequisites
+The backend implements Dijkstra, greedy coverage, OR-Tools/SCIP maximum coverage and p-median, normalized multi-scenario optimization, explanations, and bounded FastAPI operations. React/TypeScript/Leaflet displays the actual backend results. This is not dispatch software or a claim about emergency outcomes.
 
-1. Clone the repository using the project's Git URL.
-2. Navigate to the project directory.
-3. Install dependencies: `npm install`.
-4. Install the Base44 CLI: `npm install -g base44@latest`.
-5. Install [Deno](https://docs.deno.com/runtime/getting_started/installation/) — the local Base44 backend runs on it.
+## Clean setup
 
-Run `base44 --help` (or see the [CLI reference](https://docs.base44.com/developers/references/cli/commands/introduction)) for the full command surface.
+Prerequisites: macOS or Linux, Python 3.10+ to bootstrap uv, Node **22.12+** and npm, internet for initial dependency/browser installation. Tested on macOS arm64, Python 3.12.15, Node 26.3.1, npm 11.16.0. uv downloads Python 3.12 if necessary. Windows commands and other hardware have not been verified.
 
-## Run Locally
-
-Three commands, from the project root:
+From the repository root:
 
 ```bash
-base44 login   # one-time per machine
-base44 link    # one-time per clone
-base44 dev     # local backend + frontend together
+python3 -m venv .bootstrap
+.bootstrap/bin/pip install uv==0.13.5
+.bootstrap/bin/uv sync --frozen
+npm --prefix frontend ci
+npm --prefix frontend run build
+./scripts/serve.sh
 ```
 
-Open the frontend URL that `base44 dev` prints (typically `http://localhost:5173`).
+Open **http://127.0.0.1:8000**. Click **Load real-data demo preset →** for the documented four-resource road/weather tradeoff; see [five-minute walkthrough](docs/real_data_demo.md). No credentials or paid APIs are needed. The committed synthetic fixture and compressed public-data snapshot work without data downloads. Select the study area, load baseline, static optimize, change the stress-test view, resilience optimize, and simulate. ML Risk and Blended are available for the Iowa snapshot, labeled as a **retrospective January 2024 transportation forecast**. They are unavailable for the synthetic corridor fixture.
 
-Notes:
+Optional variables are in `.env.example`. `GRIDAID_HOST` defaults to `127.0.0.1`, `GRIDAID_PORT` to `8000`, and `GRIDAID_CORS` to the two local Vite origins. The launcher reads exported variables; it does not automatically load `.env`. Keep one Uvicorn worker so the local rate/run limits apply consistently. Run identifiers are ephemeral and at most 100 runs are retained.
 
-- **Every fresh clone needs `base44 link`.** It writes `base44/.app.jsonc` (the app-id pointer), which is deliberately gitignored. Your app id is in the Builder URL (`app.base44.com/apps/<id>/...`); `base44 link --help` shows the non-interactive flags.
-- **`base44 dev` runs the frontend for you** (via `site.serveCommand` in this repo's `base44/config.jsonc`) — never run `npm run dev` yourself: alone it serves a UI with no backend behind it (`[base44] Proxy not enabled`, every `/api` call fails), and alongside `base44 dev` the second Vite silently takes the next port and you end up looking at the wrong one.
-- **The app must be published at least once for the UI to load under `base44 dev`.** The frontend boots by fetching app settings from the hosted app; before the first publish that fails and every page redirects to login. The local API works regardless.
-- Entities, functions, and auth run locally — entity data is **in-memory only**, wiped when `base44 dev` restarts. Everything else (Core integrations, OAuth login) is forwarded to your deployed app. Full breakdown: [Local development overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview).
+For frontend development, run `.venv/bin/uvicorn backend.api.app:app --host 127.0.0.1 --port 8000` and, in another terminal, `npm --prefix frontend run dev`. Vite proxies `/api` to FastAPI.
 
-## Frontend Only, Hosted Backend
-
-To work on just the frontend against your app's live hosted backend:
+## Verification
 
 ```bash
-base44 dev --remote
+.venv/bin/pytest -q
+npm --prefix frontend run build
+npm --prefix frontend exec -- playwright install chromium
+# Leave ./scripts/serve.sh running in a second terminal:
+npm --prefix frontend run test:browser
+# Or run all application checks with the server already running:
+./scripts/verify.sh
 ```
 
-⚠️ In this mode writes go to your app's **production data** — plain `base44 dev` keeps everything local.
+Browser checks launch actual Chromium, complete the fixture and Iowa/Blended workflows, compare displayed numbers to responses, and exercise stale results, errors, mobile width, model metrics, and console errors. The in-app browser connector failed to initialize in the implementation environment; local Playwright Chromium was used successfully.
 
-## Publish Your Changes
-
-After pushing your changes to git, open the Base44 dashboard and publish the app:
+Security scans:
 
 ```bash
-base44 dashboard open
+mkdir -p artifacts
+.venv/bin/pip-audit --format=json --output=artifacts/pip-audit.json
+npm --prefix frontend audit --json > artifacts/npm-audit.json
+.venv/bin/bandit -r backend ml scripts -f json -o artifacts/bandit.json
+.venv/bin/detect-secrets scan --all-files --exclude-files '(^|/)(\.git|\.venv[^/]*|\.bootstrap|node_modules|dist|artifacts|data/raw|data/processed|\.pytest_cache|__pycache__|test-results)(/|$)' > artifacts/secrets.json
 ```
 
-This repo syncs to Base44 through git, so publish from the dashboard rather than `base44 deploy` — a CLI deploy ships your local tree directly, bypassing the sync, and the deployed state silently diverges from the repo.
+Review entropy findings: dataset/model SHA-256 hashes are expected, not credentials. Actual executions, scan outcomes, limitations and timings are in [docs/validation.md](docs/validation.md).
 
-## Docs & Support
+## Rebuild data and experiments
 
-GitHub integration: [https://docs.base44.com/developers/app-code/local-development/github](https://docs.base44.com/developers/app-code/local-development/github)
-
-Local development: [https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview)
-
-Support: [https://app.base44.com/support](https://app.base44.com/support)
-# Base44 Project
-
-Use this repository to run and edit the app locally, then publish changes back through Base44.
-
-Any change pushed to the repo will also be reflected in the Base44 Builder.
-
-## Prerequisites
-
-1. Clone the repository using the project's Git URL.
-2. Navigate to the project directory.
-3. Install dependencies: `npm install`.
-4. Install the Base44 CLI: `npm install -g base44@latest`.
-5. Install [Deno](https://docs.deno.com/runtime/getting_started/installation/) — the local Base44 backend runs on it.
-
-Run `base44 --help` (or see the [CLI reference](https://docs.base44.com/developers/references/cli/commands/introduction)) for the full command surface.
-
-## Run Locally
-
-Three commands, from the project root:
+These operations are offline scripts, not upload/fetch API endpoints. The default Geofabrik source is a dated 134 MB download, capped at 160 MB. Raw cache files are SHA-256 checked; `--refresh` explicitly downloads again.
 
 ```bash
-base44 login   # one-time per machine
-base44 link    # one-time per clone
-base44 dev     # local backend + frontend together
+.venv/bin/python -m scripts.make_fixture
+.venv/bin/python -m scripts.ingest
+.venv/bin/python -m scripts.dot_snapshot
+.venv/bin/python -m ml.train
+.venv/bin/python -m ml.real_train
+.venv/bin/python -m scripts.geography_audit
+.venv/bin/python -m scripts.real_demo
+.venv/bin/python -m scripts.precompute
+.venv/bin/python -m scripts.experiments
+.venv/bin/python -m scripts.benchmark
 ```
 
-Open the frontend URL that `base44 dev` prints (typically `http://localhost:5173`).
+`ingest` rebuilds roads/population and clears the processed ML flag. Run `ml.real_train` afterward to attach the evaluated risk output and refresh the committed compressed snapshot. `dot_snapshot` records current roadway/traffic attributes but **does not use them as historical predictors**. `ml.train` is a separate synthetic segment-month experiment. The real pipeline uses tract spatial cells, calendar and lagged reported counts, including zero-incident cell-months. Rebuilding from cached raw data reproduces the forecasts; dependency versions are pinned in `uv.lock` and `frontend/package-lock.json`.
 
-Notes:
+The current public snapshot preserves original Census internal points and fixed directed road-segment arrivals. Default travel includes an **assumed straight access connector at 20 km/h**, slowed by winter too. Road-only mode is an optimistic diagnostic. These are whole-tract weights at representative points, **not exact household coverage**. The study rectangle is 41.50–41.63°N / 90.70–90.48°W; selected whole tracts extend outside it. [Geographic audit](docs/geography.md) records every point/candidate, city classification and snapping/access sensitivity.
 
-- **Every fresh clone needs `base44 link`.** It writes `base44/.app.jsonc` (the app-id pointer), which is deliberately gitignored. Your app id is in the Builder URL (`app.base44.com/apps/<id>/...`); `base44 link --help` shows the non-interactive flags.
-- **`base44 dev` runs the frontend for you** (via `site.serveCommand` in this repo's `base44/config.jsonc`) — never run `npm run dev` yourself: alone it serves a UI with no backend behind it (`[base44] Proxy not enabled`, every `/api` call fails), and alongside `base44 dev` the second Vite silently takes the next port and you end up looking at the wrong one.
-- **The app must be published at least once for the UI to load under `base44 dev`.** The frontend boots by fetching app settings from the hosted app; before the first publish that fails and every page redirects to login. The local API works regardless.
-- Entities, functions, and auth run locally — entity data is **in-memory only**, wiped when `base44 dev` restarts. Everything else (Core integrations, OAuth login) is forwarded to your deployed app. Full breakdown: [Local development overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview).
+`geography_audit` updates original coordinates/road attachments without retraining ML. `real_demo` writes all 12 predeclared real cases, access sensitivity, and the version-checked UI preset. Rerun it after rebuilding the public snapshot; a stale preset is rejected.
 
-## Frontend Only, Hosted Backend
+The 2020 Census fallback replaces ACS because the ACS request required a key. Prepared scenarios are synthetic assumptions. Iowa 511 XML access requires an access request, so live/historical 511 replay is not implemented. Historical as-of crash reporting timestamps were unavailable; retrospective lag counts can include later revisions. Read the model card before interpreting risk.
 
-To work on just the frontend against your app's live hosted backend:
+## API and documentation
 
-```bash
-base44 dev --remote
-```
+Routes follow the source specification; `/api/baseline` also accepts POST for the full typed configuration. `/api/scenarios/evaluate` returns isolated stored metrics under the run's attached scenario definitions; changed settings require new runs. `/api/runs/{id}` exports the complete run JSON. `/api/ml/model-card` includes actual real and fixture metrics; `/api/ml/risk-layer?dataset_id=iowa` serves precomputed historical forecasts. OpenAPI is at `/openapi.json`.
 
-⚠️ In this mode writes go to your app's **production data** — plain `base44 dev` keeps everything local.
+- [Requirement matrix](docs/requirements.md), [progress](docs/progress.md), [decisions](docs/decisions.md), [final audit](docs/audit.md)
+- [Methodology](docs/methodology.md), [data sources](docs/data_sources.md), [model card](docs/model_card.md)
+- [Threat model](docs/threat_model.md), [security policy](SECURITY.md), [validation](docs/validation.md)
 
-## Publish Your Changes
-
-After pushing your changes to git, open the Base44 dashboard and publish the app:
-
-```bash
-base44 dashboard open
-```
-
-This repo syncs to Base44 through git, so publish from the dashboard rather than `base44 deploy` — a CLI deploy ships your local tree directly, bypassing the sync, and the deployed state silently diverges from the repo.
-
-## Docs & Support
-
-GitHub integration: [https://docs.base44.com/developers/app-code/local-development/github](https://docs.base44.com/developers/app-code/local-development/github)
-
-Local development: [https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview)
-
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+Competition release gates are **not all met**: HTTPS deployment, historical as-of feature-availability validation, professional/user studies, final name clearance, video, ten human rehearsals and submission remain unverified or human tasks. The historical schedule does not establish completion.

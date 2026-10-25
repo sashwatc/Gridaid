@@ -1,0 +1,82 @@
+{
+  "stats": {
+    "startTime": "2026-10-25T00:50:19.618Z",
+    "duration": 21560.156,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "performance": {
+    "navigation": {
+      "name": "http://127.0.0.1:8000/",
+      "entryType": "navigation",
+      "startTime": 0,
+      "duration": 68.69999999925494,
+      "navigationId": 6540,
+      "initiatorType": "navigation",
+      "deliveryType": "",
+      "nextHopProtocol": "http/1.1",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/html",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 0,
+      "domainLookupStart": 0.19999999925494194,
+      "domainLookupEnd": 0.19999999925494194,
+      "connectStart": 0.19999999925494194,
+      "secureConnectionStart": 0,
+      "connectEnd": 0.8000000007450581,
+      "requestStart": 0.8000000007450581,
+      "responseStart": 27.600000001490116,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 27.600000001490116,
+      "responseEnd": 33.899999998509884,
+      "transferSize": 1062,
+      "encodedBodySize": 762,
+      "decodedBodySize": 762,
+      "responseStatus": 200,
+      "serverTiming": [],
+      "unloadEventStart": 0,
+      "unloadEventEnd": 0,
+      "domInteractive": 34.399999998509884,
+      "domContentLoadedEventStart": 68.60000000149012,
+      "domContentLoadedEventEnd": 68.69999999925494,
+      "domComplete": 68.69999999925494,
+      "loadEventStart": 68.69999999925494,
+      "loadEventEnd": 68.69999999925494,
+      "type": "navigate",
+      "redirectCount": 0,
+      "activationStart": 0,
+      "criticalCHRestart": 0,
+      "notRestoredReasons": null,
+      "confidence": {
+        "randomizedTriggerRate": 0.4994798,
+        "value": "high"
+      }
+    },
+    "dataReadyText": "Browser data-ready time: 1407 ms since navigation",
+    "mapMeasures": [
+      {
+        "name": "gridaid-map-commit-and-frame",
+        "entryType": "measure",
+        "startTime": 1406.699999999255,
+        "duration": 110.69999999925494,
+        "navigationId": 6540
+      }
+    ]
+  },
+  "cases": [
+    "fixture workflow",
+    "mobile width",
+    "real blended workflow",
+    "real demo/access/explanations/trial-change race"
+  ],
+  "unexpected_console_or_page_errors": 0
+}

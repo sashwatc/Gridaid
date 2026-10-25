@@ -1,0 +1,77 @@
+{
+  "stats": {
+    "startTime": "2026-10-25T00:03:59.464Z",
+    "duration": 11595.257000000001,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "performance": {
+    "navigation": {
+      "name": "http://127.0.0.1:8000/",
+      "entryType": "navigation",
+      "startTime": 0,
+      "duration": 72.19999999925494,
+      "navigationId": 1838,
+      "initiatorType": "navigation",
+      "deliveryType": "",
+      "nextHopProtocol": "http/1.1",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/html",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 0.09999999776482582,
+      "domainLookupStart": 0.3999999985098839,
+      "domainLookupEnd": 0.3999999985098839,
+      "connectStart": 0.3999999985098839,
+      "secureConnectionStart": 0,
+      "connectEnd": 0.5999999977648258,
+      "requestStart": 0.5999999977648258,
+      "responseStart": 27.899999998509884,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 27.899999998509884,
+      "responseEnd": 33.79999999701977,
+      "transferSize": 1062,
+      "encodedBodySize": 762,
+      "decodedBodySize": 762,
+      "responseStatus": 200,
+      "serverTiming": [],
+      "unloadEventStart": 0,
+      "unloadEventEnd": 0,
+      "domInteractive": 34.399999998509884,
+      "domContentLoadedEventStart": 72,
+      "domContentLoadedEventEnd": 72,
+      "domComplete": 72.19999999925494,
+      "loadEventStart": 72.19999999925494,
+      "loadEventEnd": 72.19999999925494,
+      "type": "navigate",
+      "redirectCount": 0,
+      "activationStart": 0,
+      "criticalCHRestart": 0,
+      "notRestoredReasons": null,
+      "confidence": {
+        "randomizedTriggerRate": 0.4994798,
+        "value": "low"
+      }
+    },
+    "dataReadyText": "Browser data-ready time: 1415 ms since navigation",
+    "mapMeasures": [
+      {
+        "name": "gridaid-map-commit-and-frame",
+        "entryType": "measure",
+        "startTime": 1414.5,
+        "duration": 116.39999999850988,
+        "navigationId": 1838
+      }
+    ]
+  },
+  "browser": "Playwright Chromium 156.0.8078.4",
+  "console": "No unexpected console or page errors; deliberate invalid-input 422 in fixture test was expected."
+}

@@ -1,0 +1,19 @@
+# Implementation decisions
+
+Both source documents were read completely on 2026-10-24 (masterplan: 1,308 lines; dossier: 23 pages, extracted in sources/dossier_extracted.txt).
+
+1. Masterplan §§8–9 conflict on combined stress (core list versus optional). Dossier §12 and user requirements make it required; implement it.
+2. Dossier §9 proposes a relocation penalty; masterplan §8 defines the primary 0.6 average + 0.4 worst coverage objective. Use the masterplan objective, expose the two weights, and keep relocation/p-center/A* as optional experiments.
+3. Dates are historical planning context. No deadline, human validation, submission, HTTPS, or competition gate is inferred from the date.
+4. Use Python 3.12 for compatible geospatial/OR-Tools wheels, FastAPI/Pydantic, React/TypeScript/Vite/Leaflet. No database or paid service. Immutable input snapshots and bounded in-memory run/matrix caches suffice for a single local process.
+5. Unreachable travel is infinity internally, null with explicit unreachable shares at JSON boundaries. P-median assigns an explicit finite penalty of 86,400 seconds (larger than supported study-area finite trips); report penalized objective separately from actual travel metrics.
+6. Failure means a named candidate location is unavailable in that scenario, whether or not selected. Its row is excluded consistently from evaluation, optimization, and simulation. This models a fixed facility outage, not an adversarial failure chosen after placement.
+7. Scenarios are documented assumptions, including those applied to real roads. They are not live alerts. Synthetic data is never presented as observed Iowa data.
+8. Use separately normalized scenario weights; zero-demand coverage is zero with an explicit no-demand indicator. Simulation of zero demand has zero incidents and null travel statistics.
+9. Independent per-scenario solves are used only to calculate site-selection stability, never as a resilient configuration. Stability is conditional on solver tie-breaking and proof status.
+10. ACS 2023 API request redirected (HTTP 302) to `/data/missing_key.html`. Use official Census 2020 TIGERweb POP100/internal points, clearly dated 2020; no ACS estimates are fabricated.
+11. Overpass main endpoint returned HTTP 406 for GET and POST; Kumi and private.coffee requests timed out. Use the pinned Geofabrik Iowa 2026-10-23 PBF (134,153,625 bytes) and pyosmium cropping, then OSMnx topology-preserving contraction. Keep a compressed attributed public snapshot so local setup does not depend on download availability.
+12. Iowa crash data was accessible. Use the dossier/masterplan's spatial-cell fallback as 2020 Census tract × month, avoiding uncertain crash-to-current-OSM-segment matching. Only calendar and lagged counts enter the real model; current DOT road/AADT fields have mismatched historical vintages. Forecast January 2024 retrospectively, with 2020–2021 training, 2022 validation and unseen-tract 2023 final test. This is not a current alert. Later revisions to historical reported counts remain an explicit as-of limitation.
+13. Real RF beats the baselines on validation MAE and remains selected. Poisson beats RF slightly on the final test; do not select again on test data or claim that RF wins all comparisons.
+14. The in-app browser runtime failed with `Importing module node:process is not allowed in node_repl`. Followed browser skill setup; used local Playwright Chromium for executed browser checks. No browser test is inferred from a frontend build.
+15. Audit repair: retain whole OSM ways as routing buffer, constrain candidate/event nodes and map view to the declared crop. Propose candidates on the largest strongly connected component while retaining disconnected demand. Attach exact scenario snapshots to runs and reject simulations/comparisons with changed matrix fingerprints.

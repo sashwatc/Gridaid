@@ -35,3 +35,27 @@ dist-ssr
 .env
 .vite
 base44/.app.jsonc
+
+# Validated Python/React planning application
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.DS_Store
+node_modules/
+dist/
+data/raw/*
+data/processed/*
+!data/processed/.gitkeep
+artifacts/
+.coverage
+*.log
+
+.venv312/
+test-results/
+.bootstrap/
+.venv-clean/
+
+# Preserve the committed public sample only; never commit local credentials.
+!/.env.example

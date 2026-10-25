@@ -1,0 +1,156 @@
+{
+  "version": "segment-month-count-v1",
+  "data_kind": "synthetic_fixture",
+  "available_for_iowa": false,
+  "target": "forecast month crash count, predicted before month starts using prior-month or static inputs",
+  "features": [
+    "aadt",
+    "speed_kph",
+    "length_m",
+    "lag_count",
+    "month",
+    "road_class"
+  ],
+  "splits": {
+    "train": {
+      "rows": 672,
+      "start": "2020-01-01",
+      "end": "2021-12-01",
+      "segments": [
+        "S0",
+        "S1",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S2",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "S26",
+        "S27",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9"
+      ]
+    },
+    "validation": {
+      "rows": 336,
+      "start": "2022-01-01",
+      "end": "2022-12-01",
+      "segments": [
+        "S0",
+        "S1",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S2",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "S26",
+        "S27",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9"
+      ]
+    },
+    "test": {
+      "rows": 96,
+      "start": "2023-01-01",
+      "end": "2023-12-01",
+      "segments": [
+        "S28",
+        "S29",
+        "S30",
+        "S31",
+        "S32",
+        "S33",
+        "S34",
+        "S35"
+      ]
+    }
+  },
+  "validation": {
+    "global_mean": {
+      "mae": 0.6930537840136054,
+      "rmse": 0.9235222633429163,
+      "rank_correlation": null
+    },
+    "poisson": {
+      "mae": 0.5861335922301135,
+      "rmse": 0.8078063320711218,
+      "rank_correlation": 0.4305995728172509
+    },
+    "random_forest": {
+      "mae": 0.5721590862943478,
+      "rmse": 0.8199474523625809,
+      "rank_correlation": 0.4377931661106226
+    },
+    "previous_period": {
+      "mae": 0.6636904761904762,
+      "rmse": 1.0897247358851685,
+      "rank_correlation": 0.24148444547210654
+    }
+  },
+  "test": {
+    "global_mean": {
+      "mae": 0.5968812003968255,
+      "rmse": 0.6686815189469342,
+      "rank_correlation": null
+    },
+    "poisson": {
+      "mae": 0.4800302121823061,
+      "rmse": 0.6072198017184959,
+      "rank_correlation": 0.37504623267264936
+    },
+    "random_forest": {
+      "mae": 0.4169600770835949,
+      "rmse": 0.5844619375993556,
+      "rank_correlation": 0.4897691687186965
+    },
+    "previous_period": {
+      "mae": 0.40625,
+      "rmse": 0.7144345083117603,
+      "rank_correlation": 0.309419523460878
+    }
+  },
+  "selected_by_validation_mae": "random_forest",
+  "validation_permutation_importance": {
+    "aadt": 0.10838280042907789,
+    "speed_kph": -0.00027845018528910304,
+    "length_m": 0.05280184906153529,
+    "lag_count": -0.0017103073130795288,
+    "month": 0.01929601360033717,
+    "road_class": -0.0014483609965587063
+  },
+  "table_hash": "25a0ef33b0c3cb01813db9210980f19c441a4cef744e442ca85139e06a3f5ac1",
+  "artifact_hash": "b00e724b0eb4718bda1cb3892eed69ef0a330057a604d18f5c61bcd09c5021e5"
+}

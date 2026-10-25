@@ -1,0 +1,30 @@
+{
+  "origin": "http://127.0.0.1:8000",
+  "configuration": {
+    "dataset": "iowa",
+    "resource_count": 3,
+    "threshold_minutes": 5.0,
+    "demand_model": "population"
+  },
+  "warm_cache": true,
+  "operations": {
+    "baseline": {
+      "http_seconds": 1.6699998330004746,
+      "solver_seconds": 3.370799822732806e-05,
+      "solver_status": "heuristic"
+    },
+    "static": {
+      "http_seconds": 1.6403618750009628,
+      "solver_seconds": 0.0027529170001798775,
+      "solver_status": "optimal"
+    },
+    "resilient": {
+      "http_seconds": 1.6333132500003558,
+      "solver_seconds": 0.005591583001660183,
+      "solver_status": "optimal"
+    },
+    "simulate_10000": {
+      "http_seconds": 1.429416749997472
+    }
+  }
+}

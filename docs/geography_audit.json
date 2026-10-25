@@ -1,0 +1,1499 @@
+{
+  "method_version": "directed-edge-plus-explicit-access-v2",
+  "boundary_south_west_north_east": [
+    41.5,
+    -90.7,
+    41.63,
+    -90.48
+  ],
+  "selection": "Whole Scott County 2020 tracts whose official internal points are in the rectangle; candidates in rectangle on largest strong component; intersecting whole OSM ways form an irregular routing buffer.",
+  "communities_at_points": {
+    "Bettendorf city": {
+      "demand_points": 7,
+      "candidates": 5
+    },
+    "Davenport city": {
+      "demand_points": 31,
+      "candidates": 20
+    },
+    "Eldridge city": {
+      "demand_points": 0,
+      "candidates": 1
+    },
+    "Unincorporated Scott County": {
+      "demand_points": 1,
+      "candidates": 6
+    }
+  },
+  "community_area_intersections_km2": {
+    "Riverdale city": 0.0,
+    "Blue Grass city": 0.0,
+    "Buffalo city": 10.462820981592678,
+    "Eldridge city": 0.0,
+    "Bettendorf city": 18.42105222770422,
+    "Davenport city": 148.14061995430814
+  },
+  "selected_tract_area_km2": 232.1926561349096,
+  "selected_tract_area_outside_rectangle_km2": 61.749796083254815,
+  "rectangle_area_km2": 265.00770818363554,
+  "demand": [
+    {
+      "tract_id": "19163010700",
+      "population_2020": 1320.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5293036,
+      "original_lon": -90.5806963,
+      "legacy_node": "161095629",
+      "legacy_node_snap_m": 73.53431173313137,
+      "road_snap_lat": 41.528880561843465,
+      "road_snap_lon": -90.58069563212891,
+      "road_snap_m": 46.98916838967922,
+      "directed_access": [
+        {
+          "edge_id": "61f934a64a6209504dedbb90",
+          "fraction": 0.5084147533879934
+        },
+        {
+          "edge_id": "7959664dbce392f29a8bc99e",
+          "fraction": 0.49158524661200664
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.58589200004964,
+        41.524579000168686,
+        -90.57551700020218,
+        41.534055000076634
+      ]
+    },
+    {
+      "tract_id": "19163010600",
+      "population_2020": 2679.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5271969,
+      "original_lon": -90.5653483,
+      "legacy_node": "12453679995",
+      "legacy_node_snap_m": 53.37018713852786,
+      "road_snap_lat": 41.526760074142004,
+      "road_snap_lon": -90.56534619064723,
+      "road_snap_m": 48.52122271209409,
+      "directed_access": [
+        {
+          "edge_id": "3971b4950fb20e532e7e92e3",
+          "fraction": 0.2794822393589834
+        },
+        {
+          "edge_id": "ec22bc4980fe3412c4b62550",
+          "fraction": 0.7205177606410166
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.57557099973053,
+        41.51800799985153,
+        -90.55493499983842,
+        41.53298600023748
+      ]
+    },
+    {
+      "tract_id": "19163011200",
+      "population_2020": 2228.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5367571,
+      "original_lon": -90.5962736,
+      "legacy_node": "161117975",
+      "legacy_node_snap_m": 14.361203231373509,
+      "road_snap_lat": 41.53675705629236,
+      "road_snap_lon": -90.59626542274654,
+      "road_snap_m": 0.6824650953014879,
+      "directed_access": [
+        {
+          "edge_id": "05908a52daa985578101da19",
+          "fraction": 0.24454404840105326
+        },
+        {
+          "edge_id": "30a1f01b2a532e9c069d11fe",
+          "fraction": 0.7554559515989467
+        }
+      ],
+      "road_classes": [
+        "tertiary"
+      ],
+      "tract_geometry_bounds": [
+        -90.60121899973174,
+        41.53163300010041,
+        -90.59132599993312,
+        41.54188700020031
+      ]
+    },
+    {
+      "tract_id": "19163013100",
+      "population_2020": 1857.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5323139,
+      "original_lon": -90.535673,
+      "legacy_node": "161065367",
+      "legacy_node_snap_m": 87.03815567623482,
+      "road_snap_lat": 41.53221149053455,
+      "road_snap_lon": -90.53531573557902,
+      "road_snap_m": 31.91506664652682,
+      "directed_access": [
+        {
+          "edge_id": "5441faed05abf3b569bea003",
+          "fraction": 0.31745164569457773
+        },
+        {
+          "edge_id": "fe8ed34b486e16c2613714a0",
+          "fraction": 0.6825483543054223
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.54398199968264,
+        41.52493300025772,
+        -90.52246700008165,
+        41.53852299978102
+      ]
+    },
+    {
+      "tract_id": "19163012901",
+      "population_2020": 5596.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5860595,
+      "original_lon": -90.5296756,
+      "legacy_node": "10555618695",
+      "legacy_node_snap_m": 127.82318739412534,
+      "road_snap_lat": 41.58601068501282,
+      "road_snap_lon": -90.52827156627964,
+      "road_snap_m": 117.21592772163362,
+      "directed_access": [
+        {
+          "edge_id": "7e87c69811e3141ac0807db6",
+          "fraction": 0.4789703931677916
+        },
+        {
+          "edge_id": "c095abe512db4fed23075abd",
+          "fraction": 0.5210296068322084
+        }
+      ],
+      "road_classes": [
+        "secondary"
+      ],
+      "tract_geometry_bounds": [
+        -90.56444799969545,
+        41.57465999982053,
+        -90.49312199969833,
+        41.59661899973248
+      ]
+    },
+    {
+      "tract_id": "19163012702",
+      "population_2020": 3335.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5679194,
+      "original_lon": -90.5929872,
+      "legacy_node": "161123637",
+      "legacy_node_snap_m": 16.244040283782674,
+      "road_snap_lat": 41.567918474791504,
+      "road_snap_lon": -90.59306963631627,
+      "road_snap_m": 6.877345847123285,
+      "directed_access": [
+        {
+          "edge_id": "03d41f2b248a9c55b67f11cf",
+          "fraction": 0.32953927585452236
+        },
+        {
+          "edge_id": "dea7f65dfbc2fdaf2bab405e",
+          "fraction": 0.6704607241454776
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.60066600043609,
+        41.560078000095295,
+        -90.57841799981777,
+        41.58366300022853
+      ]
+    },
+    {
+      "tract_id": "19163012801",
+      "population_2020": 5062.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5860676,
+      "original_lon": -90.5800633,
+      "legacy_node": "161123043",
+      "legacy_node_snap_m": 74.14309902925056,
+      "road_snap_lat": 41.58574642121094,
+      "road_snap_lon": -90.58031426673219,
+      "road_snap_m": 41.36137276138965,
+      "directed_access": [
+        {
+          "edge_id": "af6c98aa4efe5d93d10e017e",
+          "fraction": 0.7025237492384097
+        },
+        {
+          "edge_id": "db25bf8096edc2e226c2cbfe",
+          "fraction": 0.29747625076159034
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.60022500039513,
+        41.57451300018131,
+        -90.55691599973727,
+        41.59989200018715
+      ]
+    },
+    {
+      "tract_id": "19163012802",
+      "population_2020": 4832.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5648892,
+      "original_lon": -90.5683808,
+      "legacy_node": "13415364298",
+      "legacy_node_snap_m": 24.756279347950315,
+      "road_snap_lat": 41.56500556107229,
+      "road_snap_lon": -90.56836390455072,
+      "road_snap_m": 13.001614608881829,
+      "directed_access": [
+        {
+          "edge_id": "cb5fd8431cda5f698b412ec2",
+          "fraction": 0.15363524179450194
+        },
+        {
+          "edge_id": "d1a7f420f8e7c2aace5465b1",
+          "fraction": 0.8463647582054981
+        }
+      ],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.59383900010951,
+        41.55032199994321,
+        -90.55191399967391,
+        41.57465999982053
+      ]
+    },
+    {
+      "tract_id": "19163012601",
+      "population_2020": 5484.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5904964,
+      "original_lon": -90.638032,
+      "legacy_node": "9841035787",
+      "legacy_node_snap_m": 871.0455951571253,
+      "road_snap_lat": 41.58396179999999,
+      "road_snap_lon": -90.6438068,
+      "road_snap_m": 871.0455951571253,
+      "directed_access": [],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.67677000019057,
+        41.57007100000804,
+        -90.5979270003039,
+        41.60407500017623
+      ]
+    },
+    {
+      "tract_id": "19163013703",
+      "population_2020": 2857.0,
+      "community_at_internal_point": "Bettendorf city",
+      "original_lat": 41.5650366,
+      "original_lon": -90.5091009,
+      "legacy_node": "161109159",
+      "legacy_node_snap_m": 42.234733274793605,
+      "road_snap_lat": 41.56497429506553,
+      "road_snap_lon": -90.50952975779026,
+      "road_snap_m": 36.440073860220686,
+      "directed_access": [
+        {
+          "edge_id": "4fbb115e50c834c91d3cc6e1",
+          "fraction": 0.33669789366641756
+        },
+        {
+          "edge_id": "8413cb9718536307bd90f3b0",
+          "fraction": 0.6633021063335824
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.5225559997701,
+        41.56032600017989,
+        -90.49746799963556,
+        41.575184000256236
+      ]
+    },
+    {
+      "tract_id": "19163013600",
+      "population_2020": 2597.0,
+      "community_at_internal_point": "Bettendorf city",
+      "original_lat": 41.5566296,
+      "original_lon": -90.5096084,
+      "legacy_node": "161066282",
+      "legacy_node_snap_m": 64.21714384542685,
+      "road_snap_lat": 41.55655088285248,
+      "road_snap_lon": -90.50996592985592,
+      "road_snap_m": 31.085361996711736,
+      "directed_access": [
+        {
+          "edge_id": "60df936fadbac651fb225948",
+          "fraction": 0.713033690625871
+        },
+        {
+          "edge_id": "bdef346a9c299382846b3621",
+          "fraction": 0.28696630937412904
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.5225559997701,
+        41.54990500033507,
+        -90.498625999902,
+        41.56054099985437
+      ]
+    },
+    {
+      "tract_id": "19163010402",
+      "population_2020": 3153.0,
+      "community_at_internal_point": "Unincorporated Scott County",
+      "original_lat": 41.5272025,
+      "original_lon": -90.6979421,
+      "legacy_node": "8348093835",
+      "legacy_node_snap_m": 427.82424713741125,
+      "road_snap_lat": 41.530523599999995,
+      "road_snap_lon": -90.6953456,
+      "road_snap_m": 427.82424713741125,
+      "directed_access": [],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.7429710001007,
+        41.45226099979449,
+        -90.66888099985701,
+        41.596434999892764
+      ]
+    },
+    {
+      "tract_id": "19163011400",
+      "population_2020": 2642.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.535294,
+      "original_lon": -90.567032,
+      "legacy_node": "161084840",
+      "legacy_node_snap_m": 31.584629982013436,
+      "road_snap_lat": 41.535299650406074,
+      "road_snap_lon": -90.56677512922421,
+      "road_snap_m": 21.447554779846072,
+      "directed_access": [
+        {
+          "edge_id": "5fe23166bd051f290d713319",
+          "fraction": 0.5483757524093958
+        },
+        {
+          "edge_id": "fb5dcf61612883de86a9669e",
+          "fraction": 0.45162424759060416
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.57554800016432,
+        41.53192899971027,
+        -90.5578680001394,
+        41.538304999911155
+      ]
+    },
+    {
+      "tract_id": "19163011000",
+      "population_2020": 2545.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5075439,
+      "original_lon": -90.612053,
+      "legacy_node": "160949561",
+      "legacy_node_snap_m": 120.30190480091105,
+      "road_snap_lat": 41.50792798907512,
+      "road_snap_lon": -90.6112867189347,
+      "road_snap_m": 76.8989610293504,
+      "directed_access": [
+        {
+          "edge_id": "e637be7c8b99d733259db6cc",
+          "fraction": 0.2925872336174825
+        },
+        {
+          "edge_id": "f6b8997976f9305bc4207e1c",
+          "fraction": 0.7074127663825175
+        }
+      ],
+      "road_classes": [
+        "unclassified"
+      ],
+      "tract_geometry_bounds": [
+        -90.63093800020887,
+        41.47973200000393,
+        -90.59436499964097,
+        41.527561999738204
+      ]
+    },
+    {
+      "tract_id": "19163011100",
+      "population_2020": 3215.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5355049,
+      "original_lon": -90.6078474,
+      "legacy_node": "161147548",
+      "legacy_node_snap_m": 20.150746470494184,
+      "road_snap_lat": 41.53550139820007,
+      "road_snap_lon": -90.60784740251668,
+      "road_snap_m": 0.38895995363893376,
+      "directed_access": [
+        {
+          "edge_id": "1cbb6316daa502f29a127c94",
+          "fraction": 0.8619767904588357
+        },
+        {
+          "edge_id": "a8c8e1a7fb79c488a7de8a12",
+          "fraction": 0.13802320954116432
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.61610899957084,
+        41.52316999992942,
+        -90.60093099985166,
+        41.5455000000104
+      ]
+    },
+    {
+      "tract_id": "19163011300",
+      "population_2020": 4025.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5376051,
+      "original_lon": -90.5838729,
+      "legacy_node": "8340083533",
+      "legacy_node_snap_m": 76.28564729352011,
+      "road_snap_lat": 41.53772907369698,
+      "road_snap_lon": -90.58387375263143,
+      "road_snap_m": 13.770613319221457,
+      "directed_access": [
+        {
+          "edge_id": "3838e0522935ac39400fee9d",
+          "fraction": 0.35705788456463317
+        },
+        {
+          "edge_id": "7b1ffdb9cfdc850a4bf95e07",
+          "fraction": 0.6429421154353668
+        }
+      ],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.59149900018548,
+        41.53163200013807,
+        -90.57551700020218,
+        41.54193599998229
+      ]
+    },
+    {
+      "tract_id": "19163011500",
+      "population_2020": 2252.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5319074,
+      "original_lon": -90.5498753,
+      "legacy_node": "161011109",
+      "legacy_node_snap_m": 63.79795154810286,
+      "road_snap_lat": 41.53216260212576,
+      "road_snap_lon": -90.54987424769047,
+      "road_snap_m": 28.34719366517738,
+      "directed_access": [
+        {
+          "edge_id": "08466ba0dd49fa7d8825aa02",
+          "fraction": 0.5151690907978408
+        },
+        {
+          "edge_id": "50b20e71e95c103103552234",
+          "fraction": 0.4848309092021592
+        }
+      ],
+      "road_classes": [
+        "tertiary"
+      ],
+      "tract_geometry_bounds": [
+        -90.55791400017014,
+        41.524432000269364,
+        -90.53982200041656,
+        41.538412000222856
+      ]
+    },
+    {
+      "tract_id": "19163011600",
+      "population_2020": 3459.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5419813,
+      "original_lon": -90.5632266,
+      "legacy_node": "160967879",
+      "legacy_node_snap_m": 59.09496189585768,
+      "road_snap_lat": 41.54193604281817,
+      "road_snap_lon": -90.5632264682539,
+      "road_snap_m": 5.027018700331711,
+      "directed_access": [
+        {
+          "edge_id": "cb0bc1fc77e3a0096f78f1ed",
+          "fraction": 0.31977980816292273
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.57723000031241,
+        41.53825699992747,
+        -90.54805900000636,
+        41.54606499969098
+      ]
+    },
+    {
+      "tract_id": "19163012400",
+      "population_2020": 1281.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5029866,
+      "original_lon": -90.6567863,
+      "legacy_node": "161077433",
+      "legacy_node_snap_m": 243.4864866792589,
+      "road_snap_lat": 41.50298096516316,
+      "road_snap_lon": -90.65934035096991,
+      "road_snap_m": 213.25956805429286,
+      "directed_access": [
+        {
+          "edge_id": "583c2a878f1ec0dfe855bd66",
+          "fraction": 0.6706112266644999
+        },
+        {
+          "edge_id": "5d559c278daf112d03a0db6f",
+          "fraction": 0.3293887733355001
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.67675699977178,
+        41.46063199975924,
+        -90.61473699994247,
+        41.52533600000782
+      ]
+    },
+    {
+      "tract_id": "19163012501",
+      "population_2020": 4089.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5591947,
+      "original_lon": -90.6577003,
+      "legacy_node": "7419565089",
+      "legacy_node_snap_m": 287.4776079889729,
+      "road_snap_lat": 41.5591617628932,
+      "road_snap_lon": -90.65822951463709,
+      "road_snap_m": 44.301522462827165,
+      "directed_access": [
+        {
+          "edge_id": "4a39e0a7cc9f157cfc8af0ad",
+          "fraction": 0.7616103988212313
+        },
+        {
+          "edge_id": "be2cb3c69f9a91e96dc976bf",
+          "fraction": 0.23838960117876867
+        }
+      ],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.68793300040863,
+        41.53812100000432,
+        -90.61056199970946,
+        41.5963839998407
+      ]
+    },
+    {
+      "tract_id": "19163012502",
+      "population_2020": 4079.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5269995,
+      "original_lon": -90.6347442,
+      "legacy_node": "161108353",
+      "legacy_node_snap_m": 296.04422488019856,
+      "road_snap_lat": 41.52964899999999,
+      "road_snap_lon": -90.63513,
+      "road_snap_m": 296.04422488019856,
+      "directed_access": [],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.67947300033777,
+        41.517798999691664,
+        -90.61456500041332,
+        41.538217999998494
+      ]
+    },
+    {
+      "tract_id": "19163012602",
+      "population_2020": 4202.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5656493,
+      "original_lon": -90.619734,
+      "legacy_node": "161074048",
+      "legacy_node_snap_m": 216.9213971950033,
+      "road_snap_lat": 41.56598916179511,
+      "road_snap_lon": -90.61922730050641,
+      "road_snap_m": 56.67146693505972,
+      "directed_access": [
+        {
+          "edge_id": "37895ba115d58c3857b94556",
+          "fraction": 0.3483913271458204
+        },
+        {
+          "edge_id": "b18ba1276008d5f200ba2fa5",
+          "fraction": 0.6516086728541797
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.64869699987652,
+        41.56016599969221,
+        -90.6100799996606,
+        41.58209999972735
+      ]
+    },
+    {
+      "tract_id": "19163012701",
+      "population_2020": 3083.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5727357,
+      "original_lon": -90.6054711,
+      "legacy_node": "161119687",
+      "legacy_node_snap_m": 203.17216002848414,
+      "road_snap_lat": 41.572132228732286,
+      "road_snap_lon": -90.60547312052302,
+      "road_snap_m": 67.03080622660083,
+      "directed_access": [
+        {
+          "edge_id": "510d9d8afe91220bddebfb49",
+          "fraction": 0.4825543210914239
+        },
+        {
+          "edge_id": "fec4dec1ab65739af28f15ba",
+          "fraction": 0.5174456789085762
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.61091400006195,
+        41.560072000271184,
+        -90.60022500039513,
+        41.58774899975704
+      ]
+    },
+    {
+      "tract_id": "19163012902",
+      "population_2020": 5555.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5665866,
+      "original_lon": -90.5326625,
+      "legacy_node": "161144915",
+      "legacy_node_snap_m": 71.6560812758538,
+      "road_snap_lat": 41.56658848967259,
+      "road_snap_lon": -90.53190525451217,
+      "road_snap_m": 63.17028192344658,
+      "directed_access": [
+        {
+          "edge_id": "08bc11b31bedd29a40d0c1cd",
+          "fraction": 0.19899629571106936
+        },
+        {
+          "edge_id": "2424869e84f521d63e0664d0",
+          "fraction": 0.8010037042889306
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.55818199995875,
+        41.54843600015798,
+        -90.50279899958687,
+        41.575144999754606
+      ]
+    },
+    {
+      "tract_id": "19163013000",
+      "population_2020": 5242.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5475344,
+      "original_lon": -90.5384891,
+      "legacy_node": "161150998",
+      "legacy_node_snap_m": 92.75238309097693,
+      "road_snap_lat": 41.54703442077908,
+      "road_snap_lon": -90.5384796032464,
+      "road_snap_m": 55.5421890958897,
+      "directed_access": [
+        {
+          "edge_id": "129f9bd369d5ca3f6a6e9faf",
+          "fraction": 0.5027134493622748
+        },
+        {
+          "edge_id": "4c905b83f5c05c8513579b2e",
+          "fraction": 0.4972865506377252
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.55551800016961,
+        41.53836199992957,
+        -90.52237800039319,
+        41.55679699992589
+      ]
+    },
+    {
+      "tract_id": "19163012300",
+      "population_2020": 1546.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5061352,
+      "original_lon": -90.6263977,
+      "legacy_node": "161009201",
+      "legacy_node_snap_m": 43.83415014989074,
+      "road_snap_lat": 41.50613486411296,
+      "road_snap_lon": -90.62641878703107,
+      "road_snap_m": 1.7610613743538053,
+      "directed_access": [
+        {
+          "edge_id": "a9a1ad5400d8bcea06aa8f2e",
+          "fraction": 0.5016611070016579
+        },
+        {
+          "edge_id": "b11ddbfab7766ac7657d255f",
+          "fraction": 0.4983388929983421
+        }
+      ],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.63974800008411,
+        41.50110899980277,
+        -90.61588799963789,
+        41.51086799968949
+      ]
+    },
+    {
+      "tract_id": "19163010900",
+      "population_2020": 1912.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5197042,
+      "original_lon": -90.5870421,
+      "legacy_node": "7725652729",
+      "legacy_node_snap_m": 66.05108488131951,
+      "road_snap_lat": 41.519698190708056,
+      "road_snap_lon": -90.58650903948312,
+      "road_snap_m": 44.5044297190148,
+      "directed_access": [
+        {
+          "edge_id": "b216e07ff69dc1b0d6a7fbbc",
+          "fraction": 0.5100569066185388
+        },
+        {
+          "edge_id": "e75a4460cbf3557eff62f064",
+          "fraction": 0.4899430933814612
+        }
+      ],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.60252000011333,
+        41.51143900016311,
+        -90.56622299972996,
+        41.52463999978638
+      ]
+    },
+    {
+      "tract_id": "19163013705",
+      "population_2020": 5165.0,
+      "community_at_internal_point": "Bettendorf city",
+      "original_lat": 41.5582491,
+      "original_lon": -90.4919044,
+      "legacy_node": "161031327",
+      "legacy_node_snap_m": 38.574725926345934,
+      "road_snap_lat": 41.55825398285029,
+      "road_snap_lon": -90.49234639042483,
+      "road_snap_m": 36.88050463780714,
+      "directed_access": [
+        {
+          "edge_id": "8ad48c2cf4b0aad8eb633032",
+          "fraction": 0.27671376323070634
+        },
+        {
+          "edge_id": "d9012c4ea6d695f659ae1c16",
+          "fraction": 0.7232862367692936
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.50337600007029,
+        41.54695300002762,
+        -90.48341999969543,
+        41.568597000147655
+      ]
+    },
+    {
+      "tract_id": "19163010800",
+      "population_2020": 2871.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5280935,
+      "original_lon": -90.5944188,
+      "legacy_node": "161085270",
+      "legacy_node_snap_m": 30.68883922421584,
+      "road_snap_lat": 41.528092826602155,
+      "road_snap_lon": -90.59429142675354,
+      "road_snap_m": 10.63186151063713,
+      "directed_access": [
+        {
+          "edge_id": "544fe2b642996d496bc9a29c",
+          "fraction": 0.5146565471697935
+        },
+        {
+          "edge_id": "5aab950633485f0828031653",
+          "fraction": 0.4853434528302065
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.60702699970903,
+        41.524530000015204,
+        -90.58576200035331,
+        41.532998000205986
+      ]
+    },
+    {
+      "tract_id": "19163013500",
+      "population_2020": 3481.0,
+      "community_at_internal_point": "Bettendorf city",
+      "original_lat": 41.5465962,
+      "original_lon": -90.511664,
+      "legacy_node": "160939222",
+      "legacy_node_snap_m": 56.19573062012905,
+      "road_snap_lat": 41.54660431824598,
+      "road_snap_lon": -90.51179461255417,
+      "road_snap_m": 10.936484840084987,
+      "directed_access": [
+        {
+          "edge_id": "7ee4b2668aecf84c936f1e72",
+          "fraction": 0.16879482433083948
+        },
+        {
+          "edge_id": "d4e047707d402e7a3e44822f",
+          "fraction": 0.8312051756691605
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.52258400025751,
+        41.53741300033346,
+        -90.49836800015915,
+        41.5547509997056
+      ]
+    },
+    {
+      "tract_id": "19163011700",
+      "population_2020": 3290.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5499134,
+      "original_lon": -90.5664811,
+      "legacy_node": "161084877",
+      "legacy_node_snap_m": 48.13173360263925,
+      "road_snap_lat": 41.54991266122415,
+      "road_snap_lon": -90.56638095452006,
+      "road_snap_m": 8.356637043411764,
+      "directed_access": [
+        {
+          "edge_id": "544b500a7888ed614962f0f8",
+          "fraction": 0.5887791504488045
+        },
+        {
+          "edge_id": "c25461c03b9e49ac78213520",
+          "fraction": 0.4112208495511955
+        }
+      ],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.57695099975483,
+        41.545516000009776,
+        -90.5544620000104,
+        41.555227999728174
+      ]
+    },
+    {
+      "tract_id": "19163011800",
+      "population_2020": 2306.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5509266,
+      "original_lon": -90.5840627,
+      "legacy_node": "161141536",
+      "legacy_node_snap_m": 10.755341981646481,
+      "road_snap_lat": 41.550932,
+      "road_snap_lon": -90.583934,
+      "road_snap_m": 10.755341981646481,
+      "directed_access": [],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.59132599993312,
+        41.54183799970882,
+        -90.57659199972963,
+        41.560204000306
+      ]
+    },
+    {
+      "tract_id": "19163011900",
+      "population_2020": 2638.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5509923,
+      "original_lon": -90.5959765,
+      "legacy_node": "160992689",
+      "legacy_node_snap_m": 10.91876121794069,
+      "road_snap_lat": 41.55099226835601,
+      "road_snap_lon": -90.59597388924584,
+      "road_snap_m": 0.2178658734708314,
+      "directed_access": [
+        {
+          "edge_id": "17b29cc35d2e1fe791243421",
+          "fraction": 0.765469324151579
+        },
+        {
+          "edge_id": "48b523a4181420047dc3f097",
+          "fraction": 0.23453067584842105
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.6009769998824,
+        41.541877000144176,
+        -90.59101999961138,
+        41.56015400005976
+      ]
+    },
+    {
+      "tract_id": "19163012000",
+      "population_2020": 3527.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5541874,
+      "original_lon": -90.6122775,
+      "legacy_node": "161061526",
+      "legacy_node_snap_m": 104.37256938695688,
+      "road_snap_lat": 41.555126,
+      "road_snap_lon": -90.61233700000001,
+      "road_snap_m": 104.37256938695688,
+      "directed_access": [],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.62959300034467,
+        41.545479999669446,
+        -90.60066600043609,
+        41.56108900014461
+      ]
+    },
+    {
+      "tract_id": "19163013200",
+      "population_2020": 1715.0,
+      "community_at_internal_point": "Bettendorf city",
+      "original_lat": 41.5272899,
+      "original_lon": -90.523141,
+      "legacy_node": "7869350461",
+      "legacy_node_snap_m": 32.839822839654104,
+      "road_snap_lat": 41.527321300000004,
+      "road_snap_lon": -90.5227498,
+      "road_snap_m": 32.839822839654104,
+      "directed_access": [],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.53303500027296,
+        41.51954800032772,
+        -90.51299900043048,
+        41.537681000033984
+      ]
+    },
+    {
+      "tract_id": "19163013300",
+      "population_2020": 3676.0,
+      "community_at_internal_point": "Bettendorf city",
+      "original_lat": 41.5292093,
+      "original_lon": -90.506539,
+      "legacy_node": "7347472920",
+      "legacy_node_snap_m": 22.68329699356534,
+      "road_snap_lat": 41.529225253767436,
+      "road_snap_lon": -90.50653542474211,
+      "road_snap_m": 1.797078293513132,
+      "directed_access": [
+        {
+          "edge_id": "25719e14a683f25f7c3a016b",
+          "fraction": 0.2855933049865183
+        },
+        {
+          "edge_id": "521c6b1e637962b556e3ac01",
+          "fraction": 0.7144066950134818
+        }
+      ],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.52219900029306,
+        41.51803300013439,
+        -90.48932899995505,
+        41.5433090001008
+      ]
+    },
+    {
+      "tract_id": "19163012100",
+      "population_2020": 3482.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5370555,
+      "original_lon": -90.620983,
+      "legacy_node": "13759201093",
+      "legacy_node_snap_m": 53.875674633950325,
+      "road_snap_lat": 41.536572199999995,
+      "road_snap_lon": -90.6209283,
+      "road_snap_m": 53.875674633950325,
+      "directed_access": [],
+      "road_classes": [
+        "service"
+      ],
+      "tract_geometry_bounds": [
+        -90.62991600038487,
+        41.526148999705974,
+        -90.61297799980146,
+        41.54545999999465
+      ]
+    },
+    {
+      "tract_id": "19163012200",
+      "population_2020": 2073.0,
+      "community_at_internal_point": "Davenport city",
+      "original_lat": 41.5148539,
+      "original_lon": -90.6224769,
+      "legacy_node": "161073510",
+      "legacy_node_snap_m": 32.45621677602808,
+      "road_snap_lat": 41.51493036905283,
+      "road_snap_lon": -90.62225112964575,
+      "road_snap_m": 20.673611807319137,
+      "directed_access": [
+        {
+          "edge_id": "8c5a7e7caf9a75590618f18d",
+          "fraction": 0.7740716715506302
+        },
+        {
+          "edge_id": "da74a4d1002f0c84711754d3",
+          "fraction": 0.22592832844936983
+        }
+      ],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.63011800005124,
+        41.50923300023446,
+        -90.61378600026354,
+        41.52218500021043
+      ]
+    },
+    {
+      "tract_id": "19163013400",
+      "population_2020": 2975.0,
+      "community_at_internal_point": "Bettendorf city",
+      "original_lat": 41.5295971,
+      "original_lon": -90.486222,
+      "legacy_node": "161075436",
+      "legacy_node_snap_m": 44.32778025868389,
+      "road_snap_lat": 41.529863000000006,
+      "road_snap_lon": -90.485826,
+      "road_snap_m": 44.32778025868389,
+      "directed_access": [],
+      "road_classes": [
+        "residential"
+      ],
+      "tract_geometry_bounds": [
+        -90.50025600017158,
+        41.51827700007439,
+        -90.47393699997562,
+        41.54191199999766
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "site_id": "C1",
+      "node": "161006844",
+      "lat": 41.555646,
+      "lon": -90.585817,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C2",
+      "node": "160932587",
+      "lat": 41.625699,
+      "lon": -90.699732,
+      "community": "Unincorporated Scott County",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C3",
+      "node": "160932159",
+      "lat": 41.626206,
+      "lon": -90.480944,
+      "community": "Unincorporated Scott County",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C4",
+      "node": "161010564",
+      "lat": 41.508314,
+      "lon": -90.697466,
+      "community": "Unincorporated Scott County",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C5",
+      "node": "7593001352",
+      "lat": 41.5234802,
+      "lon": -90.480106,
+      "community": "Bettendorf city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C6",
+      "node": "160961179",
+      "lat": 41.627854,
+      "lon": -90.579987,
+      "community": "Eldridge city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C7",
+      "node": "8348184994",
+      "lat": 41.565584,
+      "lon": -90.6681848,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C8",
+      "node": "161127416",
+      "lat": 41.5020889,
+      "lon": -90.6200375,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C9",
+      "node": "6603902419",
+      "lat": 41.5749457,
+      "lon": -90.5138581,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C10",
+      "node": "11097617534",
+      "lat": 41.6096988,
+      "lon": -90.6383143,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C11",
+      "node": "1725469085",
+      "lat": 41.52888,
+      "lon": -90.5385982,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C12",
+      "node": "160997382",
+      "lat": 41.612258,
+      "lon": -90.531688,
+      "community": "Unincorporated Scott County",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C13",
+      "node": "161054968",
+      "lat": 41.5390853,
+      "lon": -90.6323085,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C14",
+      "node": "161036704",
+      "lat": 41.591548,
+      "lon": -90.572086,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C15",
+      "node": "161100500",
+      "lat": 41.574211,
+      "lon": -90.623776,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C16",
+      "node": "7725631663",
+      "lat": 41.5213097,
+      "lon": -90.5825299,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C17",
+      "node": "161104033",
+      "lat": 41.597141,
+      "lon": -90.678509,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C18",
+      "node": "5766956451",
+      "lat": 41.5565404,
+      "lon": -90.4801705,
+      "community": "Bettendorf city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C19",
+      "node": "161061333",
+      "lat": 41.538178,
+      "lon": -90.687922,
+      "community": "Unincorporated Scott County",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C20",
+      "node": "161074752",
+      "lat": 41.594155,
+      "lon": -90.483514,
+      "community": "Bettendorf city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C21",
+      "node": "7715068436",
+      "lat": 41.5580954,
+      "lon": -90.54632,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C22",
+      "node": "161077433",
+      "lat": 41.5019231,
+      "lon": -90.6593362,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C23",
+      "node": "11283034920",
+      "lat": 41.6060018,
+      "lon": -90.6025859,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C24",
+      "node": "161062545",
+      "lat": 41.5470669,
+      "lon": -90.5132526,
+      "community": "Bettendorf city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C25",
+      "node": "7580841477",
+      "lat": 41.5892197,
+      "lon": -90.5394619,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C26",
+      "node": "7414890081",
+      "lat": 41.5270898,
+      "lon": -90.6591518,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C27",
+      "node": "160956064",
+      "lat": 41.5395473,
+      "lon": -90.564795,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C28",
+      "node": "5948514092",
+      "lat": 41.5227345,
+      "lon": -90.5101917,
+      "community": "Bettendorf city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C29",
+      "node": "161006002",
+      "lat": 41.589051,
+      "lon": -90.6485881,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C30",
+      "node": "160966887",
+      "lat": 41.536872,
+      "lon": -90.602995,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C31",
+      "node": "161058558",
+      "lat": 41.6114839,
+      "lon": -90.5025051,
+      "community": "Unincorporated Scott County",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    },
+    {
+      "site_id": "C32",
+      "node": "1683735452",
+      "lat": 41.5765709,
+      "lon": -90.5949558,
+      "community": "Davenport city",
+      "snap_m": 0.0,
+      "location_kind": "assumed graph-node site; no independent original facility location"
+    }
+  ],
+  "population_total_2020": 127326.0,
+  "legacy_max_snap_m": 871.0455951571253,
+  "road_max_snap_m": 871.0455951571253,
+  "legacy_median_snap_m": 59.09496189585768,
+  "road_median_snap_m": 36.440073860220686,
+  "limitations": [
+    "Internal points are not household locations or necessarily polygon centroids. Whole-tract weights do not imply exact within-threshold population.",
+    "Straight access connectors can cross barriers or private land; they are lower-bound illustrative distances with assumed speeds, not verified paths.",
+    "Nearest physical road and its legal directed approaches are fixed before disruptions; a closed access segment can make a point unreachable. No scenario resnapping.",
+    "Area intersections identify represented geography, not city population allocation. Candidate sites are invented locations, not actual public facilities."
+  ],
+  "places_source": {
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/26/query",
+    "params": {
+      "where": "STATE='19'",
+      "geometry": "-90.75,41.45,-90.47,41.64",
+      "geometryType": "esriGeometryEnvelope",
+      "inSR": "4326",
+      "outSR": "4326",
+      "spatialRel": "esriSpatialRelIntersects",
+      "outFields": "NAME,GEOID",
+      "f": "geojson",
+      "returnGeometry": "true"
+    },
+    "body": null,
+    "retrieved_at": "2026-10-25T00:22:39.335036+00:00",
+    "sha256": "52e6a17d1e9a5f169f6f2468b796dd43d2dd0bdfdad3da262a47066f297779ee",
+    "bytes": 94102
+  },
+  "routing_graph_geometry_bounds_west_south_east_north": [
+    -90.8533837,
+    41.4626349,
+    -90.435006,
+    41.742442
+  ]
+}

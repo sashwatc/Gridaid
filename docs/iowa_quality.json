@@ -1,0 +1,10 @@
+{
+  "nodes": 19205,
+  "directed_edges": 51911,
+  "weak_components": 37,
+  "strong_components": 80,
+  "max_demand_snap_m": 871.0455951571253,
+  "max_candidate_snap_m": 0.0,
+  "population_total": 127326.0,
+  "speed_assumptions": 32475
+}

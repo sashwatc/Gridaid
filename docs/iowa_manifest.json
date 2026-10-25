@@ -1,0 +1,274 @@
+{
+  "kind": "public_roads_census_assumed_resources",
+  "sources": [
+    {
+      "url": "https://download.geofabrik.de/north-america/us/iowa-261023.osm.pbf",
+      "retrieved_at": "2026-10-24T23:30:29.466032+00:00",
+      "source_date": "2026-10-23",
+      "sha256": "f203764a9aee59ea0d62d42582cb8a58f224e905061c70a5b4cec3c886c2fa25",
+      "bytes": 134153625,
+      "license": "ODbL 1.0; OpenStreetMap contributors; extract by Geofabrik"
+    },
+    {
+      "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/6/query",
+      "params": {
+        "where": "STATE='19' AND COUNTY='163'",
+        "outFields": "GEOID,POP100,INTPTLAT,INTPTLON",
+        "outSR": "4326",
+        "f": "geojson",
+        "returnGeometry": "true"
+      },
+      "body": null,
+      "retrieved_at": "2026-10-24T23:24:10.479802+00:00",
+      "sha256": "e59c9ebd7bc03934bc010d80a8b7a7389f8811db9b51c169644f2d99a3907781",
+      "bytes": 411514
+    }
+  ],
+  "crs": "EPSG:4326",
+  "distance_crs": "WGS84 ellipsoid road lengths; EPSG:26915 (NAD83 UTM 15N) for snapping and candidate dispersion",
+  "candidate_rule": "32 farthest-spread nodes on largest strongly connected component inside crop, independent of demand; disconnected demand is retained",
+  "population": "2020 Decennial Census POP100, whole-tract population at official internal point; include tracts whose internal point is in crop",
+  "study_bbox_south_west_north_east": [
+    41.5,
+    -90.7,
+    41.63,
+    -90.48
+  ],
+  "excluded_tract_ids": [
+    "19163010103",
+    "19163013702",
+    "19163010401",
+    "19163010201",
+    "19163010104",
+    "19163010101",
+    "19163010202",
+    "19163010300",
+    "19163013706"
+  ],
+  "skipped_zero_length_edges": 0,
+  "unsimplified_counts": {
+    "nodes": 53224,
+    "edges": 113896
+  },
+  "simplification": "OSMnx degree-two contraction; preserve direction, parallel edges, speed/class/source changes and rings; sum geodesic lengths",
+  "license": "Roads \u00a9 OpenStreetMap contributors, ODbL 1.0; Census U.S. public domain; resources and scenarios are synthetic assumptions",
+  "assumptions": "Crop can truncate routes. No traffic, emergency-vehicle speed, dispatch delay, capacity or road turn restrictions. Speeds are OSM tags or explicit class defaults. This is not current population.",
+  "ml": {
+    "model_version": "iowa-tract-month-v1-04182850f9b352d1",
+    "data_kind": "observed_iowa_crash_counts",
+    "forecast_period": "2024-01",
+    "sources": [
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 0,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:44.738412+00:00",
+        "sha256": "b4d2e38d047b5b75c232111fac3dfc54292d0541dd7b31f386ef01ddfcd4315c",
+        "bytes": 355708
+      },
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 2000,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:45.214059+00:00",
+        "sha256": "9409ca842556539d1a0605282d047802f28ef689672a46b4115d227751df4403",
+        "bytes": 355672
+      },
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 4000,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:45.724103+00:00",
+        "sha256": "036525324a45742fc3ae1236c58b2bfa0998f9ffa1b44130ce237abe401d1e07",
+        "bytes": 355685
+      },
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 6000,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:46.165431+00:00",
+        "sha256": "04e8edd3899438513c66647e5cfc7ffe1e8408945c4e7cf311afa5a5d4551b94",
+        "bytes": 355687
+      },
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 8000,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:46.729764+00:00",
+        "sha256": "ad25202f1a65f6f943ac2dbcd197a7e70abe3eca49f21344e9a54101abda19eb",
+        "bytes": 355641
+      },
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 10000,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:47.166643+00:00",
+        "sha256": "1f17ffa33c4da74cd05b839d97083800e9ba2590a43c18b4836b974cc587b7ce",
+        "bytes": 355674
+      },
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 12000,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:47.586593+00:00",
+        "sha256": "4b06c55fb88ad1b67addabdc9f1dcbcf11aafc85fe1cc2b64d9995e9e715f41f",
+        "bytes": 355657
+      },
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 14000,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:48.078941+00:00",
+        "sha256": "41003d14888f4f6967db99c3c5383bfdcb3ff0f84c32ae437eaed018ab4b3889",
+        "bytes": 355640
+      },
+      {
+        "url": "https://gis.iowadot.gov/agshost/rest/services/Traffic_Safety/Crash_Data/FeatureServer/0/query",
+        "params": {
+          "f": "geojson",
+          "where": "COUNTY_NUMBER=82 AND CRASH_DATE >= DATE '2019-01-01' AND CRASH_DATE < DATE '2024-01-01'",
+          "outFields": "OBJECTID,CRASH_DATE",
+          "outSR": "4326",
+          "resultOffset": 16000,
+          "resultRecordCount": 2000,
+          "orderByFields": "OBJECTID",
+          "returnGeometry": "true"
+        },
+        "body": null,
+        "retrieved_at": "2026-10-24T23:35:48.576946+00:00",
+        "sha256": "58f51e1b83d8660fc131cf298611fad42ef44736341b19ef9b85ad8339bb07ea",
+        "bytes": 325737
+      }
+    ],
+    "limitations": [
+      "Small regional sample and only 96 held-out cell-months; not operational validation.",
+      "Retrospective finalized crash counts can differ from counts known at the historical forecast origin; no as-of reporting-latency snapshots are available.",
+      "Tracts vary in size; forecasts are counts, not per-person probabilities or exposure-adjusted rates.",
+      "January 2024 forecast is historical, not a current alert or 2026 risk estimate.",
+      "No AADT/weather/current roadway fields used, avoiding mismatched historical vintages; ML adds only calendar and lag-count signal.",
+      "Forecasts and contributions are not causal and cannot predict every emergency."
+    ]
+  },
+  "geography": {
+    "method_version": "directed-edge-plus-explicit-access-v2",
+    "boundary_south_west_north_east": [
+      41.5,
+      -90.7,
+      41.63,
+      -90.48
+    ],
+    "selection": "Whole Scott County 2020 tracts whose official internal points are in the rectangle; candidates in rectangle on largest strong component; intersecting whole OSM ways form an irregular routing buffer.",
+    "communities_at_points": {
+      "Bettendorf city": {
+        "demand_points": 7,
+        "candidates": 5
+      },
+      "Davenport city": {
+        "demand_points": 31,
+        "candidates": 20
+      },
+      "Eldridge city": {
+        "demand_points": 0,
+        "candidates": 1
+      },
+      "Unincorporated Scott County": {
+        "demand_points": 1,
+        "candidates": 6
+      }
+    },
+    "community_area_intersections_km2": {
+      "Riverdale city": 0.0,
+      "Blue Grass city": 0.0,
+      "Buffalo city": 10.462820981592678,
+      "Eldridge city": 0.0,
+      "Bettendorf city": 18.42105222770422,
+      "Davenport city": 148.14061995430814
+    },
+    "selected_tract_area_km2": 232.1926561349096,
+    "selected_tract_area_outside_rectangle_km2": 61.749796083254815,
+    "rectangle_area_km2": 265.00770818363554,
+    "population_total_2020": 127326.0,
+    "legacy_max_snap_m": 871.0455951571253,
+    "road_max_snap_m": 871.0455951571253,
+    "legacy_median_snap_m": 59.09496189585768,
+    "road_median_snap_m": 36.440073860220686,
+    "limitations": [
+      "Internal points are not household locations or necessarily polygon centroids. Whole-tract weights do not imply exact within-threshold population.",
+      "Straight access connectors can cross barriers or private land; they are lower-bound illustrative distances with assumed speeds, not verified paths.",
+      "Nearest physical road and its legal directed approaches are fixed before disruptions; a closed access segment can make a point unreachable. No scenario resnapping.",
+      "Area intersections identify represented geography, not city population allocation. Candidate sites are invented locations, not actual public facilities."
+    ]
+  }
+}
