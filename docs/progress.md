@@ -1,3 +1,9 @@
+# Main merge checkpoint — October 25, 2026
+
+Arjun's five `frontend-polish` commits through `82a3c1f` were fast-forwarded into main without conflicts. Runtime/tests remain exactly his branch. Final verify: 58 backend tests passed, strict TypeScript/build passed, 22/23 Chromium checks passed; drawn-area baseline returned HTTP 504 in the complete suite, despite passing alone. Exploratory scalar-validation and test edits were reverted; computation limits and expected results were unchanged. This is an unresolved full-suite failure, not a green release. Details: docs/validation.md and docs/merge_validation.json. App is running at http://127.0.0.1:8000/, server log artifacts/serve-merge.log. Earlier checkpoints below predate this merge.
+
+---
+
 # Resumable continuation checkpoint
 
 The existing application was continued, not rebuilt. Original sources/reports read and claims independently checked. **http://127.0.0.1:8000/** is running from `./scripts/serve.sh`; no public deployment, contacts, video or submission.

@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-25",
+  "base_main": "2d779388442083693ceeab54cdda3e1abfe833bd",
+  "merged_frontend_polish": "82a3c1fcd835bc0ebeecbb0c336d203df55aa946",
+  "merge": "fast-forward; no conflicts",
+  "command": "./scripts/verify.sh",
+  "exit_code": 1,
+  "backend": {
+    "passed": 58,
+    "failed": 0,
+    "warnings": 4,
+    "seconds": 20.6
+  },
+  "typescript_and_build": "passed",
+  "browser_stats": {
+    "startTime": "2026-10-25T05:32:47.904Z",
+    "duration": 225023.327,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "failed_check": "city selection and a dragged, movable area change the actual planning inputs and population",
+  "observed_failure": {
+    "endpoint": "POST /api/baseline",
+    "http_status": 504,
+    "test_error": "TypeError reading configuration.focus_bounds from error response",
+    "reproducible_in_full_suite": true,
+    "targeted_rerun_passed": true,
+    "targeted_seconds": 42.6,
+    "drawn_area_matrices_cleared_before_final_run": true
+  },
+  "root_cause": "Unresolved; output-backpressure and scalar-validation-overhead hypotheses did not resolve the full-suite failure. All exploratory code/test edits were reverted.",
+  "runtime_matches_merged_branch": true,
+  "timeouts_or_expected_results_changed": false,
+  "raw_evidence": [
+    "artifacts/merge-verify.log",
+    "artifacts/browser-merge-before.json",
+    "artifacts/merge-verify-final.log",
+    "artifacts/browser-merge-second.json",
+    "artifacts/merge-verify-filelog.log",
+    "artifacts/browser-results.json",
+    "artifacts/serve-merge.log"
+  ]
+}

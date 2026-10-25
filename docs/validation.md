@@ -1,3 +1,13 @@
+# Main merge verification — October 25, 2026
+
+`frontend-polish` was fast-forwarded into local `main`, retaining all five Arjun commits through `82a3c1f`; no conflicts. Runtime and tests match that branch exactly. The final `./scripts/verify.sh` exited **1**: **58 backend tests passed** (20.60 s; four existing dependency deprecations), strict TypeScript/production build passed, and **22 of 23 Chromium checks passed** (3.8 minutes for the complete browser run).
+
+**Unresolved failure:** `region.spec.ts` → “city selection and a dragged, movable area change the actual planning inputs and population.” In the full suite, its first `POST /api/baseline` returned **HTTP 504**; the test then read `configuration.focus_bounds` from the error body and raised TypeError. The UI displayed the calculation-timeout/retry message. The same check passed when run alone (42.6 s). Clearing its four scenario matrices before the final full run did not prevent the failure. It also reproduced with server output redirected to a regular file, so captured-output backpressure is not an established explanation. A scalar-validation optimization preserved matrix values but did not resolve the failure and was reverted, together with all exploratory test edits. No deadline was raised, expected objective changed, failing check skipped or retry added.
+
+This merge therefore **does not have an all-green verification run**. The scope-dependent timeout needs further diagnosis; an isolated passing retry is not proof that it is fixed. All other current browser checks passed, including API-matched Iowa/Quad Cities metrics, errors/retries, stale results, point directions, mobile layouts, themes, map teardown and fullscreen controls. App remains available locally at http://127.0.0.1:8000/ using `./scripts/serve.sh`, with output in ignored `artifacts/serve-merge.log`. [Machine-readable merge evidence](merge_validation.json). Earlier successful runs below are checkpoint-specific history, not the outcome of this merge check.
+
+---
+
 # Imperial display and appearance verification
 
 Strict TypeScript/production build passed; **21 Playwright checks passed** in the full run (172.05 s). A final connected-road animation refinement passed all **4 appearance checks** again (29.82 s). The **6 targeted backend route/area tests passed** (14.70 s). Imperial values were checked against actual API payloads/results; saved dark preferences, active Iowa ML inputs, zero ML contribution, reduced motion, cancellation, map teardown and desktop/mobile layouts were checked. [Behavior, evidence and limitations](appearance.md). The Quad Cities continues to use population; the evaluated Iowa forecast is labeled as precomputed. No public deployment occurred. Earlier records below remain historical.

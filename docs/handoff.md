@@ -1,5 +1,7 @@
 # GridAid handoff for Arjun
 
+**Main merge update (October 25, 2026):** Arjun’s five frontend/Quad Cities commits are integrated. Current verification: 58 backend tests and type/build passed; **22/23 browser checks passed**, with an unresolved drawn-area baseline HTTP 504 in the full suite. See [merge evidence and remaining failure](validation.md) before treating the earlier green checkpoints below as current. No exploratory routing/test changes were retained.
+
 ## Latest: imperial display, dark mode and model activity
 
 Both interfaces now use miles/feet/mph, a persistent dark/light toggle and road activity during calculations. The model panel explicitly distinguishes population planning from precomputed Iowa ML inputs; the Quad Cities has no evaluated incident model. **21 Playwright checks, strict TypeScript/build and six targeted backend route/area tests passed**, with a final appearance rerun for the connected-road visual refinement. [Behavior, exact verification and limits](appearance.md). Original numerical units, datasets, ML models, algorithms and the Base44 prototype remain intact. Earlier records below are historical.
