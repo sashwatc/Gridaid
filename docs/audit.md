@@ -1,3 +1,9 @@
+# Simple-planner follow-up
+
+The default connected app now uses two inputs and one action, shows one API-derived recommendation with numbered locations, and loads real satellite imagery with an offline-road fallback. Retry, timeout, invalid input, cancellation, late response, service failure and incomplete-solver states were checked. **52 backend tests, strict TypeScript/build and 15 Playwright checks passed.** The only backend modification permits the imagery host in `img-src`; algorithms, API routes, compute/rate bounds, ML, datasets, results and the separate Base44 prototype remain unchanged. See [simple_planner.md](simple_planner.md). These checks do not establish universal availability or human/operational validation.
+
+---
+
 # Connected frontend-polish follow-up
 
 The React/FastAPI frontend now has readable charts/text, persistent actions, offline geographic context, placement switching, human-readable scenario names, explicit unreachable/no-demand travel labels and API-derived percentage-point summaries. Backend algorithms, assumptions, ML selection, snapshots/results and the Base44 prototype are unchanged. New tests independently compare displayed values with actual API responses and cover populated 320–1440 px layouts. **52 backend tests, strict TypeScript/build and 9 Playwright checks passed**; the final narrow-axis adjustment passed its layout regression. See [frontend_polish.md](frontend_polish.md) for scope, evidence and remaining limitations. Existing scientific/human/deployment release gates remain unmet.

@@ -1,0 +1,120 @@
+.citizen-app { background: #f7f9f8; min-height: 100vh; color: #203c35; }
+.citizen-header { height: 78px; padding: 0 max(24px, calc((100vw - 1320px) / 2)); position: static; box-shadow: none; }
+.citizen-header .brand strong { letter-spacing: -.8px; }
+.community-tag { color: #5c6e67; font-size: 14px; margin-left: auto; }
+.simple-link { color: #356453; font-size: 13px; font-weight: 600; align-self: center; }
+.citizen-main { max-width: 1368px; margin: auto; padding: 48px 24px 0; }
+.citizen-intro { max-width: 680px; margin-bottom: 34px; }
+.citizen-intro .eyebrow { color: #557366; font-size: 11px; }
+.citizen-intro h1 { font-size: clamp(32px, 3.6vw, 48px); font-weight: 650; line-height: 1.12; letter-spacing: -1.7px; margin: 15px 0; }
+.citizen-intro > p { max-width: 570px; font-size: 16px; line-height: 1.7; color: #536a60; }
+.citizen-layout { display: grid; grid-template-columns: 370px minmax(0, 1fr); gap: 28px; align-items: start; }
+.plan-column { display: grid; gap: 22px; min-width: 0; }
+.simple-form, .plan-answer { background: #fff; border: 1px solid #d6e2db; border-radius: 14px; padding: 26px; }
+.step-kicker { color: #5c7367; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 650; }
+.step-kicker > span { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #eaf3ee; color: #26624b; }
+.simple-form h2 { margin: 17px 0 9px; font-size: 23px; line-height: 1.3; }
+.simple-form > p { color: #536a60; font-size: 13px; line-height: 1.65; margin: 0 0 24px; }
+.simple-form label { margin: 21px 0 9px; font-size: 14px; color: #284d3d; gap: 6px; }
+.input-help { color: #61746b; font-weight: 400; font-size: 12px; line-height: 1.6; }
+.simple-form input[type=number] { height: 48px; font-size: 18px; padding: 10px 13px; border-color: #b8cabe; border-radius: 7px; }
+.minutes-field { display: flex; align-items: center; gap: 12px; }
+.minutes-field input { max-width: 98px; }
+.minutes-field > span { color: #536a60; font-size: 13px; }
+.simple-form > .input-validation { color: #a23b2c; font-size: 12px; margin: 12px 0; }
+.find-plan { width: 100%; display: flex; justify-content: space-between; align-items: center; min-height: 51px; padding: 14px 17px; border: 0; border-radius: 8px; background: #096c50; color: #fff; font-weight: 650; font-size: 15px; }
+.find-plan:disabled { color: #51675e; background: #e5eee9; }
+.simple-form > .form-reassurance { font-size: 11px; text-align: center; margin: 12px 0 0; line-height: 1.6; }
+.calculation-progress { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; font-size: 12px; line-height: 1.7; margin-top: 14px; }
+.calculation-progress button { background: none; border: 0; color: #28674d; padding: 5px; text-decoration: underline; }
+.citizen-error { margin-top: 16px; padding: 13px; background: #fff2ed; color: #883a2a; font-size: 13px; line-height: 1.7; border-radius: 7px; }
+.citizen-error p { margin: 7px 0; }
+.citizen-error button { border: 1px solid #b77762; border-radius: 5px; background: #fff; color: #883a2a; padding: 8px 12px; }
+.plan-answer { padding-top: 22px; }
+.answer-empty { text-align: center; padding: 22px 0 3px; }
+.empty-map-symbol { color: #7ca68e; font-size: 34px; }
+.answer-empty h2 { font-size: 19px; margin: 14px 0 10px; }
+.answer-empty p { font-size: 13px; line-height: 1.8; color: #576f61; }
+.plan-answer.is-ready { border-color: #9ac2a9; box-shadow: 0 4px 20px #2c70430a; }
+.ready-label { display: block; font-size: 11px; color: #1c6f49; letter-spacing: 1px; font-weight: 700; margin-top: 22px; }
+.is-ready h2 { font-size: 27px; margin: 9px 0; }
+.answer-lead { font-size: 14px; line-height: 1.7; color: #506b5c; }
+.answer-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid #e1eae3; border-bottom: 1px solid #e1eae3; margin-top: 20px; }
+.answer-metrics strong { display: block; color: #166044; font-size: 32px; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+.answer-metrics span { display: block; color: #526c5c; font-size: 12px; line-height: 1.65; margin-top: 5px; }
+.coverage-explainer, .site-caveat { font-size: 12px; color: #556d60; line-height: 1.75; }
+.plain-tradeoff { padding: 13px; background: #edf5ef; border-radius: 7px; font-size: 13px; line-height: 1.8; margin: 16px 0 22px; color: #375a45; }
+.suggested-locations { list-style: none; padding: 0; margin: 12px 0; }
+.suggested-locations li + li { margin-top: 8px; }
+.suggested-locations button { display: flex; align-items: center; gap: 12px; width: 100%; background: white; border: 1px solid #d9e5dc; border-radius: 7px; text-align: left; padding: 12px; color: #274e3b; }
+.suggested-locations button[aria-pressed=true] { background: #edf5ef; border-color: #2b7852; }
+.location-number { background: #126d4e; color: white; border-radius: 50%; width: 27px; height: 27px; display: grid; place-items: center; font-size: 12px; flex-shrink: 0; }
+.suggested-locations button > span:nth-child(2) { flex: 1; min-width: 0; }
+.suggested-locations strong { display: block; font-size: 13px; }
+.suggested-locations small { display: block; font-size: 11px; color: #59715f; margin-top: 5px; }
+.download-plan { font-size: 13px; display: inline-block; margin-top: 8px; }
+.citizen-map-column { min-width: 0; position: sticky; top: 20px; }
+.citizen-map { overflow: hidden; border-radius: 14px; background: white; border: 1px solid #d6e2db; }
+.citizen-map-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 21px 22px; }
+.citizen-map-heading h2 { font-size: 18px; margin: 0 0 7px; }
+.citizen-map-heading p { font-size: 12px; color: #60746b; margin: 0; }
+.map-view-buttons { display: flex; padding: 3px; background: #edf2ee; border-radius: 7px; }
+.map-view-buttons button { border: 0; background: none; border-radius: 5px; padding: 8px 11px; font-size: 12px; color: #4d6857; }
+.map-view-buttons button[aria-pressed=true] { background: white; color: #184e36; box-shadow: 0 1px 4px #00000012; }
+.citizen-leaflet { height: 505px; background: #e9f0ec; }
+.satellite .citizen-leaflet { background: #34443a; }
+.citizen-leaflet .leaflet-control-attribution { max-width: 85%; font-size: 9px !important; line-height: 1.6; }
+.citizen-leaflet .leaflet-tooltip.citizen-place-label { color: white; background: #243d329c; border: 0; border-radius: 4px; box-shadow: none; font-size: 13px; font-weight: 650; white-space: nowrap; padding: 3px 7px; }
+.citizen-place-label:before, .site-number:before { display: none; }
+.citizen-leaflet .leaflet-tooltip.site-number { background: transparent; color: white; border: 0; box-shadow: none; padding: 0; font-size: 14px; font-weight: 750; pointer-events: none; }
+.imagery-notice { background: #fff5df; color: #6b5426; font-size: 12px; line-height: 1.7; padding: 11px 18px; }
+.imagery-notice button { border: 0; background: transparent; color: #5b471a; text-decoration: underline; padding: 2px 5px; }
+.citizen-map-legend { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; padding: 17px 22px 9px; font-size: 11px; color: #42634e; }
+.citizen-map-legend > span { display: flex; align-items: center; gap: 6px; }
+.citizen-map-legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.legend-location { background: #0c7151; }
+.citizen-map-legend label { display: flex; align-items: center; flex-direction: row; gap: 7px; font-size: 11px; font-weight: 400; margin: 0 0 0 auto; }
+.citizen-map-legend input { accent-color: #096c50; }
+.map-footnote { color: #5b7062; font-size: 11px; line-height: 1.7; padding: 0 22px 14px; margin: 7px 0 0; }
+.simple-explanation { padding: 18px 2px; margin: 5px 0 0; border: 0; }
+.simple-explanation summary { color: #486953; font-size: 13px; }
+.simple-explanation p { color: #536d5c; font-size: 13px; line-height: 1.8; }
+.map-loading { height: 560px; display: flex; align-items: center; justify-content: center; gap: 12px; background: #eaf1ec; border: 1px solid #d4e0d7; border-radius: 14px; padding: 20px; font-size: 14px; color: #456750; }
+.condition-toggle { display: flex; align-items: center; gap: 5px; padding: 0 0 15px; flex-wrap: wrap; }
+.condition-toggle button { background: #fff; border: 1px solid #c5d9cb; border-radius: 6px; color: #326448; padding: 10px 12px; font-size: 12px; }
+.condition-toggle button[aria-pressed=true] { background: #146d4e; color: #fff; border-color: #146d4e; }
+.condition-toggle > span { margin-left: auto; color: #516f5c; font-size: 12px; }
+.citizen-details { background: white; border: 1px solid #d6e2db; padding: 22px; border-radius: 12px; margin-top: 30px; }
+.citizen-details > summary { font-size: 15px; font-weight: 600; color: #315e45; }
+.citizen-details > p { color: #586e61; line-height: 1.7; font-size: 13px; }
+.citizen-footer { border-top: 1px solid #d6e2db; padding: 26px 0; margin-top: 45px; color: #58715f; gap: 16px; align-items: center; }
+.citizen-footer strong { font-size: 16px; color: #28533d; }
+.citizen-footer span { flex: 1; }
+@media(max-width: 1050px) {
+ .citizen-layout { grid-template-columns: 320px minmax(0, 1fr); gap: 20px; }
+ .simple-form, .plan-answer { padding: 22px; }
+ .citizen-map-heading { padding: 18px; }
+ .citizen-leaflet { height: 475px; }
+}
+@media(max-width: 760px) {
+ .detailed-back { display: none; }
+ .citizen-header { height: 68px; padding: 0 18px; }
+ .community-tag { display: none; }
+ .citizen-header .simple-link { margin-left: auto; font-size: 12px; }
+ .citizen-main { padding: 28px 16px 0; }
+ .citizen-intro { margin-bottom: 25px; }
+ .citizen-intro h1 { letter-spacing: -1px; font-size: 34px; line-height: 1.15; }
+ .citizen-intro > p { font-size: 14px; }
+ .desktop-break { display: none; }
+ .citizen-layout { display: flex; flex-direction: column; gap: 22px; }
+ .plan-column, .citizen-map-column { width: 100%; position: static; }
+ .citizen-leaflet { height: 390px; }
+ .citizen-map-heading h2 { font-size: 17px; }
+ .citizen-map-legend { padding: 15px 16px 8px; gap: 12px; }
+ .citizen-map-legend label { margin-left: 0; }
+ .condition-toggle > span { width: 100%; margin: 8px 0 0; }
+ .citizen-footer { flex-direction: column; align-items: flex-start; padding: 24px 0; margin-top: 30px; }
+ .citizen-details { padding: 18px 14px; }
+ .citizen-leaflet .map-tools { gap: 4px; right: 8px; }
+ .citizen-leaflet .map-tools button { font-size: 11px; }
+}

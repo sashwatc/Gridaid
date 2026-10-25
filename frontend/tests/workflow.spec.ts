@@ -4,7 +4,7 @@ import type {Run} from '../src/types';
 test('baseline → static → disruption → resilience → paired simulation; numbers, stale state and errors',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text())});
- await page.goto('/');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
+ await page.goto('/?view=advanced');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
  const metrics:Record<string,Run>={};
  for(const [label,path,kind] of [['Load baseline','/api/baseline','baseline'],['Static optimize','/api/optimize/static','static']] as const){
   const response=page.waitForResponse(r=>r.url().endsWith(path)&&r.request().method()==='POST');
@@ -41,7 +41,7 @@ test('baseline → static → disruption → resilience → paired simulation; n
 });
 
 test('mobile layout stays within viewport',async({page})=>{
- await page.setViewportSize({width:390,height:844});await page.goto('/');
+ await page.setViewportSize({width:390,height:844});await page.goto('/?view=advanced');
  await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
  await page.screenshot({path:'../artifacts/workflow-mobile.png',fullPage:true});
@@ -49,7 +49,7 @@ test('mobile layout stays within viewport',async({page})=>{
 
 test('map layers survive repeated planner and methodology navigation',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.stack??e.message));
- await page.goto('/');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
+ await page.goto('/?view=advanced');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
  await page.getByLabel('Study area').selectOption('iowa');
  await expect(page.getByText('19,205 nodes · 32 candidate sites')).toBeVisible();
  for(let i=0;i<4;i++){
@@ -69,7 +69,7 @@ test('map layers survive repeated planner and methodology navigation',async({pag
 
 test('observed Iowa data, retrospective ML, blended full workflow and browser timing',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
- await page.goto('/');await page.getByLabel('Study area').selectOption('iowa');
+ await page.goto('/?view=advanced');await page.getByLabel('Study area').selectOption('iowa');
  await expect(page.getByText('19,205 nodes · 32 candidate sites')).toBeVisible({timeout:20000});
  await page.getByLabel('Demand model').selectOption('blended');
  await expect(page.getByText(/ML: retrospective Jan 2024/)).toBeVisible();
@@ -95,7 +95,7 @@ test('observed Iowa data, retrospective ML, blended full workflow and browser ti
 
 test('real demo preset, all comparison metrics, access layers, explanations and in-flight trial change',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
- await page.goto('/');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
+ await page.goto('/?view=advanced');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
  await page.getByRole('button',{name:'Load real-data demo preset →'}).click();
  await expect(page.getByText('19,205 nodes · 32 candidate sites')).toBeVisible();
  await expect(page.getByLabel('Resources',{exact:true})).toHaveValue('4');

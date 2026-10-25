@@ -1,5 +1,7 @@
 # Connected frontend polish
 
+This is the earlier frontend iteration, retained under **Detailed tools** (`/?view=advanced`). The default page is now the [simple community planner](simple_planner.md); its verification record supersedes the default-interface description below.
+
 Continued from `2d77938` on `frontend-polish`. The runtime remains the React/TypeScript app in `frontend/`, served by FastAPI. The separate root Base44 prototype still awaits backend integration and was left intact. Backend algorithms, requests, assumptions, datasets, ML selection, forecasts and result values were preserved.
 
 ## Changes

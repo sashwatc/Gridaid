@@ -1,8 +1,8 @@
 # GridAid
 
-For Arjun: [handoff, artifact inventory and frontend backlog](docs/handoff.md). The tested full-stack app is in `backend/` + `frontend/`. The shared repository's existing root `src/` Base44 design prototype is preserved separately and is not connected to this engine; its original instructions are in [the archived Base44 setup](docs/base44_setup_original.md). Use the commands below for the validated application.
+For Arjun: [handoff and artifact inventory](docs/handoff.md). The tested full-stack app is in `backend/` + `frontend/`. The shared repository's existing root `src/` Base44 design prototype is preserved separately and is not connected to this engine; its original instructions are in [the archived Base44 setup](docs/base44_setup_original.md). Use the commands below for the validated application.
 
-A working local emergency-resource **planning simulator** for Davenport / Scott County, Iowa. Compare a baseline, normal-condition static optimization, and one shared resilience placement across normal, winter, road closure, fixed-site outage, event, and combined stress scenarios. Then compare them with paired seeded Monte Carlo incidents. The connected UI keeps workflow actions visible while scrolling; switch Latest / Baseline / Static / Resilient on the map to inspect each placement. [Frontend polish and validation](docs/frontend_polish.md).
+A working local emergency-resource **planning simulator** for Davenport / Scott County, Iowa. The default screen compares three placements with one action and gives a clear recommendation on a satellite map. Optional detailed tools retain scenario controls, placement switching, explanations and paired seeded Monte Carlo incidents. [Simple planner and verification](docs/simple_planner.md).
 
 The backend implements Dijkstra, greedy coverage, OR-Tools/SCIP maximum coverage and p-median, normalized multi-scenario optimization, explanations, and bounded FastAPI operations. React/TypeScript/Leaflet displays the actual backend results. This is not dispatch software or a claim about emergency outcomes.
 
@@ -21,7 +21,9 @@ npm --prefix frontend run build
 ./scripts/serve.sh
 ```
 
-Open **http://127.0.0.1:8000**. Click **Load real-data demo preset →** for the documented four-resource road/weather tradeoff; see [five-minute walkthrough](docs/real_data_demo.md). No credentials or paid APIs are needed. The committed synthetic fixture and compressed public-data snapshot work without data downloads. Select the study area, load baseline, static optimize, change the stress-test view, resilience optimize, and simulate. ML Risk and Blended are available for the Iowa snapshot, labeled as a **retrospective January 2024 transportation forecast**. They are unavailable for the synthetic corridor fixture.
+Open **http://127.0.0.1:8000**. Enter a resource count and travel-time target, then click **Find a plan**. The app compares three real backend placements automatically and shows one recommendation, coverage in normal and difficult conditions, and numbered locations on a satellite map. The default is the documented four-resource Iowa road/weather case. Failed requests have retry actions; satellite failures fall back to the saved road network. [Simple planner behavior and verification](docs/simple_planner.md).
+
+No credentials or paid APIs are needed for the local planner. Satellite imagery requires internet access. The committed synthetic fixture and compressed public-data snapshot need no data downloads after setup. **Detailed tools** at **http://127.0.0.1:8000/?view=advanced** retain the manual workflow, scenario controls, paired simulation, explanations and model information; see the [five-minute research walkthrough](docs/real_data_demo.md). ML Risk and Blended are available there for the Iowa snapshot, labeled as a **retrospective January 2024 transportation forecast**. They are unavailable for the synthetic corridor fixture.
 
 Optional variables are in `.env.example`. `GRIDAID_HOST` defaults to `127.0.0.1`, `GRIDAID_PORT` to `8000`, and `GRIDAID_CORS` to the two local Vite origins. The launcher reads exported variables; it does not automatically load `.env`. Keep one Uvicorn worker so the local rate/run limits apply consistently. Run identifiers are ephemeral and at most 100 runs are retained.
 

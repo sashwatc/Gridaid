@@ -1,3 +1,11 @@
+# Simple-planner verification
+
+Final check: **52 backend tests passed (16.48 s)**, strict TypeScript/production build passed, and **15 Playwright checks passed** with no skips, failures or flaky tests. These include six new simple-planner browser workflows and the prior nine detailed-workspace checks. Real satellite tiles loaded without CSP violations; API result values, numbered sites and populated desktop/mobile screenshots were checked. Initial map-background styling and 320 px detailed-header overflow failures were corrected before the final full suite. The four existing Python dependency deprecations and Node color-environment notices remain. [Behavior, exact commands and artifacts](simple_planner.md).
+
+The earlier frontend-polish and clean-clone records below remain historical evidence.
+
+---
+
 # Frontend-polish verification
 
 Continued from `2d77938`, with backend/data/ML and the separate Base44 prototype unchanged. **52 backend tests, strict TypeScript/production build, and 9 Playwright checks (8 Chromium workflows + 1 travel-label check) passed.** A final narrow-axis adjustment passed the populated-layout check again at 320, 390, 768, 1024 and 1440 px. Displayed coverage, travel statistics, histogram counts, explanations and calculated tradeoff deltas were compared with real API responses; desktop/mobile screenshots were visually inspected. The app runs locally at **http://127.0.0.1:8000/**. No public deployment occurred. [Exact commands, timings, warnings and remaining issues](frontend_polish.md).

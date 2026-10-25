@@ -22,7 +22,7 @@ async function calculate(page:Page){
 test('preset tradeoffs, charts and placement switching agree with actual API results, with offline context',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.route('https://tile.openstreetmap.org/**',route=>route.abort());
- await page.goto('/');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
+ await page.goto('/?view=advanced');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
  await page.getByRole('button',{name:'Load real-data demo preset →'}).click();
  await expect(page.getByText('19,205 nodes · 32 candidate sites')).toBeVisible();
  const study:Study=await (await page.request.get('/api/study-area?dataset_id=iowa')).json();
@@ -88,7 +88,7 @@ test('preset tradeoffs, charts and placement switching agree with actual API res
 
 test('populated mobile, tablet and desktop layouts keep actions visible, charts legible and content inside the viewport',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
- await page.setViewportSize({width:390,height:844});await page.goto('/');
+ await page.setViewportSize({width:390,height:844});await page.goto('/?view=advanced');
  await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
  const settings=page.getByRole('button',{name:/Edit planning assumptions/});
  await settings.focus();await page.keyboard.press('Enter');
@@ -140,7 +140,7 @@ test('populated mobile, tablet and desktop layouts keep actions visible, charts 
 });
 
 test('equal site sets are reported honestly for actual greedy baseline and static runs',async({page})=>{
- await page.goto('/');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
+ await page.goto('/?view=advanced');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
  await page.getByRole('button',{name:/Advanced assumptions/}).click();
  await page.getByRole('combobox',{name:'Baseline',exact:true}).selectOption('greedy');
  await page.getByRole('combobox',{name:'Static solver',exact:true}).selectOption('greedy');

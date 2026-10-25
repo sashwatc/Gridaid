@@ -1,5 +1,9 @@
 # GridAid handoff for Arjun
 
+## Current interface
+
+The default page is now the simple community planner: enter a resource count and travel-time target, then select **Find a plan**. It loads the real Iowa preset automatically and recommends one of three actual backend placements on a satellite map. Failed loads/calculations have retry actions; unavailable imagery falls back to saved roads. The previous research workspace is under **Detailed tools** at `/?view=advanced`. **52 backend tests, strict TypeScript/build, and 15 Playwright checks passed** for this follow-up. [Behavior, failure handling and verification](simple_planner.md). Earlier frontend-polish and clean-clone records below remain historical evidence.
+
 ## Start here
 
 The tested planning application lives in **`backend/` + `frontend/`**. Use the commands below from the repository root and open **http://127.0.0.1:8000/**. It needs no accounts, API keys, paid services or data downloads after initial dependency installation.

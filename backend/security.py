@@ -10,7 +10,7 @@ from starlette.responses import JSONResponse
 MAX_BODY=16384
 HEADERS={'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','X-Frame-Options':'DENY',
          'Permissions-Policy':'geolocation=(), camera=(), microphone=()',
-         'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'"}
+         'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://tile.openstreetmap.org https://services.arcgisonline.com; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'"}
 
 class Guard:
     def __init__(self,app,rate_limit=30,window=60):
