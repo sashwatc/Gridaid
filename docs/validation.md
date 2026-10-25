@@ -1,3 +1,11 @@
+# Frontend-polish verification
+
+Continued from `2d77938`, with backend/data/ML and the separate Base44 prototype unchanged. **52 backend tests, strict TypeScript/production build, and 9 Playwright checks (8 Chromium workflows + 1 travel-label check) passed.** A final narrow-axis adjustment passed the populated-layout check again at 320, 390, 768, 1024 and 1440 px. Displayed coverage, travel statistics, histogram counts, explanations and calculated tradeoff deltas were compared with real API responses; desktop/mobile screenshots were visually inspected. The app runs locally at **http://127.0.0.1:8000/**. No public deployment occurred. [Exact commands, timings, warnings and remaining issues](frontend_polish.md).
+
+The earlier continuation/clean-clone records below remain historical evidence.
+
+---
+
 # Executed validation — continuation
 
 The current implementation passed **52 backend tests, strict TypeScript/build, and 5 actual Chromium tests in the handoff clone**. The previous checkpoint is retained below as history; its zero-access semantics, timings and test totals are not current claims. Original sources and reports were read, then checked against actual code and counterexamples. No public deployment or submission occurred.

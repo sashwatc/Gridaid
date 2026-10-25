@@ -1,3 +1,9 @@
+# Connected frontend-polish follow-up
+
+The React/FastAPI frontend now has readable charts/text, persistent actions, offline geographic context, placement switching, human-readable scenario names, explicit unreachable/no-demand travel labels and API-derived percentage-point summaries. Backend algorithms, assumptions, ML selection, snapshots/results and the Base44 prototype are unchanged. New tests independently compare displayed values with actual API responses and cover populated 320–1440 px layouts. **52 backend tests, strict TypeScript/build and 9 Playwright checks passed**; the final narrow-axis adjustment passed its layout regression. See [frontend_polish.md](frontend_polish.md) for scope, evidence and remaining limitations. Existing scientific/human/deployment release gates remain unmet.
+
+---
+
 # Handoff follow-up
 
 Fresh-project setup and full verification were executed in a separate local clone using only tracked runtime data. An intermittent Leaflet teardown error found by that check was reproduced with a new four-cycle layer/zoom/navigation regression. Public `zoomAnimation=false` and `fitBounds(..., animate=false)` prevent callbacks after removal; Canvas and all mathematical behavior are retained. Final clone check: **52 backend tests, strict TypeScript/build, 5 Chromium tests passed**. See [handoff.md](handoff.md) and [handoff_validation.json](handoff_validation.json). The separate root Base44 prototype and its history were preserved unchanged; it remains disconnected from FastAPI and outside these app validation claims. Pending integration/polish is explicitly assigned in the handoff. Complete source release gates remain unmet for the reasons below.

@@ -2,7 +2,7 @@
 
 For Arjun: [handoff, artifact inventory and frontend backlog](docs/handoff.md). The tested full-stack app is in `backend/` + `frontend/`. The shared repository's existing root `src/` Base44 design prototype is preserved separately and is not connected to this engine; its original instructions are in [the archived Base44 setup](docs/base44_setup_original.md). Use the commands below for the validated application.
 
-A working local emergency-resource **planning simulator** for Davenport / Scott County, Iowa. Compare a baseline, normal-condition static optimization, and one shared resilience placement across normal, winter, road closure, fixed-site outage, event, and combined stress scenarios. Then compare them with paired seeded Monte Carlo incidents.
+A working local emergency-resource **planning simulator** for Davenport / Scott County, Iowa. Compare a baseline, normal-condition static optimization, and one shared resilience placement across normal, winter, road closure, fixed-site outage, event, and combined stress scenarios. Then compare them with paired seeded Monte Carlo incidents. The connected UI keeps workflow actions visible while scrolling; switch Latest / Baseline / Static / Resilient on the map to inspect each placement. [Frontend polish and validation](docs/frontend_polish.md).
 
 The backend implements Dijkstra, greedy coverage, OR-Tools/SCIP maximum coverage and p-median, normalized multi-scenario optimization, explanations, and bounded FastAPI operations. React/TypeScript/Leaflet displays the actual backend results. This is not dispatch software or a claim about emergency outcomes.
 
