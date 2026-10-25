@@ -47,6 +47,26 @@ test('mobile layout stays within viewport',async({page})=>{
  await page.screenshot({path:'../artifacts/workflow-mobile.png',fullPage:true});
 });
 
+test('map layers survive repeated planner and methodology navigation',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.stack??e.message));
+ await page.goto('/');await expect(page.getByText('30 nodes · 8 candidate sites')).toBeVisible();
+ await page.getByLabel('Study area').selectOption('iowa');
+ await expect(page.getByText('19,205 nodes · 32 candidate sites')).toBeVisible();
+ for(let i=0;i<4;i++){
+  // Change vector layers before teardown, including after a previous remount.
+  await page.getByRole('checkbox',{name:'access',exact:true}).setChecked(i%2===0);
+  await page.locator('.leaflet-control-zoom-in').click();
+  await page.getByRole('button',{name:'Methodology & trust'}).click();
+  await expect(page.getByText('Know what the model measures.')).toBeVisible();
+  await page.evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));
+  await page.getByRole('button',{name:'Planning workspace'}).click();
+  await expect(page.locator('.map')).toBeVisible();
+  await expect(page.locator('.map .leaflet-overlay-pane > canvas, .map .leaflet-overlay-pane > svg')).toBeVisible();
+  await page.evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));
+ }
+ expect(errors).toEqual([]);
+});
+
 test('observed Iowa data, retrospective ML, blended full workflow and browser timing',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
  await page.goto('/');await page.getByLabel('Study area').selectOption('iowa');
