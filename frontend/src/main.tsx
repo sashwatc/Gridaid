@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import './style.css';
 import './planner.css';
 import './theme.css';
+import './workspace.css';
 import {DetailedWorkspace} from './DetailedWorkspace';
 import {CitizenPlanner} from './components/CitizenPlanner';
 import {ThemeProvider} from './theme';

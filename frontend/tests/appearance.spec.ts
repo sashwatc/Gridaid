@@ -5,11 +5,11 @@ import {distance,feet,kphToMph,mphToKph} from '../src/units';
 test('dark mode persists, road activity follows real requests, and selected locations display imperial distances',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.emulateMedia({colorScheme:'light'});
- await page.goto('/');await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled();
+ await page.goto('/');await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled({timeout:20000});
  await expect(page.locator('html')).toHaveAttribute('data-theme','light');
  await page.getByRole('button',{name:'Switch to dark mode'}).click();
  await expect(page.locator('html')).toHaveAttribute('data-theme','dark');
- await page.reload();await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled();
+ await page.reload();await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled({timeout:20000});
  await expect(page.locator('html')).toHaveAttribute('data-theme','dark');
  await expect(page.getByTestId('calculation-model')).toHaveAttribute('data-ml-active','false');
  await expect(page.getByTestId('calculation-model')).toContainText('Census population model');

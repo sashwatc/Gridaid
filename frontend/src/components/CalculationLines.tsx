@@ -22,11 +22,11 @@ export function CalculationLines({study,bounds=null,cityIds=[]}:{study:Study;bou
   // Join connected real segments into visible street traces at region zoom.
   // The bounded walks are an illustration, not routing or solver decisions.
   const traces:[number,number][][]=[],used=new Set<string>();
-  const count=Math.min(16,pool.length);
+  const count=Math.min(64,pool.length);
   for(let i=0;i<count;i++){
    let edge=pool[Math.floor(i*pool.length/count)];
    const trace:[number,number][]=[],visited=new Set<string>([edge.u]);
-   for(let step=0;step<32;step++){
+   for(let step=0;step<42;step++){
     if(used.has(edge.id))break;
     used.add(edge.id);visited.add(edge.v);
     trace.push(...(edge.geometry.length?edge.geometry.map(p=>[p[1],p[0]] as [number,number]):[nodes.get(edge.u)!,nodes.get(edge.v)!].map(n=>[n.lat,n.lon] as [number,number])));
@@ -42,5 +42,5 @@ export function CalculationLines({study,bounds=null,cityIds=[]}:{study:Study;bou
   }
   return traces;
  },[study,bounds,cityIds]);
- return <Pane name="calculation-lines" style={{zIndex:425,pointerEvents:'none'}}><Polyline className="calculation-road-line" positions={paths} renderer={renderer} interactive={false} pathOptions={{color:'#65ddff',weight:4,opacity:.9,dashArray:'9 16',lineCap:'round'}}/></Pane>;
+ return <Pane name="calculation-lines" style={{zIndex:425,pointerEvents:'none'}}><Polyline className="calculation-road-base" positions={paths} renderer={renderer} interactive={false} pathOptions={{color:'#54c8ee',weight:3,opacity:.2,lineCap:'round'}}/><Polyline className="calculation-road-line" positions={paths} renderer={renderer} interactive={false} pathOptions={{color:'#8ceaff',weight:3,opacity:.95,dashArray:'7 15',lineCap:'round'}}/></Pane>;
 }

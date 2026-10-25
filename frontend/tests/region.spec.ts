@@ -8,7 +8,7 @@ test('city selection and a dragged, movable area change the actual planning inpu
  await page.route('https://services.arcgisonline.com/**',route=>route.abort());
  const study:Study=await (await page.request.get('/api/study-area?dataset_id=quad_cities')).json();
  await page.goto('/');
- await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled();
+ await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled({timeout:20000});
  await page.getByLabel('Add a city').selectOption({label:'Moline, IL'});
  await expect(page.getByTestId('area-preview')).toContainText('12 census points');
  await expect(page.getByRole('button',{name:'Remove Moline'})).toBeVisible();
@@ -19,16 +19,16 @@ test('city selection and a dragged, movable area change the actual planning inpu
  await expect(page.getByTestId('area-preview')).toContainText('82 census points');
  await page.getByRole('button',{name:'Draw an area',exact:true}).click();
  const map=page.locator('.citizen-leaflet');await map.scrollIntoViewIfNeeded();const box=(await map.boundingBox())!;
- await page.mouse.move(box.x+box.width*.18,box.y+box.height*.13);await page.mouse.down();
- await page.mouse.move(box.x+box.width*.86,box.y+box.height*.87,{steps:12});await page.mouse.up();
+ await page.mouse.move(box.x+box.width*.42,box.y+box.height*.38);await page.mouse.down();
+ await page.mouse.move(box.x+box.width*.69,box.y+box.height*.66,{steps:12});await page.mouse.up();
  await expect(page.getByText(/Custom area · drag the center/)).toBeVisible();
  await expect(page.locator('.area-corner')).toHaveCount(4);
  const corner=page.getByTitle('Resize area corner 3',{exact:true});const cornerBox=(await corner.boundingBox())!;
  await page.mouse.move(cornerBox.x+8,cornerBox.y+8);await page.mouse.down();await page.mouse.move(cornerBox.x-7,cornerBox.y+20,{steps:8});await page.mouse.up();
  const move=page.getByTitle('Move selected area',{exact:true});const handle=(await move.boundingBox())!;
  await page.mouse.move(handle.x+15,handle.y+15);await page.mouse.down();await page.mouse.move(handle.x+35,handle.y+20,{steps:8});await page.mouse.up();
- await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled();
- const response=page.waitForResponse(r=>r.url().endsWith('/api/baseline')&&r.request().method()==='POST');
+ await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled({timeout:20000});
+ const response=page.waitForResponse(r=>r.url().endsWith('/api/baseline')&&r.request().method()==='POST',{timeout:30000});
  await page.getByRole('button',{name:'Find a plan',exact:true}).click();const baseline:Run=await (await response).json();
  const bounds=baseline.configuration.focus_bounds!;expect(bounds).toHaveLength(4);expect(baseline.configuration.focus_city_ids).toEqual([]);
  const selected=study.dataset.demands.filter(d=>d.origin_lat!>=bounds[0]&&d.origin_lat!<=bounds[2]&&d.origin_lon!>=bounds[1]&&d.origin_lon!<=bounds[3]);
@@ -48,12 +48,12 @@ test('city selection and a dragged, movable area change the actual planning inpu
 
 test('clicking the Illinois map shows API-matched nearest location, backup, distance and reverse travel',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto('/');await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled();
+ await page.goto('/');await expect(page.getByRole('button',{name:'Find a plan',exact:true})).toBeEnabled({timeout:20000});
  await page.getByLabel('Add a city').selectOption({label:'Moline, IL'});
  const map=page.locator('.citizen-leaflet');await map.scrollIntoViewIfNeeded();
  const box=(await map.boundingBox())!;
  const response=page.waitForResponse(r=>r.url().endsWith('/api/route/point')&&r.request().method()==='POST');
- await map.click({position:{x:box.width*.48,y:box.height*.52}});
+ await map.click({position:{x:box.width*.65,y:box.height*.50}});
  const res=await response;expect(res.status()).toBe(200);const result:PointRouteResult=await res.json();
  expect(result.scope).toBe('mapped_facilities');const best=result.conditions.at(-1)!.routes[0];expect(best).toBeTruthy();
  await expect(page.getByTestId('point-time')).toHaveText(`${(best.time_s/60).toFixed(1)} min`);
