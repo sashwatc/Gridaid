@@ -6,7 +6,10 @@ import {initialLayers} from './components/MapPanel';
 const initial:Config={dataset:'fixture',resource_count:3,threshold_minutes:5,objective:'coverage',method:'exact',demand_model:'population',blend:.5,scenario_ids:['normal','winter','closure','resource_failure','event','combined'],average_weight:.6,worst_case_weight:.4,seed:42,solver_limit_ms:2000,baseline_method:'deterministic',access_mode:'connector',access_speed_kph:20,winter_multiplier:1.6,closure_profile:'central'};
 
 export function usePlanning(){
- const [config,setConfig]=useState<Config>(initial),[study,setStudy]=useState<Study|null>(null),[runs,setRuns]=useState<Run[]>([]),[simulation,setSimulation]=useState<Simulation|null>(null);
+ const [config,setConfig]=useState<Config>(()=>{
+  const params=new URLSearchParams(window.location.search);
+  return params.get('dataset')==='iowa'&&params.get('demand')==='blended'?{...initial,dataset:'iowa',demand_model:'blended'}:initial;
+ }),[study,setStudy]=useState<Study|null>(null),[runs,setRuns]=useState<Run[]>([]),[simulation,setSimulation]=useState<Simulation|null>(null);
  const [busy,setBusy]=useState(''),[error,setError]=useState(''),[active,setActive]=useState('normal'),[site,setSite]=useState<string|null>(null);
  const [layers,setLayers]=useState(initialLayers);
  const [trials,setTrials]=useState(10000),[advanced,setAdvanced]=useState(false),[riskInfo,setRiskInfo]=useState(''),[pageTime,setPageTime]=useState<number|null>(null),[evaluation,setEvaluation]=useState<Evaluation|null>(null);

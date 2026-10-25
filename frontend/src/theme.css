@@ -1,0 +1,109 @@
+:root {
+ --ui-page: #f7f9f8;
+ --ui-surface: #fff;
+ --ui-soft: #edf5f0;
+ --ui-line: #d2e0d8;
+ --ui-text: #203c35;
+ --ui-muted: #536e60;
+ --ui-accent: #096c50;
+ --ui-accent-text: #1e674b;
+ --ui-on-accent: #fff;
+}
+:root[data-theme="dark"] {
+ --ui-page: #0b141c;
+ --ui-surface: #12222d;
+ --ui-soft: #1a303b;
+ --ui-line: #304b55;
+ --ui-text: #e1efea;
+ --ui-muted: #aac1ba;
+ --ui-accent: #64dfb8;
+ --ui-accent-text: #9ceecd;
+ --ui-on-accent: #092b20;
+ --muted: #aac1ba;
+ --line: #304b55;
+ --green: #64dfb8;
+ background: var(--ui-page);
+ color: var(--ui-text);
+}
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 7px; flex-shrink: 0; min-height: 37px; border: 1px solid var(--ui-line); background: var(--ui-surface); border-radius: 7px; color: var(--ui-text); padding: 7px 10px; font-size: 12px; }
+.theme-toggle > span:first-child { font-size: 19px; line-height: 1; }
+.citizen-header { gap: 12px; }
+.nav-short-label { display: none; }
+.model-activity { background: var(--ui-soft); border: 1px solid var(--ui-line); border-radius: 10px; padding: 15px; margin: 18px 0; color: var(--ui-text); }
+.simple-form .model-activity { margin-bottom: 0; }
+.model-activity-heading { display: flex; gap: 10px; align-items: center; }
+.model-activity-icon { display: grid; place-items: center; flex-shrink: 0; width: 31px; height: 31px; border-radius: 8px; color: var(--ui-accent-text); background: var(--ui-surface); font-size: 20px; }
+.model-activity-heading > div { flex: 1; min-width: 0; }
+.model-kicker { display: block; color: var(--ui-muted); font-size: 9px; font-weight: 700; letter-spacing: 1.1px; margin-bottom: 5px; }
+.model-activity strong { display: block; font-size: 13px; line-height: 1.6; }
+.model-badge { color: var(--ui-muted); border: 1px solid var(--ui-line); background: var(--ui-surface); padding: 4px 6px; border-radius: 5px; font-size: 10px; white-space: nowrap; }
+.model-badge.ml-active { color: var(--ui-accent-text); }
+.model-activity p { color: var(--ui-muted); font-size: 11px; line-height: 1.8; margin: 11px 0 0; }
+.model-activity .model-phase { color: var(--ui-accent-text); font-size: 12px; display: flex; align-items: center; gap: 8px; }
+.model-activity details { font-size: 11px; margin-top: 12px; overflow-wrap: anywhere; }
+.model-activity summary, .model-activity a { color: var(--ui-accent-text); font-size: 11px; }
+.model-live-dot, .map-activity-badge > span { width: 7px; height: 7px; background: #3cb68b; border-radius: 50%; flex-shrink: 0; animation: calculation-pulse 1.4s ease-in-out infinite; }
+.model-running { border-color: #3da88f; }
+.citizen-map-surface { position: relative; }
+.calculation-road-line { animation: road-flow 1.5s linear infinite; filter: drop-shadow(0 0 4px #2badff); }
+.map-activity-badge { position: absolute; right: 12px; bottom: 30px; z-index: 650; display: flex; align-items: center; gap: 8px; border: 1px solid #6bb2c0; background: #102b3bea; color: #d9f6f4; border-radius: 7px; padding: 10px 12px; font-size: 11px; pointer-events: none; box-shadow: 0 3px 18px #09243340; }
+.map-activity-badge > span { background: #74edcb; }
+@keyframes road-flow { to { stroke-dashoffset: -100; } }
+@keyframes calculation-pulse { 50% { opacity: .4; box-shadow: 0 0 0 4px #59deb31a; } }
+
+[data-theme="dark"] body, [data-theme="dark"] .citizen-app { background: var(--ui-page); color: var(--ui-text); }
+[data-theme="dark"] :is(header,aside,.workflow,.simple-form,.plan-answer,.citizen-map,.point-inspector,.citizen-details,.panel,.map-card,.metric-cards article,.chart,.method section) { background: var(--ui-surface); color: var(--ui-text); border-color: var(--ui-line); }
+[data-theme="dark"] :is(.brand,.brand strong,h1,h2,h3,h4,.big-number,.citizen-map-heading h2,.is-ready h2,.point-heading h2,.suggested-locations strong,.nearest-result h3,.citizen-footer strong,dd) { color: var(--ui-text); }
+[data-theme="dark"] :is(.citizen-intro > p,.community-tag,.simple-form > p,.input-help,.minutes-field > span,.answer-empty p,.answer-lead,.answer-metrics span,.coverage-explainer,.site-caveat,.map-footnote,.area-preview,.chosen-cities,.simple-explanation p,.point-inspector > p,.point-inspector .route-scope,.nearest-result p,.nearest-result span,.suggested-locations small,.condition-toggle > span,.citizen-footer,.simulation > p,.method p,.lead,.hint,.footnote,dt,pre) { color: var(--ui-muted); }
+[data-theme="dark"] :is(label,.eyebrow,.citizen-intro .eyebrow,.citizen-map-heading p,.map-context,.map-legend,.map-toolbar span,.map-toolbar label,.map-legend .hint,.citizen-map-legend,.citizen-map-legend label,.layer-row .check,.solver-state,.coverage-bar > span) { color: var(--ui-muted); }
+[data-theme="dark"] :is(a,.simple-link,summary,.simple-explanation summary,.citizen-details > summary,.download-plan,.ready-label,.step-kicker,.answer-metrics strong,.nearest-result > div:first-child strong) { color: var(--ui-accent-text); }
+[data-theme="dark"] :is(select,input[type=number],.actions button,.suggested-locations button,.area-actions > button,.condition-toggle button,.map-view-buttons button[aria-pressed=true],.placement-options button,.view-map,.map-tools button,.north-arrow) { background: #152b37; color: var(--ui-text); border-color: #4c6b73; }
+[data-theme="dark"] :is(.step-kicker > span,.plain-tradeoff,.tradeoff,.badge,.route-backup,.coverage-gap,.map-view-buttons,.map-context,.placement-bar,.scenario-note,.advanced,.empty,caption,thead,.settings-toggle,.preset-button) { background: var(--ui-soft); color: var(--ui-text); border-color: var(--ui-line); }
+[data-theme="dark"] :is(.find-plan,.condition-toggle button[aria-pressed=true],.area-actions > button.area-active,.actions button.primary:enabled,.location-number,.brand-mark) { background: var(--ui-accent); color: var(--ui-on-accent); border-color: var(--ui-accent); }
+[data-theme="dark"] .brand-mark span { color: var(--ui-on-accent); }
+[data-theme="dark"] :is(button:disabled,.find-plan:disabled,.actions button:disabled,.placement-options button:disabled) { background: #20333d; color: #a7bab5; border-color: #344e56; }
+[data-theme="dark"] :is(.suggested-locations button[aria-pressed=true],.chosen-cities button,.placement-options button[aria-pressed=true]) { background: #214c43; color: #d7fff0; border-color: #6dc5a9; }
+[data-theme="dark"] :is(.simple-form label,.model-activity-heading strong,.answer-metrics strong,.citizen-map-legend,.area-actions label,.point-inspector label,.plain-tradeoff strong) { color: var(--ui-text); }
+[data-theme="dark"] :is(.simple-form .form-reassurance,.settings-toggle span,.map-view-buttons button,.chosen-cities,.condition-toggle > span) { color: var(--ui-muted); }
+[data-theme="dark"] :is(.citizen-error,.error,.point-inspector > .no-route) { background: #3b2530; color: #ffbead; border-color: #956659; }
+[data-theme="dark"] :is(.citizen-error p,.citizen-error button) { color: #ffbead; }
+[data-theme="dark"] .citizen-error button { background: #472d35; }
+[data-theme="dark"] :is(.imagery-notice,.area-chooser > p,.stale,.data-note,.metric-explanation) { background: #392f20; color: #f3d29a; border-color: #99763b; }
+[data-theme="dark"] .imagery-notice button { color: #f7d99a; }
+[data-theme="dark"] .input-validation { color: #ffbcab; }
+[data-theme="dark"] .point-inspector > .condition-impact { background: #1b374a; color: #c3e1ff; }
+[data-theme="dark"] .status { background: #1b4139; color: #a4f4d5; }
+[data-theme="dark"] :is(.answer-metrics,.area-chooser,.citizen-footer,.map-footnote,.detail-grid,.point-inspector details,.model-activity details,.nearest-result,.map-legend,fieldset,details,.chart-row,td,th) { border-color: var(--ui-line); }
+[data-theme="dark"] :is(.bar-track,.table-scroll) { background: #263f4b; border-color: var(--ui-line); }
+[data-theme="dark"] .coverage-bar strong { color: var(--ui-text); }
+[data-theme="dark"] :is(.card-label > span:first-child,.histogram h4) { color: var(--ui-text) !important; }
+[data-theme="dark"] .tradeoff p { color: var(--ui-muted); }
+[data-theme="dark"] .road-map .citizen-leaflet, [data-theme="dark"] .map { background: #172b36; }
+[data-theme="dark"] .map-loading { background: #172b36; color: var(--ui-muted); border-color: var(--ui-line); }
+[data-theme="dark"] .map-context strong { color: var(--ui-text); }
+[data-theme="dark"] .leaflet-control-zoom a { background: #17303d; color: #d9eee8; border-color: #4b6872; }
+[data-theme="dark"] .leaflet-control-scale-line { background: #122c3cce; color: #e1f3ed; border-color: #a4c4c5; }
+[data-theme="dark"] .leaflet-control-attribution { background: #142936d9; color: #c8dad6; }
+[data-theme="dark"] .leaflet-control-attribution a { color: #99daee; }
+[data-theme="dark"] .leaflet-tooltip:not(.site-number):not(.citizen-place-label):not(.place-label) { background: #193746; color: #e1efeb; border-color: #648c9c; }
+[data-theme="dark"] nav button { color: var(--ui-muted); }
+[data-theme="dark"] nav button.nav-active { color: var(--ui-accent-text); }
+[data-theme="dark"] .skip-link { background: var(--ui-surface); }
+
+@media(max-width:760px) {
+ .theme-toggle { width: 36px; min-height: 36px; padding: 7px; }
+ .theme-toggle-label { display: none; }
+ .nav-full-label { display: none; }
+ .nav-short-label { display: inline; }
+ nav { gap: 12px; }
+ .citizen-header { gap: 9px; }
+ .model-activity { padding: 12px; }
+ .model-activity-heading { gap: 8px; }
+ .model-activity-icon { width: 26px; height: 26px; font-size: 17px; }
+ .model-badge { font-size: 9px; padding: 3px 5px; }
+ .map-activity-badge { right: 8px; padding: 8px 10px; font-size: 10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .calculation-road-line { animation: none; stroke-dasharray: none; filter: none; opacity: .6; }
+ .model-live-dot, .map-activity-badge > span { animation: none; }
+}

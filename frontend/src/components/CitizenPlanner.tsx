@@ -6,6 +6,8 @@ import {PlacementDetails} from './PlacementDetails';
 import {PointInspector} from './PointInspector';
 import {usePointRoute} from '../usePointRoute';
 import {mappedFacilities} from '../region';
+import {ThemeToggle} from '../theme';
+import {ModelActivity} from './ModelActivity';
 
 export function CitizenPlanner(){
  const p=useCitizenPlanner();
@@ -28,7 +30,7 @@ export function CitizenPlanner(){
  }
  return <div className="citizen-app">
   <a className="skip-link" href="#citizen-main">Skip to planner</a>
-  <header className="citizen-header"><a href="/" className="brand"><span className="brand-mark">G<span>+</span></span><strong>GridAid</strong></a><span className="community-tag">Quad Cities · IA + IL</span><a className="simple-link" href="/?view=advanced">Detailed tools ↗</a></header>
+  <header className="citizen-header"><a href="/" className="brand"><span className="brand-mark">G<span>+</span></span><strong>GridAid</strong></a><span className="community-tag">Quad Cities · IA + IL</span><ThemeToggle/><a className="simple-link" href="/?view=advanced">Detailed tools ↗</a></header>
   <main id="citizen-main" className="citizen-main">
    <div className="citizen-intro"><span className="eyebrow">PLAN A BETTER-PREPARED COMMUNITY</span><h1>Where could resources<br className="desktop-break"/> help the most?</h1><p>Choose how many resources you have. We’ll suggest locations and show how they hold up in snow and road closures.</p></div>
    <div className="citizen-layout">
@@ -42,6 +44,7 @@ export function CitizenPlanner(){
       <button className="find-plan" type="submit" disabled={p.loading||!!p.progress||!p.study||!!p.validation}>{p.loading?'Loading planning data…':p.progress?'Finding your plan…':p.error&&p.study?'Try again':'Find a plan'}<span aria-hidden="true">→</span></button>
       {p.progress?<div className="calculation-progress" role="status"><span className="spinner"/>{p.progress}<button type="button" onClick={p.cancel}>Cancel</button></div>:<p className="form-reassurance">We compare three plans for you. No setup or account needed.</p>}
       {p.error&&<div className="citizen-error" role="alert"><strong>{p.study?'Your plan could not be completed.':'Planning data could not load.'}</strong><p>{p.error}</p>{!p.study&&<button type="button" onClick={p.retryLoad}>Retry loading</button>}</div>}
+      <ModelActivity study={p.study} config={p.preset} phase={p.progress}/>
      </form>
      <section className={`plan-answer ${run?'is-ready':''}`} ref={answer} tabIndex={-1} aria-label="Your recommendation" aria-live="polite">
       <div className="step-kicker"><span>2</span> See your answer</div>
@@ -57,7 +60,7 @@ export function CitizenPlanner(){
       </>:<div className="answer-empty"><div className="empty-map-symbol" aria-hidden="true">◎</div><h2>Your plan will appear here.</h2><p>Choose your resource count and travel target, then select <strong>Find a plan</strong>. We’ll handle the comparisons.</p></div>}
      </section>
     </div>
-    <div className="citizen-map-column">{run&&<div className="condition-toggle" role="group" aria-label="View conditions"><button aria-pressed={!stress} onClick={()=>setStress(false)}>Normal day</button><button aria-pressed={stress} onClick={()=>setStress(true)}>Toughest tested day</button><span>{scenarioName(p.study,active)}</span></div>}{p.study?<SatelliteMap study={p.study} run={run} active={active} selected={selected} onSelect={setSelected} focusBounds={p.focusBounds} cityIds={p.cityIds} onAreaChange={p.updateArea} onPoint={route.setPoint} checkedPoint={route.point} pointRoute={route.result?.conditions.at(-1)?.routes[0]} pointStatus={route.busy?'Checking roads…':route.error?'Point check unavailable':route.result?'No reachable route':''}/>:<div className="map-loading">{p.loading?<><span className="spinner"/> Loading your community map…</>:<>The map will appear when planning data is available.</>}</div>}
+    <div className="citizen-map-column">{run&&<div className="condition-toggle" role="group" aria-label="View conditions"><button aria-pressed={!stress} onClick={()=>setStress(false)}>Normal day</button><button aria-pressed={stress} onClick={()=>setStress(true)}>Toughest tested day</button><span>{scenarioName(p.study,active)}</span></div>}{p.study?<SatelliteMap study={p.study} run={run} active={active} selected={selected} onSelect={setSelected} focusBounds={p.focusBounds} cityIds={p.cityIds} onAreaChange={p.updateArea} onPoint={route.setPoint} checkedPoint={route.point} pointRoute={route.result?.conditions.at(-1)?.routes[0]} calculating={!!p.progress||route.busy} pointStatus={route.busy?'Checking roads…':route.error?'Point check unavailable':route.result?'No reachable route':''}/>:<div className="map-loading">{p.loading?<><span className="spinner"/> Loading your community map…</>:<>The map will appear when planning data is available.</>}</div>}
      {run&&<button className="coverage-gap" onClick={checkGap} disabled={!p.area.demands.some(d=>!run.demand_access[run.summary.worst_scenario]?.find(a=>a.demand_id===d.id)?.covered)}>Check the largest population coverage gap →</button>}
      <PointInspector route={route}/>
      <details className="simple-explanation"><summary>What does this planner do?</summary><p>It compares three possible placements of the same resources: a starting plan, a plan for normal roads, and a plan tested against snow and a road closure. The recommendation has the highest combined score: 60% average coverage and 40% worst-case coverage.</p><p>Real OpenStreetMap roads, mapped facilities, official city boundaries and 2020 Census population cover the Quad Cities study region. Drawn areas select whole tract points and eligible facilities; roads outside the selected area remain available for routing. Resource assignments, snow effects, closures, and access paths are assumptions. This tool does not report live emergency services or road conditions.</p></details>

@@ -1,5 +1,9 @@
 # GridAid handoff for Arjun
 
+## Latest: imperial display, dark mode and model activity
+
+Both interfaces now use miles/feet/mph, a persistent dark/light toggle and road activity during calculations. The model panel explicitly distinguishes population planning from precomputed Iowa ML inputs; the Quad Cities has no evaluated incident model. **21 Playwright checks, strict TypeScript/build and six targeted backend route/area tests passed**, with a final appearance rerun for the connected-road visual refinement. [Behavior, exact verification and limits](appearance.md). Original numerical units, datasets, ML models, algorithms and the Base44 prototype remain intact. Earlier records below are historical.
+
 ## Latest: Quad Cities area and point checks
 
 The default simple planner now covers a separate real-data Iowa/Illinois region. Add core cities or draw/move/resize an area; the selection changes actual optimization demand and candidate locations. Click a point for fastest reachable location, backup, route, distance and estimated time in either travel direction. The gap shortcut inspects the largest represented population outside the target in the toughest test. [Data, behavior, executed checks and limits](quad_cities.md). **58 backend tests and the frontend build passed; all 17 Playwright checks have passing latest results across the full run and the corrected timeout-test rerun.** Original Iowa datasets/results/ML and the Base44 prototype remain intact. Earlier records below are historical.

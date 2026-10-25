@@ -57,7 +57,7 @@ test('clicking the Illinois map shows API-matched nearest location, backup, dist
  const res=await response;expect(res.status()).toBe(200);const result:PointRouteResult=await res.json();
  expect(result.scope).toBe('mapped_facilities');const best=result.conditions.at(-1)!.routes[0];expect(best).toBeTruthy();
  await expect(page.getByTestId('point-time')).toHaveText(`${(best.time_s/60).toFixed(1)} min`);
- await expect(page.getByTestId('point-distance')).toContainText(`${(best.distance_m/1000).toFixed(2)} km`);
+ await expect(page.getByTestId('point-distance')).toContainText(best.distance_m<160.9344?`${Math.round(best.distance_m/.3048).toLocaleString()} ft`:`${(best.distance_m/1609.344).toFixed(2)} mi`);
  await expect(page.getByTestId('point-nearest')).toHaveText(best.label);
  expect(best.community).toBe('Moline city');expect(best.source_url).toContain('openstreetmap.org');
  if(result.conditions.at(-1)!.routes[1])await expect(page.getByTestId('point-backup')).toBeVisible();

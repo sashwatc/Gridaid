@@ -4,6 +4,8 @@ For Arjun: [handoff and artifact inventory](docs/handoff.md). The tested full-st
 
 A working local emergency-resource **planning simulator** for the Quad Cities in Iowa and Illinois. Add Davenport, Bettendorf, Rock Island, Moline or East Moline to your area, or draw, move and resize a box. Click any point for the fastest reachable location, backup, road distance and estimated driving time. The default screen compares three placements with one action and gives a recommendation on a satellite map. [Quad Cities data, features and verification](docs/quad_cities.md).
 
+Displays use **miles, feet and mph**. The header's dark/light toggle remembers your preference. During requests, glowing traces follow saved road geometry and a calculation panel identifies the actual population or ML forecast inputs. The Quad Cities remains population-based; the evaluated Iowa ML demo is linked from that panel. [Appearance, units and model-status details](docs/appearance.md).
+
 The backend implements Dijkstra, greedy coverage, OR-Tools/SCIP maximum coverage and p-median, normalized multi-scenario optimization, explanations, and bounded FastAPI operations. React/TypeScript/Leaflet displays the actual backend results. This is not dispatch software or a claim about emergency outcomes.
 
 ## Clean setup
@@ -75,7 +77,7 @@ These operations are offline scripts, not upload/fetch API endpoints. The defaul
 
 `ingest` rebuilds roads/population and clears the processed ML flag. Run `ml.real_train` afterward to attach the evaluated risk output and refresh the committed compressed snapshot. `dot_snapshot` records current roadway/traffic attributes but **does not use them as historical predictors**. `ml.train` is a separate synthetic segment-month experiment. The real pipeline uses tract spatial cells, calendar and lagged reported counts, including zero-incident cell-months. Rebuilding from cached raw data reproduces the forecasts; dependency versions are pinned in `uv.lock` and `frontend/package-lock.json`.
 
-The current public snapshot preserves original Census internal points and fixed directed road-segment arrivals. Default travel includes an **assumed straight access connector at 20 km/h**, slowed by winter too. Road-only mode is an optimistic diagnostic. These are whole-tract weights at representative points, **not exact household coverage**. The study rectangle is 41.50–41.63°N / 90.70–90.48°W; selected whole tracts extend outside it. [Geographic audit](docs/geography.md) records every point/candidate, city classification and snapping/access sensitivity.
+The original Iowa snapshot preserves original Census internal points and fixed directed road-segment arrivals. Default travel includes an **assumed straight access connector at 12.43 mph** (stored as 20 km/h), slowed by winter too. Road-only mode is an optimistic diagnostic. These are whole-tract weights at representative points, **not exact household coverage**. The Iowa study rectangle is 41.50–41.63°N / 90.70–90.48°W; selected whole tracts extend outside it. [Geographic audit](docs/geography.md) records every point/candidate, city classification and snapping/access sensitivity. The separate Quad Cities region is described above.
 
 `geography_audit` updates original coordinates/road attachments without retraining ML. `real_demo` writes all 12 predeclared real cases, access sensitivity, and the version-checked UI preset. Rerun it after rebuilding the public snapshot; a stale preset is rejected.
 

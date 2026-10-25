@@ -99,7 +99,7 @@ test('real demo preset, all comparison metrics, access layers, explanations and 
  await page.getByRole('button',{name:'Load real-data demo preset →'}).click();
  await expect(page.getByText('19,205 nodes · 32 candidate sites')).toBeVisible();
  await expect(page.getByLabel('Resources',{exact:true})).toHaveValue('4');
- await expect(page.getByLabel('Access speed',{exact:true})).toHaveValue('20');
+ await expect(page.getByLabel('Access speed',{exact:true})).toHaveValue('12.43');
  const runs:Run[]=[];
  for(const [label,path] of [['Load baseline','/api/baseline'],['Static optimize','/api/optimize/static'],['Resilience optimize','/api/optimize/resilient']] as const){
   const response=page.waitForResponse(r=>r.url().endsWith(path)&&r.request().method()==='POST',{timeout:30000});

@@ -1,3 +1,9 @@
+# Imperial display and appearance verification
+
+Strict TypeScript/production build passed; **21 Playwright checks passed** in the full run (172.05 s). A final connected-road animation refinement passed all **4 appearance checks** again (29.82 s). The **6 targeted backend route/area tests passed** (14.70 s). Imperial values were checked against actual API payloads/results; saved dark preferences, active Iowa ML inputs, zero ML contribution, reduced motion, cancellation, map teardown and desktop/mobile layouts were checked. [Behavior, evidence and limitations](appearance.md). The Quad Cities continues to use population; the evaluated Iowa forecast is labeled as precomputed. No public deployment occurred. Earlier records below remain historical.
+
+---
+
 # Quad Cities area/route verification
 
 **58 backend tests passed (30.69 s)** and strict TypeScript/production build passed. The full 17-check Playwright run passed 16; a negative-case test retained its artificial short timeout for the next assertion. After restoring the normal timeout between cases, that check passed its targeted rerun (4.9 s). All 17 checks have passing latest results; [exact evidence and limits](quad_cities.md), [machine-readable summary](quad_cities_validation.json). New checks include actual Quad Cities data, area drawing/resizing/moving, city scope, point travel in both directions, backups, road paths, gap inspection and desktop/mobile screenshots. No public deployment occurred. Earlier records below remain historical.

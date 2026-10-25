@@ -4,8 +4,9 @@ import {DomEvent} from 'leaflet';
 import type {Bounds,MapPoint,PointRoute,Run,Study} from '../types';
 import {mappedFacilities,regionCities,scopedPoints} from '../region';
 import {AreaChooser,AreaDrawing} from './AreaSelection';
+import {CalculationLines} from './CalculationLines';
 
-type Props={study:Study;run?:Run;active:string;selected:string|null;onSelect:(id:string)=>void;focusBounds:Bounds|null;cityIds:string[];onAreaChange:(bounds:Bounds|null,ids:string[])=>void;onPoint:(point:MapPoint)=>void;checkedPoint:MapPoint|null;pointRoute?:PointRoute;pointStatus:string};
+type Props={study:Study;run?:Run;active:string;selected:string|null;onSelect:(id:string)=>void;focusBounds:Bounds|null;cityIds:string[];onAreaChange:(bounds:Bounds|null,ids:string[])=>void;onPoint:(point:MapPoint)=>void;checkedPoint:MapPoint|null;pointRoute?:PointRoute;pointStatus:string;calculating:boolean};
 const imagery='https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 const attribution='Imagery © <a href="https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9">Esri</a>, Vantor, Earthstar Geographics, GIS User Community';
 
@@ -31,7 +32,7 @@ function MapControls({study,selected,focusBounds,cityIds}:{study:Study;selected:
 
 function PointClicks({onPoint}:{onPoint:(point:MapPoint)=>void}){useMapEvents({click:e=>onPoint({lat:e.latlng.lat,lon:e.latlng.lng})});return null;}
 
-export function SatelliteMap({study,run,active,selected,onSelect,focusBounds,cityIds,onAreaChange,onPoint,checkedPoint,pointRoute,pointStatus}:Props){
+export function SatelliteMap({study,run,active,selected,onSelect,focusBounds,cityIds,onAreaChange,onPoint,checkedPoint,pointRoute,pointStatus,calculating}:Props){
  const [drawing,setDrawing]=useState(false);
  const suppressClick=useRef(0);
  const [mode,setMode]=useState<'satellite'|'roads'>('satellite');
@@ -61,8 +62,8 @@ export function SatelliteMap({study,run,active,selected,onSelect,focusBounds,cit
   <AreaChooser study={study} bounds={focusBounds} cityIds={cityIds} onChange={commitArea} drawing={drawing} setDrawing={setDrawing}/>
   <p className="area-preview" data-testid="area-preview">{area.demands.length} census points · {area.population.toLocaleString()} people represented (2020) · {area.candidates.length} eligible locations</p>
   {unavailable&&mode==='satellite'&&<div className="imagery-notice" role="status">Satellite imagery is unavailable. Your plan still works on the road map. <button onClick={retry}>Retry satellite</button></div>}
-  <div className={`citizen-map-surface ${satellite?'satellite':'road-map'}`}><MapContainer className="citizen-leaflet" center={[41.565,-90.59]} zoom={12} preferCanvas zoomAnimation={false} scrollWheelZoom={false}>
-   <MapControls study={study} selected={selected} focusBounds={focusBounds} cityIds={cityIds}/><PointClicks onPoint={check}/><AreaDrawing study={study} bounds={focusBounds} cityIds={cityIds} onChange={commitArea} drawing={drawing} setDrawing={setDrawing}/><ScaleControl imperial={false} position="bottomleft"/>
+  <div className={`citizen-map-surface ${satellite?'satellite':'road-map'} ${calculating?'map-calculating':''}`}><MapContainer className="citizen-leaflet" center={[41.565,-90.59]} zoom={12} preferCanvas zoomAnimation={false} scrollWheelZoom={false}>
+   <MapControls study={study} selected={selected} focusBounds={focusBounds} cityIds={cityIds}/><PointClicks onPoint={check}/><AreaDrawing study={study} bounds={focusBounds} cityIds={cityIds} onChange={commitArea} drawing={drawing} setDrawing={setDrawing}/><ScaleControl imperial={true} metric={false} position="bottomleft"/>
    {satellite&&<TileLayer key={attempt} url={imagery} maxZoom={19} attribution={attribution} eventHandlers={{tileload:()=>setTileReady(true),tileerror:()=>{errors.current++;if(errors.current>=3)setUnavailable(true);}}}/>}
    {!satellite&&<Polyline positions={roadPaths} pathOptions={{color:'#8ba4ad',weight:1.6,opacity:.65}}/>}
    <Rectangle bounds={[[box[0],box[1]],[box[2],box[3]]]} pathOptions={{color:satellite?'#fff':'#3d6673',weight:2,dashArray:'6 6',fill:false}}/>
@@ -81,7 +82,8 @@ export function SatelliteMap({study,run,active,selected,onSelect,focusBounds,cit
    })}
    {pointRoute&&<><Polyline positions={pointRoute.road_path.map(p=>[p[1],p[0]])} pathOptions={{color:'#358cff',weight:6,opacity:.95}} interactive={false}/>{pointRoute.access_paths.map((path,i)=><Polyline key={i} positions={path.map(p=>[p[1],p[0]])} pathOptions={{color:'#d3e7ff',weight:3,dashArray:'5 5'}} interactive={false}/>)}</>}
    {checkedPoint&&<CircleMarker center={[checkedPoint.lat,checkedPoint.lon]} radius={9} pathOptions={{color:'white',weight:3,fillColor:'#358cff',fillOpacity:1}} interactive={false}><Tooltip permanent direction="top" className="point-map-summary">{pointRoute?`${(pointRoute.time_s/60).toFixed(1)} min · ${pointRoute.label}`:pointStatus||'Checked point'}</Tooltip></CircleMarker>}
-  </MapContainer></div>
+   {calculating&&<CalculationLines study={study} bounds={focusBounds} cityIds={cityIds}/>}
+  </MapContainer>{calculating&&<div className="map-activity-badge" data-testid="map-activity" title="Illustrative activity on saved roads, not a live solver trace"><span/> Analyzing mapped roads</div>}</div>
   <div className="citizen-map-legend"><span><i className="legend-location"/> Suggested location</span>{run&&<><span><i style={{background:'#20d4a0'}}/> Within target</span><span><i style={{background:'#ffbb60'}}/> Outside target</span></>}<label><input type="checkbox" checked={coverage} onChange={e=>setCoverage(e.target.checked)}/> Show {run?'coverage':'population'}</label></div>
   <p className="map-footnote">White dashed boundary: supported region. Dots represent whole census tracts, not individual homes. Blue: modeled road route; dashed blue: assumed access. Satellite images are not live conditions.</p>
  </section>;

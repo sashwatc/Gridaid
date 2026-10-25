@@ -27,7 +27,7 @@ def attach_query(data,lat,lon):
     index=min(choices,key=lambda i:min(e.id for e in groups[keys[i]]))
     key=keys[index];line=lines.iloc[index];position=line.project(point);snap=line.interpolate(position)
     gap=float(point.distance(snap))
-    if gap>2000:raise ValueError('This point is more than 2 km from a mapped driving road. Choose a point closer to a road.')
+    if gap>2000:raise ValueError('This point is more than 1.24 miles from a mapped driving road. Choose a point closer to a road.')
     inverse=Transformer.from_crs(26915,4326,always_xy=True);snap_lon,snap_lat=inverse.transform(snap.x,snap.y)
     projected=np.asarray(line.coords);lengths=np.linalg.norm(np.diff(projected,axis=0),axis=1)
     ends=np.cumsum(lengths);k=min(int(np.searchsorted(ends,position,side='right')),len(lengths)-1)
